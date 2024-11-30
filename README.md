@@ -1,131 +1,308 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Stitch Art Guides
 
-Welcome USER_NAME,
+![main-image]()
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+(By Laura Kondrataite)
 
-You can safely delete this README.md file or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **June 18, 2024**
 
-## Gitpod Reminders
+Live site can be found [here]().
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+## Table of Contents
 
-`python3 -m http.server`
+[Design](#design)
 
-A blue button should appear to click: _Make Public_,
+- [Target Audience](#target-audience)
+- [User Stories](#user-stories)
+- [Flowcharts](#flowcharts)
+- [Wireframes](#wireframes)
+- [Color palette](#color-palette)
+- [Font styles](#font-styles)
 
-Another blue button should appear to click: _Open Browser_.
+[Agile Methodology](#agile-methodology)
 
-To run a backend Python file, type `python3 app.py` if your Python file is named `app.py`, of course.
+- [GitHub Project Management](#github-project-management)
 
-A blue button should appear to click: _Make Public_,
+[Features](#features)
 
-Another blue button should appear to click: _Open Browser_.
+- [Existing Features](#existing-features)
+- [Features Left to Implement](#features-left-to-implement)
 
-By Default, Gitpod gives you superuser security privileges. Therefore, you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+[Technologies used](#technologies-used)
 
-To log into the Heroku toolbelt CLI:
+- [Languages](#languages)
+- [Frameworks and Libraries](#frameworks-and-libraries)
+- [Databases](#databases)
+- [Other Tools, technologies, packages](#other-tools-technologies-packages)
 
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+[Testing](#testing)
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you, so do not share it. If you accidentally make it public, you can create a new one with _Regenerate API Key_.
+[Deployment](#deployment)
 
-### Connecting your Mongo database
+- [Github](#github)
+  - [How to Fork](#how-to-fork)
+  - [How to Clone](#how-to-clone)
+- [Heroku](#heroku)
 
-- **Connect to Mongo CLI on a IDE**
-- navigate to your MongoDB Clusters Sandbox
-- click **"Connect"** button
-- select **"Connect with the MongoDB shell"**
-- select **"I have the mongo shell installed"**
-- choose **mongosh (2.0 or later)** for : **"Select your mongo shell version"**
-- choose option: **"Run your connection string in your command line"**
-- in the terminal, paste the copied code `mongo "mongodb+srv://<CLUSTER-NAME>.mongodb.net/<DBname>" --apiVersion 1 --username <USERNAME>`
-  - replace all `<angle-bracket>` keys with your own data
-- enter password _(will not echo **\*\*\*\*** on screen)_
+[Credits](#credits)
 
-------
+- [Content](#content)
+- [Used code](#used-code)
+- [General resources](#general-resources)
+- [Acknowledgments](#acknowledgments)
+- [Code inspiration](#code-inspiration)
+- [References](#references)
 
-## Release History
+[Return to Table of Contents](#table-of-contents)
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
+## Design
 
-**June 18, 2024,** Add Mongo back into template
+### Target Audience
 
-**June 14, 2024,** Temporarily remove Mongo until the key issue is resolved
+The primary target audience for the game is:
 
-**May 28 2024:** Fix Mongo and Links installs
+- persons of any gender aged 16+ who enjoy crafts,
+- first time cross-stitchers,
+- anyone looking for guidance on how to progress in their cross-stitch journey.
 
-**April 26 2024:** Update node version to 16
+No background, geographical location or income has been specified for the target audience.
 
-**September 20 2023:** Update Python version to 3.9.17.
+### User Stories
 
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
+### Flowcharts
 
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
+I used [Lucidchart](https://lucid.app/) for creating the ERD for the models and [Exslidraw](https://excalidraw.com/) for creating site navigation.
 
-**July 2 2021:** Remove extensions that are not available in Open VSX.
+- ERD:
 
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
+  ![Project Models](documentation/images/entity_relational_diagram/model-chart.png)
 
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
+- MVP flowchart:
 
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
+  ![flowchart-mvp](documentation/images/entity_relational_diagram/site-navigation.png)
 
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
+### Wireframes
 
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
+The following wireframes show the initial idea of how the website would look on different devices: mobiles, tablets/iPads and laptops/desktops.
 
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
+[]()
 
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
+### Color palette
 
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
+The following palette was used to ensure the contrast is achieved between the main parts of the website:
 
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
+<details>
+    <summary>Color palette images</summary>
 
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
+![Color palette]()
+![Color palette2](documentation/design/color-palette2.jpeg)
 
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
+</details>
 
-------
+<br>
 
-## FAQ about the uptime script
 
-**Why have you added this script?**
+### Font styles
 
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
+I used [Google fonts](https://fonts.google.com/) to source the fonts for the website. These are:
 
-**How will this affect me?**
 
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
+![font screenshots]()
 
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
+[Return to Table of Contents](#table-of-contents)
 
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
+## Agile Methodology
 
-**So….?**
+### GitHub Project Management
 
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
+![GitHub Project Management]()
 
-**Can I opt out?**
+- [GitHub Project board]() was used to manage the progress and development of this project.
+- It allowed me to scope the project and keep track of progress, sometimes revising estimated dates and tasks that were needed to be done by a certain point.
 
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
+![GitHub Project Management]()
 
-```
-pkill uptime.sh
-rm .vscode/uptime.sh
-```
+- I chose the "trafic-light" color scheme for the MoSCoW method in order to indicate which tasks were a priority (green must-haves) and which ones were not(red won't-haves) for my project board.
+  - This provided clarity and better understanding for myself as I was a sole project contributor.
 
-**Anything more?**
+[Return to Table of Contents](#table-of-contents)
 
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
+## Features
 
----
+### Existing Features
 
-Happy coding!
+**The Header**
+
+  ![header]()
+
+  ![loggedin header]()
+
+**The Footer**
+
+  ![footer]()
+
+**User authentication**
+
+<details>
+<summary></summary>
+
+  </details>
+
+**Restricted access**
+
+**Error pages**
+
+**Notification messages**
+
+<details>
+    <summary></summary>
+
+</details>
+
+
+### Features Left to Implement
+
+
+[Return to Table of Contents](#table-of-contents)
+
+## Technologies used
+
+### Languages
+
+
+### Frameworks and Libraries
+
+### Databases
+
+- PostgreSQL: the database used to store all the data.
+- Sqlite3: the database used for automated testing.
+
+### Other tools, technologies, packages
+
+- [Whitenoise](https://whitenoise.readthedocs.io/en/stable/index.html) was Python library used for handling static files.
+- [Django allauth](https://allauth.org/) authentication library was used for allowing users to register and login.
+- [Django crispy forms](https://django-crispy-forms.readthedocs.io/en/latest/) was used for allowing to render user POST requests.
+- [Django summernote](https://summernote.org/) was used for providing useful editing tools for Django admin site.
+- [GitHub](https://github.com/) was used for creating and storing files and folders of the website.
+- [Heroku](https://www.heroku.com) was used for accessing and storing my application game.
+- **Git** was used for version control.
+- **Pip** was used to install required dependencies.
+- **VScode** editor was used for writing the code.
+- **Gunicorn** webserver used to run the website.
+- [CI Python Linter](https://pep8ci.herokuapp.com/#) was used for validating and checking my code for best code practices.
+- [JS Hint](https://jshint.com/) was used for validating Javascript code.
+- [W3C Markdown](https://validator.w3.org/) was used for validating html files.
+- [W3C CSS](https://jigsaw.w3.org/css-validator/) was used for validating css files.
+- [Lucidchart](https://lucid.app/) and [Exslidraw](https://excalidraw.com/) was used for creating the website flowcharts.
+- [Balsamiq](https://balsamiq.com/) used for creating wireframes.
+- [Google Fonts](https://fonts.google.com/) for choosing appropriate fonts
+- [Favicon](https://favicon.io/) for generating a favicon
+- Google Chrome DevTools for testing, troubleshooting and brainstorming code solutions
+- [Am I Responsive?](https://ui.dev/amiresponsive) website for showing the website's responsiveness on different devices
+- [Pixelied](https://pixelied.com/) and Gimp, for resizing, compressing and editing images
+- [Unsplash](https://unsplash.com/s/photos/embroidery) and [Pexels](https://www.pexels.com/) for sourcing images
+- [Coolors](https://coolors.co/) for generating the color palette
+- WCAG color contrast checker for website accessibilty
+- Wave evaluation tool for giving visual feedback about the accessibility of the website
+- [Contrast Grid](https://contrast-grid.eightshapes.com/) to test chosen color palette
+
+Full list of dependencies used for the project can be found in the requirements.txt file.
+
+[Return to Table of Contents](#table-of-contents)
+
+## Testing
+
+The website went through extensive testing during the development and deployment stages.
+
+- See [TESTING.md](TESTING.md) file for full testing and validation information.
+
+**Visible sqlite3 file**
+
+- db.sqlite3 file is exposed within the file structure, which was done unintentionally. I have taken note of best practices going forward and will ensure that any future files are stored in the .gitignore file.
+
+**Camel case in HTML**
+
+- I have applied Camel case to certain parts of HTML, for example modals, as per I think I blog walkthrough example. I am aware that camel case is not used in HTML, therefore, this will be rectfied where needed.
+
+[Return to Table of Contents](#table-of-contents)
+
+## Deployment
+
+This website was deployed using GitHub pages and Heroku website. To deploy the project, follow the steps below:
+
+### Github
+
+1. Login to GitHub and navigate to the main repository page.
+2. Click on the chosen repository,for example [Stitch Art Guides](https://github.com/laurakond/Stitch-Art-Guides-pp4).
+3. Once inside the repository, click on the "Settings" tab above the repository title displayed around the middle of the page.
+4. Select "Pages" tab on the left side navigation menu.
+5. Select "main" or "master" branch under "Build and Deployment", then "root" folder and click "save" button.
+6. The GitHub page site will be deployed.
+   - It might take a few minutes to generate the "live" website link.
+
+The live link to the website can be found [here](https://stitch-art-guides-pp4-5a679feed1e1.herokuapp.com/).
+
+#### How to Fork
+
+To fork the repository in Github:
+
+1. Follow steps 1 & 2 as above.
+2. Once inside the chosen repository, click the "fork" button in the top right corner above the "About section".
+
+#### How to Clone
+
+To clone the repository in Github:
+
+1.  Follow steps 1 & 2 as in the deployment section above.
+2.  Click on the "Code" button (often a bright color that stands out) at the top right corner just above the "commits" history.
+    - Select whether you would like to clone with HTTPS, SSH or GitHub CLI and copy the link shown.
+3.  Open the terminal in your chosen code editor and change the current working directory to the location you want to use for the cloned directory.
+    - Type 'git clone' into the terminal and then paste the copied link and press enter.
+    - OR, if working with VSCode, select "Clone Git Repository" and save the file on your device as prompted.
+4.  If you are working on a local IDE such as VS code, you need to create a virtual environment:
+    - in the terminal write the command `python -m venv [directory-name]`
+    - To activate the virtual environment write `[directory-name]/Scripts/Activate`
+    - If you need to deactivate it, type `deactivate` in the terminal
+    - remember to include this to the .gitignore file
+5.  Next, create an env.py file where you will keep your key data and make sure it is included in the .gitignore file. Key data can include:
+    - DATABASE_URL
+    - SECRET_KEY
+    - CLOUDINARY_URL
+    - SITE_OWNER_EMAIL
+    - SITE_OWNER_PASSWORD
+6.  Import all the dependencies required for the project to run. You can do so by entering `pip install -r requirements.txt` for the VSCode or `pip3 install -r requirements.txt` for Gitpod IDE.
+7.  Set up a database using postgreSQL.
+
+### Heroku
+
+
+[Return to Table of Contents](#table-of-contents)
+
+## Credits
+
+### Content
+
+### Used code
+
+
+### General resources:
+
+<details>
+<summary></summary>
+
+</details>
+
+### Acknowledgments
+
+My thanks go to:
+
+  - My mentor, [Iuliia Konovalova](https://github.com/IuliiaKonovalova), for helping to find a solution on how to implement parts of CRUD functionality and further advice on project development for the submission.
+
+- My fellow student, [Vernell Clark](https://github.com/VCGithubCode), for troubleshooting problematic parts of code and providing a shoulder to cry on when things got really rough.
+
+- [Daisy McGirr](https://github.com/Dee-McG) for the advice on the application set ups and how to configure various aspects of the project.
+
+### Code Inspiration
+
+### References
+
+[Return to Table of Contents](#table-of-contents)
