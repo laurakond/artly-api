@@ -35,7 +35,9 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '8000-laurakond-artlyapi-1p17b91siph.ws.codeinstitute-ide.net',
+]
 
 
 # Application definition
@@ -49,6 +51,9 @@ INSTALLED_APPS = [
     'cloudinary_storage',
     'django.contrib.staticfiles',
     'cloudinary',
+
+    # Apps
+    'artworks',
 ]
 
 MIDDLEWARE = [
