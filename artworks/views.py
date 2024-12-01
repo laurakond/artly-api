@@ -6,10 +6,14 @@ from artly_api.permissions import IsOwnerOrReadOnly
 
 class ArtworkList(generics.ListCreateAPIView):
     serializer_class = ArtworkSerializer
-    permission_classes = [
-        permissions.IsAuthenticatedOrReadOnly
-    ]
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     queryset = Artwork.objects.all()
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
+
+
+class ArtworkDetail(generics.RetrieveUpdateDestroyAPIView):
+    serializer_class = ArtworkSerializer
+    permission_classes = [IsOwnerOrReadOnly]
+    queryset = Artwork.objects.all()
