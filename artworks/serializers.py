@@ -6,7 +6,7 @@ class ArtworkSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
     is_owner = serializers.SerializerMethodField()
     owner_id = serializers.ReadOnlyField(source='owner.id')
-    sold = serializers.ReadOnlyField()
+    sold = serializers.BooleanField(default=False)
 
     # validate_image function has been taken from the Code Institute DRF API
     # walkthrough.
@@ -32,8 +32,8 @@ class ArtworkSerializer(serializers.ModelSerializer):
     class Meta:
         model = Artwork
         fields = [
-            'id', 'owner', 'artwork_title', 'artist_name', 'description',
-            'style', 'type', 'payment_method', 'price', 'image', 'alt_text',
-            'contact', 'location', 'sold', 'created_at', 'updated_at',
-            'is_owner', 'owner_id'
+            'id', 'owner', 'owner_id', 'is_owner', 'artwork_title',
+            'artist_name', 'description', 'style', 'type', 'payment_method',
+            'price', 'image', 'alt_text', 'contact', 'location', 'created_at',
+            'updated_at',  'sold'            
         ]
