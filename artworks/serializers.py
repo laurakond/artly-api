@@ -8,9 +8,11 @@ class ArtworkSerializer(serializers.ModelSerializer):
     owner_id = serializers.ReadOnlyField(source='owner.id')
     sold = serializers.BooleanField(default=False)
 
-    # validate_image function has been taken from the Code Institute DRF API
-    # walkthrough.
     def validate_image(self, value):
+        """
+        Function to validate a certain image size upon upload. This function
+        code has been taken from the Code Institute DRF API walkthrough.
+        """
         if value.size > 1024 * 1024 * 2:
             raise serializers.ValidationError(
                 'Image larger than 2MB.'

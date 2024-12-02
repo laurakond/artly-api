@@ -2,34 +2,38 @@ from django.db import models
 from django.contrib.auth.models import User
 
 STYLE = [
-  ('Modern', 'Modern'),
-  ('Contemporary', 'Contemporary'),
-  ('Digital art', 'Digital art'),
-  ('Old Masters', 'Old Masters'),
-  ('Classical', 'Classical'),
-  ('Other', 'Other')
+    ('Modern', 'Modern'),
+    ('Contemporary', 'Contemporary'),
+    ('Digital art', 'Digital art'),
+    ('Old Masters', 'Old Masters'),
+    ('Classical', 'Classical'),
+    ('Other', 'Other')
 ]
 
 TYPE = [
-  ('Collage', 'Collage'),
-  ('Drawing', 'Drawing'),
-  ('Needlework', 'Needlework'),
-  ('Etching', 'Etching'),
-  ('Painting', 'Painting'),
-  ('Photography', 'Photography'),
-  ('Pottery', 'Pottery'),
-  ('Scultpure', 'Scultpure'),
-  ('Watercolour', 'Watercolour'),
-  ('Other', 'Other')
+    ('Collage', 'Collage'),
+    ('Drawing', 'Drawing'),
+    ('Needlework', 'Needlework'),
+    ('Etching', 'Etching'),
+    ('Painting', 'Painting'),
+    ('Photography', 'Photography'),
+    ('Pottery', 'Pottery'),
+    ('Scultpure', 'Scultpure'),
+    ('Watercolour', 'Watercolour'),
+    ('Other', 'Other')
 ]
 
 PAYMENT = [
-  ('Paypal', 'Paypal'),
-  ('Cash', 'Cash')
+    ('Paypal', 'Paypal'),
+    ('Cash', 'Cash')
 ]
 
 
 class Artwork(models.Model):
+    """
+    Stores information related to an individual Artwork post. 
+    :model:'auth.User'
+    """
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     artwork_title = models.CharField(max_length=150, blank=False)
     artist_name = models.CharField(

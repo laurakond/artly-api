@@ -5,6 +5,7 @@ from artly_api.permissions import IsOwnerOrReadOnly
 
 
 class ArtworkList(generics.ListCreateAPIView):
+    """Function to display all artwork posts in a list."""
     serializer_class = ArtworkSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     queryset = Artwork.objects.all()
@@ -14,6 +15,10 @@ class ArtworkList(generics.ListCreateAPIView):
 
 
 class ArtworkDetail(generics.RetrieveUpdateDestroyAPIView):
+    """
+    Function to display, edit and delete artwork post instance that belongs
+    to logged in user only.
+    """
     serializer_class = ArtworkSerializer
     permission_classes = [IsOwnerOrReadOnly]
     queryset = Artwork.objects.all()
