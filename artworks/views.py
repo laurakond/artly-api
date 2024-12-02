@@ -1,15 +1,20 @@
 from rest_framework import generics, permissions, filters
+from django_filters.rest_framework import DjangoFilterBackend
+from artly_api.permissions import IsOwnerOrReadOnly
 from .models import Artwork
 from .serializers import ArtworkSerializer
-from artly_api.permissions import IsOwnerOrReadOnly
 
 
 class ArtworkList(generics.ListCreateAPIView):
     """Function to display all artwork posts in a list."""
     serializer_class = ArtworkSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-    queryset = Artwork.objects.all().order_by('-created_at')
-    filter_backends = [filters.OrderingFilter, filters.SearchFilter]
+    queryset = Artwork.objects.all().order_by('-updated_at')
+    filter_backends = [
+        filters.OrderingFilter,
+        filters.SearchFilter,
+        DjangoFilterBackend
+    ]
     ordering_fields = [
         'style',
         'type',
@@ -22,6 +27,13 @@ class ArtworkList(generics.ListCreateAPIView):
         'payment_method',
         'style',
         'type'
+    ]
+    filterset_fields = [
+        'style',
+        'type',
+        'price',
+        'owner',
+        'sold',
     ]
 
     def perform_create(self, serializer):
