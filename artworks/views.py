@@ -1,4 +1,4 @@
-from rest_framework import generics, permissions
+from rest_framework import generics, permissions, filters
 from .models import Artwork
 from .serializers import ArtworkSerializer
 from artly_api.permissions import IsOwnerOrReadOnly
@@ -8,7 +8,21 @@ class ArtworkList(generics.ListCreateAPIView):
     """Function to display all artwork posts in a list."""
     serializer_class = ArtworkSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-    queryset = Artwork.objects.all()
+    queryset = Artwork.objects.all().order_by('-created_at')
+    filter_backends = [filters.OrderingFilter, filters.SearchFilter]
+    ordering_fields = [
+        'style',
+        'type',
+        'created_at'
+    ]
+    search_fields = [
+        'artwork_title',
+        'artist_name',
+        'location',
+        'payment_method',
+        'style',
+        'type'
+    ]
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
