@@ -1,22 +1,14 @@
-# Stitch Art Guides
+# Artly
 
-![main-image]()
+This is a README document for the back-end repository Artly_api that provides api functionality to the front-end repository Artly. 
 
-(By Laura Kondrataite)
-
+You can access the Artly repository [here](https://github.com/laurakond/Artly). 
 
 Live site can be found [here]().
 
+(By Laura Kondrataite)
+
 ## Table of Contents
-
-[Design](#design)
-
-- [Target Audience](#target-audience)
-- [User Stories](#user-stories)
-- [Flowcharts](#flowcharts)
-- [Wireframes](#wireframes)
-- [Color palette](#color-palette)
-- [Font styles](#font-styles)
 
 [Agile Methodology](#agile-methodology)
 
@@ -178,32 +170,19 @@ I used [Google fonts](https://fonts.google.com/) to source the fonts for the web
 
 ### Other tools, technologies, packages
 
-- [Whitenoise](https://whitenoise.readthedocs.io/en/stable/index.html) was Python library used for handling static files.
 - [Django allauth](https://allauth.org/) authentication library was used for allowing users to register and login.
-- [Django crispy forms](https://django-crispy-forms.readthedocs.io/en/latest/) was used for allowing to render user POST requests.
-- [Django summernote](https://summernote.org/) was used for providing useful editing tools for Django admin site.
 - [GitHub](https://github.com/) was used for creating and storing files and folders of the website.
 - [Heroku](https://www.heroku.com) was used for accessing and storing my application game.
 - **Git** was used for version control.
 - **Pip** was used to install required dependencies.
-- **VScode** editor was used for writing the code.
+- **Gitpod** cloud editor was used for writing the code.
 - **Gunicorn** webserver used to run the website.
 - [CI Python Linter](https://pep8ci.herokuapp.com/#) was used for validating and checking my code for best code practices.
 - [JS Hint](https://jshint.com/) was used for validating Javascript code.
 - [W3C Markdown](https://validator.w3.org/) was used for validating html files.
 - [W3C CSS](https://jigsaw.w3.org/css-validator/) was used for validating css files.
-- [Lucidchart](https://lucid.app/) and [Exslidraw](https://excalidraw.com/) was used for creating the website flowcharts.
-- [Balsamiq](https://balsamiq.com/) used for creating wireframes.
-- [Google Fonts](https://fonts.google.com/) for choosing appropriate fonts
-- [Favicon](https://favicon.io/) for generating a favicon
-- Google Chrome DevTools for testing, troubleshooting and brainstorming code solutions
-- [Am I Responsive?](https://ui.dev/amiresponsive) website for showing the website's responsiveness on different devices
-- [Pixelied](https://pixelied.com/) and Gimp, for resizing, compressing and editing images
-- [Unsplash](https://unsplash.com/s/photos/embroidery) and [Pexels](https://www.pexels.com/) for sourcing images
-- [Coolors](https://coolors.co/) for generating the color palette
-- WCAG color contrast checker for website accessibilty
-- Wave evaluation tool for giving visual feedback about the accessibility of the website
-- [Contrast Grid](https://contrast-grid.eightshapes.com/) to test chosen color palette
+- [Lucidchart](https://lucid.app/) and [Exslidraw](https://excalidraw.com/) was used for creating ERDs.
+
 
 Full list of dependencies used for the project can be found in the requirements.txt file.
 
@@ -219,9 +198,6 @@ The website went through extensive testing during the development and deployment
 
 - db.sqlite3 file is exposed within the file structure, which was done unintentionally. I have taken note of best practices going forward and will ensure that any future files are stored in the .gitignore file.
 
-**Camel case in HTML**
-
-- I have applied Camel case to certain parts of HTML, for example modals, as per I think I blog walkthrough example. I am aware that camel case is not used in HTML, therefore, this will be rectfied where needed.
 
 [Return to Table of Contents](#table-of-contents)
 
