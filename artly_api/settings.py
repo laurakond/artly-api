@@ -56,6 +56,7 @@ INSTALLED_APPS = [
 
     # Apps
     'artworks',
+    'bids',
 ]
 
 MIDDLEWARE = [
