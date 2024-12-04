@@ -13,7 +13,8 @@ class BidList(generics.ListCreateAPIView):
 
 
     def perform_create(self, serializer):
-        # get the validated artwork from the serializer as the serializer is where that data is coming from 
+        # get the validated artwork from the serializer as the serializer
+        # is where that data is coming from 
         artwork = serializer.validated_data['artwork']
         if artwork.owner == self.request.user:
             raise ValidationError("You cannot bid on your own artwork.")
