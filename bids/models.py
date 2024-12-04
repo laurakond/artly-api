@@ -3,14 +3,6 @@ from django.contrib.auth.models import User
 from artworks.models import Artwork
 
 
-STATUS = [
-    ('Pending', 'Pending'),
-    ('Approve', 'Approve'),
-    ('Reject', 'Reject'),
-    ('Sold', 'Sold'),
-]
-
-
 class Bid(models.Model):
     """
     Stores information related to a bid which is attached to an
@@ -38,15 +30,15 @@ class Bid(models.Model):
         decimal_places=2,
         blank=False
     )
-    phone = models.IntegerField(blank=True)
+    phone = models.IntegerField(blank=True, null=True)
     email = models.EmailField(blank=True)
-    status = models.CharField(
-        max_length=50,
-        choices=STATUS,
-        default='Pending'
-    )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    def save(self, *args, **kwargs):
+        if not self.seller_id:
+            self.seller = self.artwork.owner
+        super().save(*args, **kwargs)
 
     class Meta:
         ordering = ['-created_at', '-updated_at']
