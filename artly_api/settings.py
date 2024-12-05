@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 import os
 import dj_database_url
+import re
 
 if os.path.exists('env.py'):
     import env
@@ -58,8 +59,8 @@ DEBUG = 'DEV' in os.environ
 
 ALLOWED_HOSTS = [
     '8000-laurakond-artlyapi-1p17b91siph.ws.codeinstitute-ide.net',
+    os.environ.get('ALLOWED_HOST'),
     'localhost',
-    'artly-api-a39d790259f4.herokuapp.com',
 ]
 
 
@@ -107,7 +108,7 @@ if 'CLIENT_ORIGIN' in os.environ:
     CORS_ALLOWED_ORIGINS = [
         os.environ.get('CLIENT_ORIGIN')
     ]
-else:
+if 'CLIENT_ORIGIN_DEV' in os.environ:
     CORS_ALLOWED_ORIGIN_REGEXES = [
         r"^https:\/\/.*\.codeinstitute-ide\.net$",
     ]
