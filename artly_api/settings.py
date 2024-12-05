@@ -65,7 +65,7 @@ DEBUG = 'DEV' in os.environ
 ALLOWED_HOSTS = [
     '8000-laurakond-artlyapi-1p17b91siph.ws.codeinstitute-ide.net',
     'localhost',
-    '.herokuapp.com',
+    'artly-api-a39d790259f4.herokuapp.com',
 ]
 
 
