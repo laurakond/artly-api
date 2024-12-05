@@ -6,14 +6,14 @@ from artworks.models import Artwork
 class BidSerializer(serializers.ModelSerializer):
     buyer = serializers.ReadOnlyField(source='buyer.username')
     seller = serializers.SerializerMethodField()
-    status = serializers.SerializerMethodField()
+    status = serializers.ReadOnlyField()
     artwork_title = serializers.SerializerMethodField()
 
     def get_seller(self, obj):
         return obj.artwork.owner.username
 
-    def get_status(self, obj):
-        return obj.artwork.sold
+    # def get_status(self, obj):
+    #     return obj.artwork.sold
 
     def get_artwork_title(self, obj):
         return obj.artwork.artwork_title
@@ -27,4 +27,13 @@ class BidSerializer(serializers.ModelSerializer):
 
 
 class BidDetailSerializer(BidSerializer):
-    artwork = serializers.ReadOnlyField(source='artwork.artwork_title')
+    # artwork = serializers.ReadOnlyField()
+    status = serializers.ChoiceField(choices='status')
+    # owner = serializers.ModelSerializer()
+
+    # def get_owner(self, obj):
+    #     return obj.buyer.owner.username
+    
+    class Meta:
+        model = Bid
+        fields = ['status']
