@@ -30,7 +30,7 @@ class Bid(models.Model):
     artwork = models.ForeignKey(
         Artwork,
         on_delete=models.CASCADE,
-        related_name='artwork'
+        related_name='bids'
     )
     bid_price = models.DecimalField(
         max_digits=10,
