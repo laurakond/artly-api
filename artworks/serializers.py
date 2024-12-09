@@ -7,6 +7,7 @@ class ArtworkSerializer(serializers.ModelSerializer):
     is_owner = serializers.SerializerMethodField()
     owner_id = serializers.ReadOnlyField(source='owner.id')
     sold = serializers.BooleanField(default=False)
+    bids_count = serializers.ReadOnlyField()
 
     def validate_image(self, value):
         """
@@ -37,5 +38,5 @@ class ArtworkSerializer(serializers.ModelSerializer):
             'id', 'owner', 'owner_id', 'is_owner', 'artwork_title',
             'artist_name', 'description', 'style', 'type', 'payment_method',
             'price', 'image', 'alt_text', 'contact', 'location', 'created_at',
-            'updated_at',  'sold'            
+            'updated_at', 'bids_count', 'sold'            
         ]

@@ -1,3 +1,4 @@
+from django.db.models import Count
 from rest_framework import generics, permissions, filters
 from django_filters.rest_framework import DjangoFilterBackend
 from artly_api.permissions import IsOwnerOrReadOnly
@@ -9,7 +10,8 @@ class ArtworkList(generics.ListCreateAPIView):
     """Function to display all artwork posts in a list."""
     serializer_class = ArtworkSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-    queryset = Artwork.objects.all().order_by('-updated_at')
+    queryset = Artwork.objects.annotate(
+        bids_count=Count('bids', distinct=True)).order_by('-updated_at')
     filter_backends = [
         filters.OrderingFilter,
         filters.SearchFilter,
@@ -47,4 +49,5 @@ class ArtworkDetail(generics.RetrieveUpdateDestroyAPIView):
     """
     serializer_class = ArtworkSerializer
     permission_classes = [IsOwnerOrReadOnly]
-    queryset = Artwork.objects.all()
+    queryset = Artwork.objects.annotate(
+        bids_count=Count('bids', distinct=True)).order_by('-updated_at')
