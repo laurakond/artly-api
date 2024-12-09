@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Bid
+from .models import Bid, STATUS
 from artworks.models import Artwork
 
 
@@ -28,8 +28,7 @@ class BidSerializer(serializers.ModelSerializer):
 
 class BidDetailSerializer(BidSerializer):
     # artwork = serializers.ReadOnlyField()
-    status = serializers.ChoiceField(choices='status')
-    # owner = serializers.ModelSerializer()
+    status = serializers.ChoiceField(choices=STATUS)
 
     # def get_owner(self, obj):
     #     return obj.buyer.owner.username
