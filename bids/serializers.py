@@ -27,7 +27,7 @@ class BidSerializer(serializers.ModelSerializer):
 
 
 class BidDetailSerializer(BidSerializer):
-    # artwork = serializers.ReadOnlyField()
+    artwork = serializers.ReadOnlyField(source='artwork.id')
     status = serializers.ChoiceField(choices=STATUS)
 
     # def get_owner(self, obj):
@@ -35,4 +35,4 @@ class BidDetailSerializer(BidSerializer):
     
     class Meta:
         model = Bid
-        fields = ['status']
+        fields = ['artwork','status']

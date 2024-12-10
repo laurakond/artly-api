@@ -2,7 +2,7 @@ from django.core.exceptions import ValidationError
 from rest_framework import generics, permissions
 from artly_api.permissions import IsOwnerOrReadOnly, IsSellerOrReadOnly
 from .models import Bid, Artwork
-from .serializers import BidSerializer
+from .serializers import BidSerializer, BidDetailSerializer
 
 
 class BidList(generics.ListCreateAPIView):
@@ -26,7 +26,7 @@ class BidDetail(generics.RetrieveUpdateAPIView):
     Function to display, edit and delete a bid that belongs
     to logged in user only.
     """
-    serializer_class = BidSerializer
+    serializer_class = BidDetailSerializer
     permission_classes = [IsSellerOrReadOnly]
     queryset = Bid.objects.all()
     
@@ -34,10 +34,12 @@ class BidDetail(generics.RetrieveUpdateAPIView):
         obj = super().get_object()
         user = self.request.user
 
+        # Logic to prevent the buyer from editing their bid. 
         if user != obj.seller:
             raise ValidationError("You don't have access to modify this bid.")
         return obj
 
+
     def put(self, request, *args, **kwargs):
         obj = self.get_object()
-        serializer_class = BidDetailSerializer
+        # serializer_class = BidDetailSerializer
