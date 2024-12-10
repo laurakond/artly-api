@@ -37,7 +37,6 @@ class Bid(models.Model):
         decimal_places=2,
         blank=False
     )
-    phone = models.IntegerField(blank=True, null=True)
     email = models.EmailField(blank=True)
     status = models.CharField(
         max_length=50,

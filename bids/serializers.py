@@ -22,7 +22,7 @@ class BidSerializer(serializers.ModelSerializer):
         model = Bid
         fields = [
             'id', 'buyer', 'seller', 'artwork_title', 'artwork', 'bid_price',
-            'phone', 'email', 'status', 'created_at', 'updated_at'
+            'email', 'status', 'created_at', 'updated_at'
         ]
 
 
