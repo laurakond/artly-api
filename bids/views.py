@@ -1,4 +1,5 @@
 from django.core.exceptions import ValidationError
+from django.http import Http404
 from rest_framework import generics, permissions
 from artly_api.permissions import IsOwnerOrReadOnly, IsSellerOrReadOnly
 from .models import Bid, Artwork
@@ -27,7 +28,10 @@ class BidDetail(generics.RetrieveUpdateAPIView):
     to logged in user only.
     """
     serializer_class = BidDetailSerializer
-    permission_classes = [IsSellerOrReadOnly]
+    permission_classes = [
+        IsSellerOrReadOnly,
+        permissions.IsAuthenticatedOrReadOnly
+    ]
     queryset = Bid.objects.all()
     
     def get_object(self):
