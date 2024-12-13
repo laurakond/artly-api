@@ -20,6 +20,7 @@ class ArtworkList(generics.ListCreateAPIView):
     ordering_fields = [
         'style',
         'type',
+        'bids_count',
         'created_at'
     ]
     search_fields = [
