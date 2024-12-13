@@ -1,6 +1,7 @@
 from django.core.exceptions import ValidationError
 from django.http import Http404
-from rest_framework import generics, permissions
+from rest_framework import generics, permissions, status
+from rest_framework.response import Response
 from artly_api.permissions import IsOwnerOrReadOnly, IsSellerOrReadOnly
 from .models import Bid, Artwork
 from .serializers import BidSerializer, BidDetailSerializer
@@ -12,10 +13,9 @@ class BidList(generics.ListCreateAPIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     queryset = Bid.objects.all()
 
-
     def perform_create(self, serializer):
         # get the validated artwork from the serializer as the serializer
-        # is where that data is coming from 
+        # is where that data is coming from
         artwork = serializer.validated_data['artwork']
         if artwork.owner == self.request.user:
             raise ValidationError("You cannot bid on your own artwork.")
@@ -33,17 +33,62 @@ class BidDetail(generics.RetrieveUpdateAPIView):
         permissions.IsAuthenticatedOrReadOnly
     ]
     queryset = Bid.objects.all()
-    
+
     def get_object(self):
         obj = super().get_object()
         user = self.request.user
 
-        # Logic to prevent the buyer from editing their bid. 
+        # Logic to prevent the buyer from editing their bid.
         if user != obj.seller:
             raise ValidationError("You don't have access to modify this bid.")
         return obj
 
-
     def put(self, request, *args, **kwargs):
-        obj = self.get_object()
-        # serializer_class = BidDetailSerializer
+        """
+        Takes each bid instance, evaluates, updates the bid status and the
+        artwork's sold field. Depending on the status, it will send appropriate
+        message to the user and disable the bid functionality if the artwork
+        object is sold.
+        This part of the code was written with the help of some articles; and
+        parts of it were appropriated from a fellow student's work. See the
+        README.md for full credit/information.
+        """
+
+        instance = self.get_object()
+        initial_status = instance.status
+
+        # Check if the initial artwork status is sold in both Bid and Artwork
+        # models, and if so, throw a message stating that.
+        if initial_status == "Sold" or instance.artwork.sold:
+            return Response(
+                {"message": "Artwork is no longer available for purchase."},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+
+        # Deserialize the status and check if the new returned status is valid.
+        # If it is not, raise an exception. Includes partial validation.
+        serializer = self.get_serializer(
+            instance, data=request.data, partial=True
+        )
+
+        serializer.is_valid(raise_exception=True)
+        updated_status = serializer.validated_data.get('status')
+
+        # Updates Artwork sold field to true if the bid status is sold.
+        if updated_status == "Sold":
+            instance.artwork.sold = True
+            instance.artwork.save()
+            self.perform_update(serializer)
+
+            return Response({
+                "message":
+                "Bid accepted and the artwork is no longer available.",
+            }, status=status.HTTP_200_OK)
+        # Does not allow to change the bid status because the sold field in the
+        # Artwork model is already set to True(sold).
+        elif initial_status == "Sold" and updated_status != "Sold":
+            raise MethodNotAllowed(method=request.method)
+
+        self.perform_update(serializer)
+
+        return Response(serializer.data)
