@@ -1,6 +1,7 @@
 from django.core.exceptions import ValidationError
 from django.http import Http404
-from rest_framework import generics, permissions, status
+from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework import generics, permissions, status, filters
 from rest_framework.response import Response
 from artly_api.permissions import IsOwnerOrReadOnly, IsSellerOrReadOnly
 from .models import Bid, Artwork
@@ -12,6 +13,27 @@ class BidList(generics.ListCreateAPIView):
     serializer_class = BidSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     queryset = Bid.objects.all()
+
+    filter_backends = [
+        filters.OrderingFilter,
+        filters.SearchFilter,
+        DjangoFilterBackend
+    ]
+
+    ordering_fields = [
+        'artwork__artwork_title',
+        'created_at',
+        'status',
+        'updated_at'
+    ]
+    search_fields = [
+        'status',
+        'artwork__artwork_title'
+    ]
+    filterset_fields = [
+        'bid_price',
+        'artwork__artwork_title',
+    ]
 
     def perform_create(self, serializer):
         # get the validated artwork from the serializer as the serializer
@@ -25,7 +47,8 @@ class BidList(generics.ListCreateAPIView):
 class BidDetail(generics.RetrieveUpdateAPIView):
     """
     Function to display, edit and delete a bid that belongs
-    to logged in user only.
+    to logged in user only. The bid field can be submitted only by the buyer
+    and not the seller of the artwork.
     """
     serializer_class = BidDetailSerializer
     permission_classes = [
