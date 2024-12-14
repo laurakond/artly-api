@@ -106,10 +106,62 @@ I used [Google fonts](https://fonts.google.com/) to source the fonts for the web
 
 ### GitHub Project Management
 
-![GitHub Project Management]()
+[GitHub Project board]()
 
-- [GitHub Project board]() was used to manage the progress and development of this project.
-- It allowed me to scope the project and keep track of progress, sometimes revising estimated dates and tasks that were needed to be done by a certain point.
+The project was completed using Agile methodology. I have used one Project board for both the API and Front-end repositories in order to keep track of the progress, sometimes revising estimated dates and tasks that were needed to be done by a certain point. 
+
+The link to the project board can be found [here](https://github.com/users/laurakond/projects/14).
+
+
+I used the same Milestones, Epics and labels within the API and Front-end repositories to help organise front-end and back-end user stories. This allowed me to keep track of the progress and ensure that the project MVP was completed in time. 
+
+MoSCoW methodology was used to map out which features were required for the MVP, and only address the others if there was sufficient time left.
+
+**Epics**
+
+- **Epic 1:** Project setup - this stage was important to kick start my work on the project, ensuring that initial workspaces were created and appropriate dependencies installed.
+- **Epic 2:** Deployment - I set out to deploy the API as soon as possible in order to test any issues that might arise.
+- **Epic 3:** User authentication - this part of the project was essential for enabling user-specific authorised access.
+- **Epic4:** User registration - this part ensured that the user can create an account and login on the front-end. 
+- **Epic 5:** User navigation - this allowed the user to navigate the website seamlessly upon login/logout.
+- **Epic 6:** Artwork functionality - this feature allows the user to create an artwork listing for sale. It has the main MVP CRUD functionality.
+- **Epic 7**: Offer functionality - this feature provided an ability to leave the bid and accept/reject the bid. 
+- **Epic 8:** Profile functionality (optional) - this feature allows the user to manage their profile.
+- **Epic 9:** Save functionality (optional) - this feature allows the user to save their favoured artwork listings.
+- **Epic 10:** Contact functionality (optional) - this feature allows the user to report any website errors to the site administration.
+- **Epic 11:** Testing and bug fixes - this part of the project was crucial to ensure that the project was working seamlessly and had minor/none bugs. 
+- **Epic 12:** Documentation - documentation was a crutial part of the project work which allowed me to document the progress and resources used for the develpment of the work.
+- **Epic 13**: User nofications - this provided users with notification messages upon various interactivity.
+- **Epic 14**: Website design - this part allowed me to assess and improve any design choices/decisions for the front-end of the project as I progressed. 
+
+**Back-end Milestones**
+- **Milestone 1:** Project board
+    - Set up a project board.
+- **Milestone 2:** back-end set up
+    - Set up a new workspace for backend.
+    - Set up required apps and a database.
+- **Milestone 3:** deployment
+    - Deploy the backend repository to Heroku.
+    - Deploy the frontend repository to Heroku.
+- **Milestone 4:** Authentication
+    - Set up authorization for user registration.
+    - Set up JWT tokens for login.
+- **Milestone 5:** Navigation
+    - Display the navbar from every page.
+- **Milestone 6**: Registration
+    - Create an account
+    - Log in and log out
+- **Milestone 7:** Artwork model functionality
+    - Write models, serializers, urls, views for Artwork model
+- **Milestone 8:** Offer model functionality
+    - Write models, serializers, urls, views for Offer model
+- **Milestone 9**: Testing & bug fixes
+    - Perform automated and manual tests for back-end.
+    - Record back-end bugs.
+- **Milestone 10:** Back-end Readme & Testing files
+    - Validate each back-end page and app.
+    - Document the progress in the README and TESTING.md files
+
 
 ![GitHub Project Management]()
 
