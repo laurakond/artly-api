@@ -271,14 +271,16 @@ To clone the repository in Github:
 
 My thanks go to:
 
-  - My mentor, [Iuliia Konovalova](https://github.com/IuliiaKonovalova), for helping to find a solution on how to implement parts of CRUD functionality and further advice on project development for the submission.
+- My mentor, [Iuliia Konovalova](https://github.com/IuliiaKonovalova), for helping to organise and plan my project and for advising how to approach this project.
 
-- My fellow student, [Vernell Clark](https://github.com/VCGithubCode), for troubleshooting problematic parts of code and providing a shoulder to cry on when things got really rough.
+- My fellow student, [Vernell Clark](https://github.com/VCGithubCode), for moral support and advice on how to approach project planning.
 
-- [Daisy McGirr](https://github.com/Dee-McG) for the advice on the application set ups and how to configure various aspects of the project.
+- [Daisy McGirr](https://github.com/Dee-McG) for helping to cristalise my project idea, troubleshooting concepts I could not wrap my head around and moral support.
 
 ### Code Inspiration
 
 ### References
+- I used Code Institute's DRF API [project](https://github.com/Code-Institute-Solutions/drf-api/tree/ed54af9450e64d71bc4ecf16af0c35d00829a106) as a base for my own.
+- I referred to AsiaWi [Snap it up](https://github.com/AsiaWi/snap-it-up-backend/blob/main/offers/views.py) snippet of code to help me write the logic and functionality for my Bid Offer views.
 
 [Return to Table of Contents](#table-of-contents)
