@@ -3,6 +3,7 @@ from .models import Artwork
 from rest_framework import status
 from rest_framework.test import APITestCase
 
+# Below tests have been based on Code Institute's DRF API walkthrough project.
 
 class ArtworkListViewTests(APITestCase):
     """
