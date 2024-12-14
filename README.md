@@ -210,19 +210,26 @@ MoSCoW methodology was used to map out which features were required for the MVP,
 
 ## Technologies used
 
-### Languages
+The following languages and technologies have been used to develop the Artly API project.
 
+### Languages
+ - Python language was used to develop the API-side of the website.
+ - Markdown language was used to write documentation.
 
 ### Frameworks and Libraries
+- [Django](https://www.djangoproject.com/) 3.2.25 python framework for he overall project logic implementation
+- [Django REST Framework](https://www.django-rest-framework.org/) 3.12.4: for the overall project logic implementation
+- [Django allauth](https://allauth.org/) authentication library was used for allowing users to register and login.
+- [Pillow](https://pypi.org/project/pillow/) python library was used for file format support.
 
 ### Databases
-
 - PostgreSQL: the database used to store all the data.
 - Sqlite3: the database used for automated testing.
 
 ### Other tools, technologies, packages
-
-- [Django allauth](https://allauth.org/) authentication library was used for allowing users to register and login.
+- [Cloudinary](https://cloudinary.com/home) was used for storing images in cloud storage.
+- [Django CORS headers](https://pypi.org/project/django-cors-headers/) was used for handling the server headers which allowed to link the project back-end and front-end.
+- [Django filter](https://django-filter.readthedocs.io/en/stable/) was used to apply filtering and search functionality for the API.
 - [GitHub](https://github.com/) was used for creating and storing files and folders of the website.
 - [Heroku](https://www.heroku.com) was used for accessing and storing my application game.
 - **Git** was used for version control.
@@ -230,11 +237,8 @@ MoSCoW methodology was used to map out which features were required for the MVP,
 - **Gitpod** cloud editor was used for writing the code.
 - **Gunicorn** webserver used to run the website.
 - [CI Python Linter](https://pep8ci.herokuapp.com/#) was used for validating and checking my code for best code practices.
-- [JS Hint](https://jshint.com/) was used for validating Javascript code.
-- [W3C Markdown](https://validator.w3.org/) was used for validating html files.
-- [W3C CSS](https://jigsaw.w3.org/css-validator/) was used for validating css files.
-- [Lucidchart](https://lucid.app/) and [Exslidraw](https://excalidraw.com/) was used for creating ERDs.
-
+- [Lucidchart](https://lucid.app/) was used for creating ERDs.
+- [Simple JWT](https://django-rest-framework-simplejwt.readthedocs.io/en/latest/) was used to provide JSON web token authentication back-end for the Django Rest framework.
 
 Full list of dependencies used for the project can be found in the requirements.txt file.
 
