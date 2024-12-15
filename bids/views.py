@@ -1,8 +1,7 @@
-from django.core.exceptions import ValidationError
-from django.http import Http404
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import generics, permissions, status, filters
 from rest_framework.response import Response
+from rest_framework.exceptions import ValidationError
 from artly_api.permissions import IsOwnerOrReadOnly, IsSellerOrReadOnly
 from .models import Bid, Artwork
 from .serializers import BidSerializer, BidDetailSerializer
@@ -22,6 +21,7 @@ class BidList(generics.ListCreateAPIView):
 
     ordering_fields = [
         'artwork__artwork_title',
+        'artwork_id',
         'created_at',
         'status',
         'updated_at'
@@ -43,34 +43,26 @@ class BidList(generics.ListCreateAPIView):
 
         if artwork.owner == self.request.user:
             raise ValidationError("You cannot bid on your own artwork.")
-        # serializer.save(buyer=self.request.user)
+
+        if bid_price <= 0:
+            raise ValidationError("you can only input values above 0.")
 
         instance = serializer.save(buyer=self.request.user)
 
-        if bid_price < 0:
-            raise ValidationError("you can only input values above 0.")
-
         # Evaluate if the bid offer is lower that the asking price and send
-        # appropriate response
+        # appropriate response/update status
         if bid_price < artwork.price:
             instance.status = "Reject"
             instance.save()
-
-        # print(artwork.price)
-        # print(bid_price)
-
-        return Response({
-            'message': 'The bid is lower than the asking price.'
-        }, status=status.HTTP_200_OK)
 
     def create(self, request, *args, **kwargs):
         response = super().create(request, *args, **kwargs)
         if response.data.get('status') == "Reject":
             return Response(
-                {'message': 'test'},
+                {'message': 'The bid is lower than the asking price.'},
                 status=status.HTTP_202_ACCEPTED
             )
-        return Response
+        return response
 
 
 class BidDetail(generics.RetrieveUpdateAPIView):
@@ -101,9 +93,9 @@ class BidDetail(generics.RetrieveUpdateAPIView):
         artwork's sold field. Depending on the status, it will send appropriate
         message to the user and disable the bid functionality if the artwork
         object is sold.
-        This part of the code was written with the help of some articles; and
-        parts of it were appropriated from a fellow student's work. See the
-        README.md for full credit/information.
+        This part of the code was written with the help of DRF REST
+        documentation and parts of it were appropriated from a fellow student's
+        work. See the README.md for full credit/information.
         """
 
         instance = self.get_object()
