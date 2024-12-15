@@ -44,13 +44,13 @@ class BidList(generics.ListCreateAPIView):
         if artwork.owner == self.request.user:
             raise ValidationError("You cannot bid on your own artwork.")
         # serializer.save(buyer=self.request.user)
-        
+
         instance = serializer.save(buyer=self.request.user)
 
         if bid_price < 0:
             raise ValidationError("you can only input values above 0.")
 
-        #Evaluate if the bid offer is lower that the asking price and send
+        # Evaluate if the bid offer is lower that the asking price and send
         # appropriate response
         if bid_price < artwork.price:
             instance.status = "Reject"
@@ -66,8 +66,12 @@ class BidList(generics.ListCreateAPIView):
     def create(self, request, *args, **kwargs):
         response = super().create(request, *args, **kwargs)
         if response.data.get('status') == "Reject":
-            return Response({'message': 'test'}, status=status.HTTP_202_ACCEPTED)
+            return Response(
+                {'message': 'test'},
+                status=status.HTTP_202_ACCEPTED
+            )
         return Response
+
 
 class BidDetail(generics.RetrieveUpdateAPIView):
     """
@@ -123,7 +127,7 @@ class BidDetail(generics.RetrieveUpdateAPIView):
 
         # extract artwork status
         updated_status = serializer.validated_data.get('status')
-        
+
         # Updates Artwork sold field to true if the bid status is sold.
         if updated_status == "Sold":
             instance.artwork.sold = True
