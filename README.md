@@ -250,10 +250,6 @@ The website went through extensive testing during the development and deployment
 
 - See [TESTING.md](TESTING.md) file for full testing and validation information.
 
-**Visible sqlite3 file**
-
-- db.sqlite3 file is exposed within the file structure, which was done unintentionally. I have taken note of best practices going forward and will ensure that any future files are stored in the .gitignore file.
-
 
 [Return to Table of Contents](#table-of-contents)
 
@@ -301,10 +297,14 @@ To clone the repository in Github:
     - CLOUDINARY_URL
     - SITE_OWNER_EMAIL
     - SITE_OWNER_PASSWORD
-6.  Import all the dependencies required for the project to run. You can do so by entering `pip install -r requirements.txt` for the VSCode or `pip3 install -r requirements.txt` for Gitpod IDE.
+6.  Import all the dependencies required for the project to run. You can do so by entering `pip install -r requirements.txt` for VSCode or `pip3 install -r requirements.txt` for Gitpod IDE.
 7.  Set up a database using postgreSQL.
 
 ### Heroku
+To deploy to Heroku, follow the steps below. 
+
+**Please remember** to check that your DEBUG in the settings.py file is set to FALSE before deploying to Heroku.
+
 
 
 [Return to Table of Contents](#table-of-contents)
