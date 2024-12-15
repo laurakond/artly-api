@@ -291,7 +291,7 @@ To clone the repository in Github:
     - To activate the virtual environment write `[directory-name]/Scripts/Activate`
     - If you need to deactivate it, type `deactivate` in the terminal
     - remember to include this to the .gitignore file
-5.  Next, create an env.py file where you will keep your key data and make sure it is included in the .gitignore file. Key data can include:
+5.  Next, create an env.py file where you will keep your key data and make sure it is included in the .gitignore file. Key data may include:
     - DATABASE_URL
     - SECRET_KEY
     - CLOUDINARY_URL
@@ -305,6 +305,25 @@ To deploy to Heroku, follow the steps below.
 
 **Please remember** to check that your DEBUG in the settings.py file is set to FALSE before deploying to Heroku.
 
+- Log in to Heroku.
+- Click 'Create new App'.
+- Write a unique project name and select your region from the drop down.
+- Select 'Settings' tab.
+- Click on 'Reveal Config Vars' button 
+- Enter the following key/value pairs:
+    - ALLOWED_HOST: add your allowed host url from settings.py
+    - CLIENT_ORIGIN: add your front-end deployed url
+    - CLIENT_ORIGIN_DEV: add your front-end local environment url
+    - CLOUDINARY_URL: add your cloudinary api key from env.py
+    - DATABASE_URL: add your database url 
+    - DISABLE_COLLECTSTATIC: set to '1'
+    - SECRET_KEY: add your secret key from env.py
+- Click on the 'Deploy' tab to the left of the 'Settings' tab
+- Select Github (or other platform if you are using another one) to connect to Heroku.
+- Type out your project name in the 'Deployment method' section and select your project repository
+- Once connected, scroll to the bottom and click 'Deploy Branch' button
+- When it has finished deploying, click on the 'View' button below or 'Open App' at the top right corner
+- If the deployment was successful you will be taken to the deployed site. 
 
 
 [Return to Table of Contents](#table-of-contents)
