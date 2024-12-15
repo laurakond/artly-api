@@ -55,8 +55,7 @@ JWT_AUTH_SAMESITE = 'None'
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = 'DEV' in os.environ
-DEBUG = True
+DEBUG = 'DEV' in os.environ
 
 ALLOWED_HOSTS = [
     '8000-laurakond-artlyapi-1p17b91siph.ws.codeinstitute-ide.net',
