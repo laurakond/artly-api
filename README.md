@@ -50,11 +50,10 @@ Live site can be found [here]().
 
 ### Target Audience
 
-The primary target audience for the game is:
-
-- persons of any gender aged 16+ who enjoy crafts,
-- first time cross-stitchers,
-- anyone looking for guidance on how to progress in their cross-stitch journey.
+The primary target audience for the website is:
+- persons of any gender aged 16+ who enjoy art,
+- artists who wishes to share their work,
+- art connoiseurs who are looking for alternative ways in selling owned artwork.
 
 No background, geographical location or income has been specified for the target audience.
 
@@ -62,15 +61,11 @@ No background, geographical location or income has been specified for the target
 
 ### Flowcharts
 
-I used [Lucidchart](https://lucid.app/) for creating the ERD for the models and [Exslidraw](https://excalidraw.com/) for creating site navigation.
+I used [Lucidchart](https://lucid.app/) for creating the ERD for the models.
 
 - ERD:
 
-  ![Project Models](documentation/images/entity_relational_diagram/model-chart.png)
-
-- MVP flowchart:
-
-  ![flowchart-mvp](documentation/images/entity_relational_diagram/site-navigation.png)
+  ![Project Models]()
 
 ### Wireframes
 
@@ -78,29 +73,6 @@ The following wireframes show the initial idea of how the website would look on 
 
 []()
 
-### Color palette
-
-The following palette was used to ensure the contrast is achieved between the main parts of the website:
-
-<details>
-    <summary>Color palette images</summary>
-
-![Color palette]()
-![Color palette2](documentation/design/color-palette2.jpeg)
-
-</details>
-
-<br>
-
-
-### Font styles
-
-I used [Google fonts](https://fonts.google.com/) to source the fonts for the website. These are:
-
-
-![font screenshots]()
-
-[Return to Table of Contents](#table-of-contents)
 
 ## Agile Methodology
 
@@ -161,7 +133,6 @@ MoSCoW methodology was used to map out which features were required for the MVP,
 - **Milestone 10:** Back-end Readme & Testing files
     - Validate each back-end page and app.
     - Document the progress in the README and TESTING.md files
-
 
 ![GitHub Project Management]()
 
