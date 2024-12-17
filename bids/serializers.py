@@ -36,9 +36,6 @@ class BidDetailSerializer(BidSerializer):
     artwork = serializers.ReadOnlyField(source='artwork.id')
     status = serializers.ChoiceField(choices=STATUS)
 
-    # def get_owner(self, obj):
-    #     return obj.buyer.owner.username
-    
     class Meta:
         model = Bid
-        fields = ['artwork','status']
+        fields = ['artwork', 'status']
