@@ -55,6 +55,9 @@ class BidList(generics.ListCreateAPIView):
             instance.status = "Reject"
             instance.save()
 
+        if bid_price <= 0:
+            raise ValidationError({"Bid_price": "you can only input values above 0."})
+
     def create(self, request, *args, **kwargs):
         response = super().create(request, *args, **kwargs)
         if response.data.get('status') == "Reject":
