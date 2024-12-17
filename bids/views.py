@@ -42,10 +42,10 @@ class BidList(generics.ListCreateAPIView):
         bid_price = serializer.validated_data['bid_price']
 
         if artwork.owner == self.request.user:
-            raise ValidationError({"message": "You cannot bid on your own artwork."})
+            raise ValidationError({"message": ["You cannot bid on your own artwork."]})
 
         if bid_price <= 0:
-            raise ValidationError({"message": "you can only input values above 0."})
+            raise ValidationError({"message": ["you can only input values above 0."]})
 
         instance = serializer.save(buyer=self.request.user)
 
@@ -59,7 +59,7 @@ class BidList(generics.ListCreateAPIView):
         response = super().create(request, *args, **kwargs)
         if response.data.get('status') == "Reject":
             return Response(
-                {'message': 'The bid is lower than the asking price.'},
+                {'message': ['The bid is lower than the asking price.']},
                 status=status.HTTP_202_ACCEPTED
             )
         return response
@@ -84,7 +84,7 @@ class BidDetail(generics.RetrieveUpdateAPIView):
 
         # Logic to prevent the buyer from editing their bid.
         if user != obj.seller:
-            raise ValidationError("You don't have access to modify this bid.")
+            raise ValidationError({"message": "You don't have access to modify this bid."})
         return obj
 
     def put(self, request, *args, **kwargs):
