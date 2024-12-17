@@ -1,7 +1,7 @@
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import generics, permissions, status, filters
 from rest_framework.response import Response
-from rest_framework.exceptions import ValidationError
+from rest_framework.exceptions import ValidationError, PermissionDenied
 from artly_api.permissions import IsOwnerOrReadOnly, IsSellerOrReadOnly
 from .models import Bid, Artwork
 from .serializers import BidSerializer, BidDetailSerializer
@@ -90,7 +90,7 @@ class BidDetail(generics.RetrieveUpdateAPIView):
 
         # Logic to prevent the buyer from editing their bid.
         if user != obj.seller:
-            raise ValidationError({"message": "You don't have access to modify this bid."})
+            raise PermissionDenied({"message": "You don't have access to modify this bid."})
         return obj
 
     def put(self, request, *args, **kwargs):
