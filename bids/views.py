@@ -45,7 +45,7 @@ class BidList(generics.ListCreateAPIView):
             raise ValidationError({"message": "You cannot bid on your own artwork."})
 
         # if bid_price <= 0:
-        #     raise ValidationError({"message": ["you can only input values above 0."]})
+        #     raise ValidationError("you can only input values above 0.")
 
         instance = serializer.save(buyer=self.request.user)
 
@@ -55,8 +55,8 @@ class BidList(generics.ListCreateAPIView):
             instance.status = "Reject"
             instance.save()
 
-        if bid_price <= 0:
-            raise ValidationError({"bid_price": "you can only input values above 0."})
+        # if bid_price <= 0:
+        #     raise ValidationError("you can only input values above 0.")
 
     def create(self, request, *args, **kwargs):
         response = super().create(request, *args, **kwargs)
@@ -65,8 +65,6 @@ class BidList(generics.ListCreateAPIView):
                 {"bid_price": "The bid is lower than the asking price."},
                 status=status.HTTP_202_ACCEPTED
             )
-        # elif response.data.get('bid_price') <= 0:
-        #     return Response({"bid_price": "you can only input values above 0."})
 
         return response
 
