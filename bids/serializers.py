@@ -24,6 +24,13 @@ class BidSerializer(serializers.ModelSerializer):
     def get_artwork_title(self, obj):
         return obj.artwork.artwork_title
 
+    def validate_bid_price(self, bid_price):
+        if bid_price <= 0:
+            raise serializers.ValidationError(
+                "Invalid input. Please enter values above 0."
+            )
+        return bid_price
+
     class Meta:
         model = Bid
         fields = [
