@@ -52,3 +52,8 @@ class ArtworkDetail(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = [IsOwnerOrReadOnly]
     queryset = Artwork.objects.annotate(
         bids_count=Count('bids', distinct=True)).order_by('-updated_at')
+
+    def get_serializer_context(self):
+        context = super.get_serializer_context()
+        context['request'] = self.request
+        return context
