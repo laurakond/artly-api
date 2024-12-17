@@ -42,7 +42,7 @@ class BidList(generics.ListCreateAPIView):
         bid_price = serializer.validated_data['bid_price']
 
         if artwork.owner == self.request.user:
-            raise ValidationError({"message": ["You cannot bid on your own artwork."]})
+            raise ValidationError({"message": "You cannot bid on your own artwork."})
 
         # if bid_price <= 0:
         #     raise ValidationError({"message": ["you can only input values above 0."]})

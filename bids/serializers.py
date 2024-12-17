@@ -27,7 +27,7 @@ class BidSerializer(serializers.ModelSerializer):
     def validate_bid_price(self, bid_price):
         if bid_price <= 0:
             raise serializers.ValidationError(
-                {"bid_price": ["Invalid input. Please enter values above 0."]}
+                {"bid_price": "Invalid input. Please enter values above 0."}
             )
         return bid_price
 
