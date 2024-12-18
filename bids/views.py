@@ -49,7 +49,7 @@ class BidList(generics.ListCreateAPIView):
         # Evaluate if the bid offer is lower that the asking price and send
         # appropriate response/update status
         if bid_price < artwork.price:
-            instance.status = "Reject"
+            instance.status = "Rejected"
             instance.save()
 
         # if bid_price <= 0:
@@ -57,7 +57,7 @@ class BidList(generics.ListCreateAPIView):
 
     def create(self, request, *args, **kwargs):
         response = super().create(request, *args, **kwargs)
-        if response.data.get('status') == "Reject":
+        if response.data.get('status') == "Rejected":
             return Response(
                 {"bid_price": "The bid is lower than the asking price."},
                 status=status.HTTP_202_ACCEPTED

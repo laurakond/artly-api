@@ -5,8 +5,8 @@ from artworks.models import Artwork
 
 STATUS = [
     ('Pending', 'Pending'),
-    ('Approve', 'Approve'),
-    ('Reject', 'Reject'),
+    ('Approved', 'Approved'),
+    ('Rejected', 'Rejected'),
     ('Sold', 'Sold'),
 ]
 
