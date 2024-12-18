@@ -8,7 +8,7 @@ class BidSerializer(serializers.ModelSerializer):
     buyer = serializers.ReadOnlyField(source='buyer.username')
     seller = serializers.SerializerMethodField()
     status = serializers.ReadOnlyField()
-    artwork_title = serializers.SerializerMethodField()
+    # artwork_title = serializers.SerializerMethodField()
     created_at = serializers.SerializerMethodField()
     updated_at = serializers.SerializerMethodField()
 
@@ -21,8 +21,8 @@ class BidSerializer(serializers.ModelSerializer):
     def get_updated_at(self, obj):
         return naturaltime(obj.updated_at)
 
-    def get_artwork_title(self, obj):
-        return obj.artwork.artwork_title
+    # def get_artwork_title(self, obj):
+    #     return obj.artwork.artwork_title
 
     def validate_bid_price(self, bid_price):
         if bid_price <= 0:
@@ -34,7 +34,7 @@ class BidSerializer(serializers.ModelSerializer):
     class Meta:
         model = Bid
         fields = [
-            'id', 'buyer', 'seller', 'artwork_title', 'artwork', 'bid_price',
+            'id', 'buyer', 'seller', 'artwork', 'bid_price',
             'email', 'status', 'created_at', 'updated_at'
         ]
 

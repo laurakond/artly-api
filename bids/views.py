@@ -32,7 +32,7 @@ class BidList(generics.ListCreateAPIView):
     ]
     filterset_fields = [
         'bid_price',
-        'artwork__artwork_title',
+        'artwork'
     ]
 
     def perform_create(self, serializer):
@@ -43,9 +43,6 @@ class BidList(generics.ListCreateAPIView):
 
         if artwork.owner == self.request.user:
             raise ValidationError("You cannot bid on your own artwork.")
-
-        # if bid_price <= 0:
-        #     raise ValidationError("you can only input values above 0.")
 
         instance = serializer.save(buyer=self.request.user)
 
@@ -88,7 +85,9 @@ class BidDetail(generics.RetrieveUpdateAPIView):
 
         # Logic to prevent the buyer from editing their bid.
         if user != obj.seller:
-            raise PermissionDenied({"message": "You don't have access to modify this bid."})
+            raise PermissionDenied(
+                {"message": "You don't have access to modify this bid."}
+            )
         return obj
 
     def put(self, request, *args, **kwargs):
