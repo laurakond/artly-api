@@ -5,6 +5,7 @@ from rest_framework.test import APITestCase
 
 # Below tests have been based on Code Institute's DRF API walkthrough project.
 
+
 class ArtworkListViewTests(APITestCase):
     """
     Test to check if the user can create the artwork instance, list them, and

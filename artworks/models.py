@@ -31,7 +31,7 @@ PAYMENT = [
 
 class Artwork(models.Model):
     """
-    Stores information related to an individual Artwork post. 
+    Stores information related to an individual Artwork post.
     :model:'auth.User'
     """
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
