@@ -37,7 +37,7 @@ class Bid(models.Model):
         decimal_places=2,
         blank=False
     )
-    email = models.EmailField(blank=True)
+    email = models.EmailField(blank=False)
     status = models.CharField(
         max_length=50,
         choices=STATUS,
