@@ -10,6 +10,7 @@ STATUS = [
     ('Sold', 'Sold'),
 ]
 
+
 class Bid(models.Model):
     """
     Stores information related to a bid which is attached to an
