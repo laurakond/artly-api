@@ -18,7 +18,7 @@ TYPE = [
     ('Painting', 'Painting'),
     ('Photography', 'Photography'),
     ('Pottery', 'Pottery'),
-    ('Scultpure', 'Scultpure'),
+    ('Sculpture', 'Sculpture'),
     ('Watercolour', 'Watercolour'),
     ('Other', 'Other')
 ]
