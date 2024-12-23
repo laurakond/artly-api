@@ -91,6 +91,7 @@ INSTALLED_APPS = [
     # Apps
     'artworks',
     'bids',
+    'profiles',
 ]
 
 SITE_ID = 1
