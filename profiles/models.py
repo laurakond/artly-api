@@ -11,9 +11,14 @@ class Profile(models.Model):
     owner = models.OneToOneField(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=255, blank=True)
     location = models.CharField(max_length=255, blank=True)
-    images = models.ImageField(
+    profile_image = models.ImageField(
         upload_to='images/', default='../default_profile_nbsf4p'
     )
+    styles = models.CharField(max_length=255, blank=True)
+    techniques = models.TextField(blank=True)
+    influences = models.TextField(blank=True)
+    collaborations = models.TextField(blank=True)
+    portfolio_url = models.URLField(blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
