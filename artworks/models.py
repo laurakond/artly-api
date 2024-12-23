@@ -65,7 +65,7 @@ class Artwork(models.Model):
     )
     image = models.ImageField(
         upload_to='images/',
-        default='../default_post_urnaqw',
+        default='../default_artwork_vrmnym',
         blank=True
     )
     alt_text = models.CharField(
