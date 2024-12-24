@@ -327,6 +327,6 @@ My thanks go to:
 
 ### References
 - I used Code Institute's DRF API [project](https://github.com/Code-Institute-Solutions/drf-api/tree/ed54af9450e64d71bc4ecf16af0c35d00829a106) as a base for my own.
-- I referred to AsiaWi [Snap it up](https://github.com/AsiaWi/snap-it-up-backend/blob/main/offers/views.py) snippet of code to help me write the logic and functionality for my Bid Offer views.
+- I referred to AsiaWi [Snap it up](https://github.com/AsiaWi/snap-it-up-backend/blob/main/offers/views.py) snippet of code to help me write the logic and functionality for my Bid views.
 
 [Return to Table of Contents](#table-of-contents)
