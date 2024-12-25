@@ -29,7 +29,8 @@ class ArtworkList(generics.ListCreateAPIView):
         'location',
         'payment_method',
         'style',
-        'type'
+        'type',
+        'owner__username'
     ]
     filterset_fields = [
         'style',
@@ -37,6 +38,7 @@ class ArtworkList(generics.ListCreateAPIView):
         'price',
         'owner',
         'sold',
+        'owner__profile'
     ]
 
     def perform_create(self, serializer):
