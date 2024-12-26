@@ -313,9 +313,26 @@ To deploy to Heroku, follow the steps below.
 ### General resources:
 
 <details>
-<summary></summary>
+<summary>Serializers</summary>
 
+- [Serializers – Django REST Framework](https://www.geeksforgeeks.org/serializers-django-rest-framework/)
+- [Ukeme Wilson Mastering Django REST Framework: An In-depth Guide](https://medium.com/@ukemeboswilson/mastering-django-rest-framework-an-in-depth-guide-to-serializers-5e6b94530c7a)
+- [10 things you need to know to use drf](https://profil-software.com/blog/development/10-things-you-need-know-effectively-use-django-rest-framework/)
+- [Model serializer in DRF](https://www.geeksforgeeks.org/modelserializer-in-serializers-django-rest-framework/)
 </details>
+
+- [The Perfect Match: How to Integrate ReactJS with Django Framework for Stunning Web Apps](https://medium.com/@devsumitg/how-to-connect-reactjs-django-framework-c5ba268cb8be)
+- [Full Stack app with ReactJS & Django - Nabendu Biswas Full Stack app with ReactJS & Django](https://nabendu82.medium.com/full-stack-app-with-reactjs-django-0cb33b9835b2)
+
+- Django Rest Framework tutorials
+
+  - [Pedro Tech](https://www.youtube.com/watch?v=NoLF7Dlu5mc)
+  - [Tech with Tim](https://www.youtube.com/watch?v=t-uAgI-AUxc)
+  - [Bryan Brkic](https://www.youtube.com/watch?v=Oz3SoVV27ak)
+
+- Django filters:
+  - [Integration with DRF](https://django-filter.readthedocs.io/en/stable/guide/rest_framework.html)
+  - [Tom Christie Filtering DRF](https://www.django-rest-framework.org/api-guide/filtering/#orderingfilter)
 
 ### Acknowledgments
 
