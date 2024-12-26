@@ -1,8 +1,8 @@
 # Artly
 
-This is a README document for the back-end repository Artly_api that provides api functionality to the front-end repository Artly. 
+This is a README document for the back-end repository Artly_api that provides api functionality to the front-end repository Artly.
 
-You can access the Artly repository [here](https://github.com/laurakond/Artly). 
+You can access the Artly repository [here](https://github.com/laurakond/Artly).
 
 Live site can be found [here]().
 
@@ -51,6 +51,7 @@ Live site can be found [here]().
 ### Target Audience
 
 The primary target audience for the website is:
+
 - persons of any gender aged 16+ who enjoy art,
 - artists who wishes to share their work,
 - art connoiseurs who are looking for alternative ways in selling owned artwork.
@@ -73,19 +74,17 @@ The following wireframes show the initial idea of how the website would look on 
 
 []()
 
-
 ## Agile Methodology
 
 ### GitHub Project Management
 
 [GitHub Project board]()
 
-The project was completed using Agile methodology. I have used one Project board for both the API and Front-end repositories in order to keep track of the progress, sometimes revising estimated dates and tasks that were needed to be done by a certain point. 
+The project was completed using Agile methodology. I have used one Project board for both the API and Front-end repositories in order to keep track of the progress, sometimes revising estimated dates and tasks that were needed to be done by a certain point.
 
 The link to the project board can be found [here](https://github.com/users/laurakond/projects/14).
 
-
-I used the same Milestones, Epics and labels within the API and Front-end repositories to help organise front-end and back-end user stories. This allowed me to keep track of the progress and ensure that the project MVP was completed in time. 
+I used the same Milestones, Epics and labels within the API and Front-end repositories to help organise front-end and back-end user stories. This allowed me to keep track of the progress and ensure that the project MVP was completed in time.
 
 MoSCoW methodology was used to map out which features were required for the MVP, and only address the others if there was sufficient time left.
 
@@ -94,45 +93,46 @@ MoSCoW methodology was used to map out which features were required for the MVP,
 - **Epic 1:** Project setup - this stage was important to kick start my work on the project, ensuring that initial workspaces were created and appropriate dependencies installed.
 - **Epic 2:** Deployment - I set out to deploy the API as soon as possible in order to test any issues that might arise.
 - **Epic 3:** User authentication - this part of the project was essential for enabling user-specific authorised access.
-- **Epic4:** User registration - this part ensured that the user can create an account and login on the front-end. 
+- **Epic4:** User registration - this part ensured that the user can create an account and login on the front-end.
 - **Epic 5:** User navigation - this allowed the user to navigate the website seamlessly upon login/logout.
 - **Epic 6:** Artwork functionality - this feature allows the user to create an artwork listing for sale. It has the main MVP CRUD functionality.
-- **Epic 7**: Offer functionality - this feature provided an ability to leave the bid and accept/reject the bid. 
+- **Epic 7**: Offer functionality - this feature provided an ability to leave the bid and accept/reject the bid.
 - **Epic 8:** Profile functionality (optional) - this feature allows the user to manage their profile.
 - **Epic 9:** Save functionality (optional) - this feature allows the user to save their favoured artwork listings.
 - **Epic 10:** Contact functionality (optional) - this feature allows the user to report any website errors to the site administration.
-- **Epic 11:** Testing and bug fixes - this part of the project was crucial to ensure that the project was working seamlessly and had minor/none bugs. 
+- **Epic 11:** Testing and bug fixes - this part of the project was crucial to ensure that the project was working seamlessly and had minor/none bugs.
 - **Epic 12:** Documentation - documentation was a crutial part of the project work which allowed me to document the progress and resources used for the develpment of the work.
 - **Epic 13**: User nofications - this provided users with notification messages upon various interactivity.
-- **Epic 14**: Website design - this part allowed me to assess and improve any design choices/decisions for the front-end of the project as I progressed. 
+- **Epic 14**: Website design - this part allowed me to assess and improve any design choices/decisions for the front-end of the project as I progressed.
 
 **Back-end Milestones**
+
 - **Milestone 1:** Project board
-    - Set up a project board.
+  - Set up a project board.
 - **Milestone 2:** back-end set up
-    - Set up a new workspace for backend.
-    - Set up required apps and a database.
+  - Set up a new workspace for backend.
+  - Set up required apps and a database.
 - **Milestone 3:** deployment
-    - Deploy the backend repository to Heroku.
-    - Deploy the frontend repository to Heroku.
+  - Deploy the backend repository to Heroku.
+  - Deploy the frontend repository to Heroku.
 - **Milestone 4:** Authentication
-    - Set up authorization for user registration.
-    - Set up JWT tokens for login.
+  - Set up authorization for user registration.
+  - Set up JWT tokens for login.
 - **Milestone 5:** Navigation
-    - Display the navbar from every page.
+  - Display the navbar from every page.
 - **Milestone 6**: Registration
-    - Create an account
-    - Log in and log out
+  - Create an account
+  - Log in and log out
 - **Milestone 7:** Artwork model functionality
-    - Write models, serializers, urls, views for Artwork model
+  - Write models, serializers, urls, views for Artwork model
 - **Milestone 8:** Offer model functionality
-    - Write models, serializers, urls, views for Offer model
+  - Write models, serializers, urls, views for Offer model
 - **Milestone 9**: Testing & bug fixes
-    - Perform automated and manual tests for back-end.
-    - Record back-end bugs.
+  - Perform automated and manual tests for back-end.
+  - Record back-end bugs.
 - **Milestone 10:** Back-end Readme & Testing files
-    - Validate each back-end page and app.
-    - Document the progress in the README and TESTING.md files
+  - Validate each back-end page and app.
+  - Document the progress in the README and TESTING.md files
 
 ![GitHub Project Management]()
 
@@ -147,13 +147,13 @@ MoSCoW methodology was used to map out which features were required for the MVP,
 
 **The Header**
 
-  ![header]()
+![header]()
 
-  ![loggedin header]()
+![loggedin header]()
 
 **The Footer**
 
-  ![footer]()
+![footer]()
 
 **User authentication**
 
@@ -173,9 +173,7 @@ MoSCoW methodology was used to map out which features were required for the MVP,
 
 </details>
 
-
 ### Features Left to Implement
-
 
 [Return to Table of Contents](#table-of-contents)
 
@@ -184,20 +182,24 @@ MoSCoW methodology was used to map out which features were required for the MVP,
 The following languages and technologies have been used to develop the Artly API project.
 
 ### Languages
- - Python language was used to develop the API-side of the website.
- - Markdown language was used to write documentation.
+
+- Python language was used to develop the API-side of the website.
+- Markdown language was used to write documentation.
 
 ### Frameworks and Libraries
+
 - [Django](https://www.djangoproject.com/) 3.2.25 python framework for he overall project logic implementation
 - [Django REST Framework](https://www.django-rest-framework.org/) 3.12.4: for the overall project logic implementation
 - [Django allauth](https://allauth.org/) authentication library was used for allowing users to register and login.
 - [Pillow](https://pypi.org/project/pillow/) python library was used for file format support.
 
 ### Databases
+
 - PostgreSQL: the database used to store all the data.
 - Sqlite3: the database used for automated testing.
 
 ### Other tools, technologies, packages
+
 - [Cloudinary](https://cloudinary.com/home) was used for storing images in cloud storage.
 - [Django CORS headers](https://pypi.org/project/django-cors-headers/) was used for handling the server headers which allowed to link the project back-end and front-end.
 - [Django filter](https://django-filter.readthedocs.io/en/stable/) was used to apply filtering and search functionality for the API.
@@ -220,7 +222,6 @@ Full list of dependencies used for the project can be found in the requirements.
 The website went through extensive testing during the development and deployment stages.
 
 - See [TESTING.md](TESTING.md) file for full testing and validation information.
-
 
 [Return to Table of Contents](#table-of-contents)
 
@@ -272,7 +273,8 @@ To clone the repository in Github:
 7.  Set up a database using postgreSQL.
 
 ### Heroku
-To deploy to Heroku, follow the steps below. 
+
+To deploy to Heroku, follow the steps below.
 
 **Please remember** to check that your DEBUG in the settings.py file is set to FALSE before deploying to Heroku.
 
@@ -280,22 +282,21 @@ To deploy to Heroku, follow the steps below.
 - Click 'Create new App'.
 - Write a unique project name and select your region from the drop down.
 - Select 'Settings' tab.
-- Click on 'Reveal Config Vars' button 
+- Click on 'Reveal Config Vars' button
 - Enter the following key/value pairs:
-    - ALLOWED_HOST: add your allowed host url from settings.py
-    - CLIENT_ORIGIN: add your front-end deployed url
-    - CLIENT_ORIGIN_DEV: add your front-end local environment url
-    - CLOUDINARY_URL: add your cloudinary api key from env.py
-    - DATABASE_URL: add your database url 
-    - DISABLE_COLLECTSTATIC: set to '1'
-    - SECRET_KEY: add your secret key from env.py
+  - ALLOWED_HOST: add your allowed host url from settings.py
+  - CLIENT_ORIGIN: add your front-end deployed url
+  - CLIENT_ORIGIN_DEV: add your front-end local environment url
+  - CLOUDINARY_URL: add your cloudinary api key from env.py
+  - DATABASE_URL: add your database url
+  - DISABLE_COLLECTSTATIC: set to '1'
+  - SECRET_KEY: add your secret key from env.py
 - Click on the 'Deploy' tab to the left of the 'Settings' tab
 - Select Github (or other platform if you are using another one) to connect to Heroku.
 - Type out your project name in the 'Deployment method' section and select your project repository
 - Once connected, scroll to the bottom and click 'Deploy Branch' button
 - When it has finished deploying, click on the 'View' button below or 'Open App' at the top right corner
-- If the deployment was successful you will be taken to the deployed site. 
-
+- If the deployment was successful you will be taken to the deployed site.
 
 [Return to Table of Contents](#table-of-contents)
 
@@ -305,6 +306,9 @@ To deploy to Heroku, follow the steps below.
 
 ### Used code
 
+- Bid model status field logic
+  - I was struggling to understand how to approach the logic for my bid model status field. I was able to find a solution after speaking to a mentor, reading a couple of articles, DRF documentation and looking at a felow student’s [code](https://github.com/AsiaWi/snap-it-up-backend) that had similar functionality in their code.
+    - other resources are noted in the general resources section.
 
 ### General resources:
 
@@ -321,12 +325,13 @@ My thanks go to:
 
 - My fellow student, [Vernell Clark](https://github.com/VCGithubCode), for moral support and advice on how to approach project planning.
 
-- [Daisy McGirr](https://github.com/Dee-McG) for helping to cristalise my project idea, troubleshooting concepts I could not wrap my head around and moral support.
+- [Daisy McGirr](https://github.com/Dee-McG) for helping to cristalise my project idea, troubleshooting concepts I could not wrap my head around and tremendous moral support throughout this project.
 
 ### Code Inspiration
 
 ### References
+
 - I used Code Institute's DRF API [project](https://github.com/Code-Institute-Solutions/drf-api/tree/ed54af9450e64d71bc4ecf16af0c35d00829a106) as a base for my own.
-- I referred to AsiaWi [Snap it up](https://github.com/AsiaWi/snap-it-up-backend/blob/main/offers/views.py) snippet of code to help me write the logic and functionality for my Bid views.
+- I referred to AsiaWi's [Snap it up](https://github.com/AsiaWi/snap-it-up-backend/blob/main/offers/views.py) snippet of code to help me write the logic and functionality for my Bid views.
 
 [Return to Table of Contents](#table-of-contents)
