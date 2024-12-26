@@ -28,4 +28,5 @@ class ProfileDetail(generics.RetrieveUpdateAPIView):
     permission_classes = [IsOwnerOrReadOnly]
     queryset = Profile.objects.annotate(
         artwork_count=Count('owner__artwork', distinct=True),
+        sold_artwork_count=Count('owner__artwork__sold', distinct=True),
     ).order_by('-created_at')
