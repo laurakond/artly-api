@@ -1,4 +1,4 @@
-from django.db.models import Count
+from django.db.models import Count, Q
 from rest_framework import generics, filters
 from artly_api.permissions import IsOwnerOrReadOnly
 from .models import Profile
@@ -10,7 +10,11 @@ class ProfileList(generics.ListAPIView):
     serializer_class = ProfileSerializer
     queryset = Profile.objects.annotate(
         artwork_count=Count('owner__artwork', distinct=True),
-        sold_artwork_count=Count('owner__artwork__sold', distinct=True),
+        sold_artwork_count=Count(
+            'owner__artwork',
+            distinct=True,
+            filter=Q(owner__artwork__sold=True)
+        ),
     ).order_by('-created_at')
 
     filter_backends = [
@@ -28,5 +32,9 @@ class ProfileDetail(generics.RetrieveUpdateAPIView):
     permission_classes = [IsOwnerOrReadOnly]
     queryset = Profile.objects.annotate(
         artwork_count=Count('owner__artwork', distinct=True),
-        sold_artwork_count=Count('owner__artwork__sold', distinct=True),
+        sold_artwork_count=Count(
+            'owner__artwork',
+            distinct=True,
+            filter=Q(owner__artwork__sold=True)
+        ),
     ).order_by('-created_at')
