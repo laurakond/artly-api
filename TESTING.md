@@ -8,8 +8,9 @@ By Laura Kondrataite
 
 - [PEP8 Linter validation](#pep8-linter-validation)
 - [Bugs](#bugs)
-	- [Fixed bugs](#fixed-bugs)
-	- [Unfixed bugs](#unfixed-bugs)
+
+  - [Fixed bugs](#fixed-bugs)
+  - [Unfixed bugs](#unfixed-bugs)
 
 - [User stories testing](#user-stories-testing)
 - [Device testing](#device-testing)
@@ -28,6 +29,43 @@ By Laura Kondrataite
 
 ### Fixed bugs
 
+**error django.db.utils.IntegrityError: NOT NULL constraint failed**
+
+- received the above error for the 'phone' field in the Bids model.
+  - I resolved it by applying null=True, as suggested in this Stack overflow [thread](https://stackoverflow.com/questions/72943699/error-django-db-utils-integrityerror-not-null-constraint-failed).
+  - Eventually, I decided to remove the phone field from the model as it was redundant since I have included the email field as well.
+
+**Attribute error at /bids/1/**
+![attribute error](documentation/images/errors/attribute-error-bids.png) - I received this error when I tried to initially access the detail view for the bid. - To resolve it, I created a new permission rule _IsSellerOrReadOnly_ so that the seller would be able to access the edit view in order to manage the state of the bid.
+
+**testing BidListview**
+
+- I was struggling to get the bid count calculate correctly in the test even though the response.data was printing correct count. After a lot of searching I found this [thread](https://stackoverflow.com/questions/52827996/how-do-i-test-the-foreign-key-object-on-django-model/52828084) on Stackoverflow that helped me to figure out how to target values in the the post response:
+
+  - The problem was solved when I applied an id to the artwork key:
+
+    ```python
+    'artwork': self.artwork.id,
+    ```
+
+**incorrect bid value input instance**
+
+- when writing code for validating incorrect bid_price value, I noticed that the bid would be created regardless if it was ≤0. I realised this was because the logic statement to validate the user input was written after the new data has been saved and serialized: instance = serializer.save(buyer=self.request.user)
+  - Once I moved the logic above this line, the bid instances were not being saved if the input was ≤0.
+- This seems to have resolved automated testing issues that I had when trying to write a test for validating incorrect bid input.
+
+**filtering by artwork id**
+
+- When testing the bid input functionality on the front end, I received the following error a couple of times:
+  ![unique key error](documentation/images/errors/unique-key-error.png)
+
+**fetching sold artwork count**
+
+- I was having problems targetting sold_artwork_count for the Profile views.
+  - I managed to resolve this by looking at a similar code provided by Code Institute's DRF api walkthrough and also referring to Django documentation on:
+    - [Conditional aggregation](https://docs.djangoproject.com/en/5.1/ref/models/conditional-expressions/#conditional-aggregation)
+    - [Filtering on annotations](https://docs.djangoproject.com/en/5.1/topics/db/aggregation/#following-relationships-backwards)
+
 ### Unfixed bugs
 
 [Return to Table of Contents](#contents)
@@ -41,6 +79,7 @@ By Laura Kondrataite
 [Return to Table of Contents](#contents)
 
 ### User testing
+
 The application was tested during the development and post-development stages. I have asked my friends and peers to notify me of any issues that might appear. No issues were reported/noted during the development and post-development.
 
 [Return to Table of Contents](#contents)
@@ -51,17 +90,17 @@ The application was tested during the development and post-development stages. I
 
 ### Restricted access testing
 
-
 [Return to Table of Contents](#contents)
 
 ### Automated Testing
 
 - Automated testing has been implemented for the following:
-    - Tutorial, TutorialDate and Booking models
-    - Tutorial detail template
-    - Booking form
 
-    ![automated testing](documentation/validation/automated-testing.jpg)
+  - Tutorial, TutorialDate and Booking models
+  - Tutorial detail template
+  - Booking form
+
+  ![automated testing](documentation/validation/automated-testing.jpg)
 
 [Return to Table of Contents](#contents)
 
