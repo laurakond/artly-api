@@ -307,7 +307,8 @@ To deploy to Heroku, follow the steps below.
 ### Used code
 
 - Bid model status field logic
-  - I was struggling to understand how to approach the logic for my bid model status field. I was able to find a solution after speaking to a mentor, reading a couple of articles, DRF documentation and looking at a felow student’s [code](https://github.com/AsiaWi/snap-it-up-backend) that had similar functionality in their code.
+  - I was struggling to understand how to approach the logic for my bid model status field. I was able to find a solution after speaking to a mentor, reading a couple of articles, DRF documentation.
+  - I also referred to AsiaWi's [Snap it up](https://github.com/AsiaWi/snap-it-up-backend/blob/main/offers/views.py) snippet of code to help me write the logic and functionality for my Bid views.
     - other resources are noted in the general resources section.
 
 ### General resources:
@@ -354,12 +355,12 @@ To deploy to Heroku, follow the steps below.
 
 - DRF (de)serialization and validation
 
-  - (https://medium.com/django-unleashed/django-rest-framework-serialization-deeper-look-part-1-cf40108f9deb)
+  - [DRF serialization](https://medium.com/django-unleashed/django-rest-framework-serialization-deeper-look-part-1-cf40108f9deb)
 
 - This code (PUT) was really relevant to the code for **bid**: [](https://cheat.readthedocs.io/en/latest/django/drf_serializers.html)
-  - [](https://www.django-rest-framework.org/api-guide/serializers/#partial-updates)
-  - [](https://stackoverflow.com/questions/68514309/how-do-i-validate-input-in-django-rest-framework-before-creation)
-  - [](https://stackoverflow.com/questions/46173838/validate-specific-field-in-drf-serializer)
+  - [Partial serializer updates](https://www.django-rest-framework.org/api-guide/serializers/#partial-updates)
+  - [Stackoverflow - How do I validate input in DRF before creation](https://stackoverflow.com/questions/68514309/how-do-i-validate-input-in-django-rest-framework-before-creation)
+  - [Stackoverflow - calidate specific field in drf serializer](https://stackoverflow.com/questions/46173838/validate-specific-field-in-drf-serializer)
 
 ### Acknowledgments
 
@@ -376,6 +377,6 @@ My thanks go to:
 ### References
 
 - I used Code Institute's DRF API [project](https://github.com/Code-Institute-Solutions/drf-api/tree/ed54af9450e64d71bc4ecf16af0c35d00829a106) as a base for my own.
-- I referred to AsiaWi's [Snap it up](https://github.com/AsiaWi/snap-it-up-backend/blob/main/offers/views.py) snippet of code to help me write the logic and functionality for my Bid views.
+- As noted in the [used code](#used-code) section, I have referred to AsiaWi's [Snap it up](https://github.com/AsiaWi/snap-it-up-backend) project.
 
 [Return to Table of Contents](#table-of-contents)
