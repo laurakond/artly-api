@@ -3,6 +3,11 @@ from .models import Artwork
 
 
 class ArtworkSerializer(serializers.ModelSerializer):
+    """
+    Artwork model serializer. Validates image size, displays if the user is
+    artwork's owner(boolean values), displays read-only bid count for the
+    individual artwork.
+    """
     owner = serializers.ReadOnlyField(source='owner.username')
     is_owner = serializers.SerializerMethodField()
     owner_id = serializers.ReadOnlyField(source='owner.id')

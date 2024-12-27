@@ -7,7 +7,10 @@ from .serializers import ArtworkSerializer
 
 
 class ArtworkList(generics.ListCreateAPIView):
-    """Function to display all artwork posts in a list."""
+    """
+    Displays all artworks in a list. Allows to filter and search the list based
+    on the needed criteria.
+    """
     serializer_class = ArtworkSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     queryset = Artwork.objects.annotate(
@@ -47,8 +50,8 @@ class ArtworkList(generics.ListCreateAPIView):
 
 class ArtworkDetail(generics.RetrieveUpdateDestroyAPIView):
     """
-    Function to display, edit and delete artwork post instance that belongs
-    to logged in user only.
+    Displays, edits and deletes the artwork that belongs to logged in user only.
+    Displays the number of bids the artwork has.
     """
     serializer_class = ArtworkSerializer
     permission_classes = [IsOwnerOrReadOnly]
