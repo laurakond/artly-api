@@ -50,8 +50,8 @@ class ArtworkList(generics.ListCreateAPIView):
 
 class ArtworkDetail(generics.RetrieveUpdateDestroyAPIView):
     """
-    Displays, edits and deletes the artwork that belongs to logged in user only.
-    Displays the number of bids the artwork has.
+    Displays, edits and deletes the artwork that belongs to logged in user
+    only. Displays the number of bids the artwork has.
     """
     serializer_class = ArtworkSerializer
     permission_classes = [IsOwnerOrReadOnly]
