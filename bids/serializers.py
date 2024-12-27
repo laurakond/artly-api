@@ -42,7 +42,7 @@ class BidSerializer(serializers.ModelSerializer):
 class BidDetailSerializer(BidSerializer):
     """
     Serializer for Bid detail view. Displays artwork id read-only, and
-    fetches status choice field for the bid detail. 
+    fetches status choice field for the bid detail.
     """
     artwork = serializers.ReadOnlyField(source='artwork.id')
     status = serializers.ChoiceField(choices=STATUS)
