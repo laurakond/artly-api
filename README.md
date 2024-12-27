@@ -4,11 +4,21 @@ This is a README document for the back-end repository Artly_api that provides ap
 
 You can access the Artly repository [here](https://github.com/laurakond/Artly).
 
-Live site can be found [here]().
+Live site can be found [here](https://artly-a211b809ae81.herokuapp.com/).
 
 (By Laura Kondrataite)
 
 ## Table of Contents
+
+[Design](#design)
+
+- [Target Audience](#target-audience)
+
+- [User Stories](#user-stories)
+
+- [Flowcharts](#flowcharts)
+
+- [Endpoints](#endpoints)
 
 [Agile Methodology](#agile-methodology)
 
@@ -60,17 +70,41 @@ No background, geographical location or income has been specified for the target
 
 ### User Stories
 
+For Artly-api part of the project the user stories focuses on the developer's point of view when it comes to project development. All of these stories directly correlate to the front-end user stories, which are covered in the [Artly React](https://github.com/laurakond/artly?tab=readme-ov-file#user-stories) part of this project development.
+
+- the user stories follows the linear proggression of the project, i.e. from the creation of the IDE to the documentation of the project.
+
+|                                                        | As a Developer                                                                                                                                               |
+| ------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| [1](https://github.com/laurakond/artly-api/issues/1)   | As a developer I can set up a project board so that I can plan my project.                                                                                   |
+| [2](https://github.com/laurakond/artly-api/issues/2)   | As a developer I can set up a new workspace for back-end so that I can start working on my project.                                                          |
+| [3](https://github.com/laurakond/artly-api/issues/3)   | As a developer I can set up required apps and a database so that I can manage data and start building the application.                                       |
+| [4](https://github.com/laurakond/artly-api/issues/4)   | As a developer I can set up Cloudinary so that any uploaded image can be stored in cloud storage.                                                            |
+| [5](https://github.com/laurakond/artly-api/issues/5)   | As a developer I can set up authorisation so that I can validate user registration.                                                                          |
+| [6](https://github.com/laurakond/artly-api/issues/6)   | As a developer I can set up JWT tokens so that the user doesn’t need to log in repeatedly during one single session.                                         |
+| [7](https://github.com/laurakond/artly-api/issues/7)   | As a developer, I can note the website progression in the back-end README so that anyone can see the steps and actions taken for the release of the website. |
+| [8](https://github.com/laurakond/artly-api/issues/8)   | As a developer I can deploy the back-end repository to Heroku so that it is accessible online.                                                               |
+| [9](https://github.com/laurakond/artly-api/issues/9)   | As a developer, I can fix the bugs for the back-end so that I can ensure any issues are handled before the initial project release.                          |
+| [10](https://github.com/laurakond/artly-api/issues/10) | As a developer, I can perform manual tests for back-end so that I know all functionalities of the website are working.                                       |
+| [11](https://github.com/laurakond/artly-api/issues/11) | As a developer, I can validate each page and app for back-end so that I know that the code adheres to best practices.                                        |
+| [12](https://github.com/laurakond/artly-api/issues/12) | As a developer, I can create the Artwork model for the api so that I can create functionality for storing artwork related data.                              |
+| [13](https://github.com/laurakond/artly-api/issues/13) | As a developer, I can create the Offer model for the api so that I can create functionality for storing offer related data.                                  |
+| [14](https://github.com/laurakond/artly-api/issues/14) | As a developer, I can create the Profile model for the api so that I can create functionality for storing profile related data.                              |
+| [15](https://github.com/laurakond/artly-api/issues/15) | As a developer, I can create the Save model for the api so that I can create functionality for storing save model related data.                              |
+| [16](https://github.com/laurakond/artly-api/issues/16) | As a developer, I can create the Contact model for the api so that I can create functionality for storing Contact model related data.                        |
+| [17](https://github.com/laurakond/artly-api/issues/17) | As a developer, I can perform automated for back-end so that I know all functionalities of the website are working.                                          |
+
 ### Flowcharts
 
 I used [Lucidchart](https://lucid.app/) for creating the ERD for the models.
 
-- ERD:
+- Entity Relationship Diagram:
 
-  ![Project Models]()
+  ![ERD image](documentation/images/features/artly-api-erd.jpg)
 
-### Wireframes
+### Endpoints
 
-The following wireframes show the initial idea of how the website would look on different devices: mobiles, tablets/iPads and laptops/desktops.
+Below are noted endpoints for each model
 
 []()
 
@@ -134,7 +168,7 @@ MoSCoW methodology was used to map out which features were required for the MVP,
   - Validate each back-end page and app.
   - Document the progress in the README and TESTING.md files
 
-![GitHub Project Management]()
+![GitHub Project Management](documentation/images/features/project-board-pp5.jpg)
 
 - I chose the "trafic-light" color scheme for the MoSCoW method in order to indicate which tasks were a priority (green must-haves) and which ones were not(red won't-haves) for my project board.
   - This provided clarity and better understanding for myself as I was a sole project contributor.
@@ -145,35 +179,42 @@ MoSCoW methodology was used to map out which features were required for the MVP,
 
 ### Existing Features
 
-**The Header**
+**Home page**
 
-![header]()
+![welcome page](documentation/images/features/artly-api-welcome-page.jpg)
 
-![loggedin header]()
+- Upon loading the Artly api, a welcome screen will display.
 
-**The Footer**
-
-![footer]()
-
-**User authentication**
-
-<details>
-<summary></summary>
-
-  </details>
-
-**Restricted access**
-
-**Error pages**
-
-**Notification messages**
-
-<details>
-    <summary></summary>
-
-</details>
+---
 
 ### Features Left to Implement
+
+**Auto reject bids that are lower than the asked price**
+
+- I have written a code for automatically rejecting the bids based on their bid price, however, I decided to exclude this logic at this stage of the project.
+
+  - I deemed this piece of logic not appropriate for the overall user experience at this stage fo the project. This will be adjusted and incorporated to the functionality of the code at the next development stage.
+
+    ```python
+    # Evaluate if the bid offer is lower that the asking price and send
+    # appropriate response/update status
+      if bid_price < artwork.price:
+        instance.status = "Rejected"
+        instance.save()
+
+      if bid_price <= 0:
+        raise ValidationError("you can only input values above 0.")
+
+      def create(self, request, *args, **kwargs):
+        response = super().create(request, *args, **kwargs)
+        if response.data.get('status') == "Rejected":
+          return Response(
+            {"bid_price": "The bid is lower than the asking price."},
+            status=status.HTTP_202_ACCEPTED
+          )
+
+        return response
+    ```
 
 [Return to Table of Contents](#table-of-contents)
 
