@@ -3,6 +3,9 @@ from .models import Profile
 
 
 class ProfileSerializer(serializers.ModelSerializer):
+    """Profile model serializer, fetches read-only owner field, artwork count,
+    and sold artwork count.
+    """
     owner = serializers.ReadOnlyField(source='owner.username')
     is_owner = serializers.SerializerMethodField()
     artwork_count = serializers.ReadOnlyField()

@@ -29,6 +29,7 @@ class Profile(models.Model):
         return f"{self.owner}'s profile"
 
 def create_profile(sender, instance, created, **kwargs):
+    """Creates a profile every time a user registers."""
     if created:
         Profile.objects.create(owner=instance)
 

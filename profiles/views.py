@@ -6,7 +6,7 @@ from .serializers import ProfileSerializer
 
 
 class ProfileList(generics.ListAPIView):
-    """Class to display all created profiles."""
+    """Displays all created profiles and generates a filter field."""
     serializer_class = ProfileSerializer
     queryset = Profile.objects.annotate(
         artwork_count=Count('owner__artwork', distinct=True),
@@ -27,7 +27,10 @@ class ProfileList(generics.ListAPIView):
 
 
 class ProfileDetail(generics.RetrieveUpdateAPIView):
-    """ Retrieves the user's profile and allows to update it."""
+    """
+    Retrieves the user's profile and allows to update it.Calculates sold
+    artwork count to display the users based on the count.
+    """
     serializer_class = ProfileSerializer
     permission_classes = [IsOwnerOrReadOnly]
     queryset = Profile.objects.annotate(
