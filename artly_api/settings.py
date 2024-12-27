@@ -28,9 +28,9 @@ DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': [( 
-        'rest_framework.authentication.SessionAuthentication' 
-        if 'DEV' in os.environ 
+    'DEFAULT_AUTHENTICATION_CLASSES': [(
+        'rest_framework.authentication.SessionAuthentication'
+        if 'DEV' in os.environ
         else 'dj_rest_auth.jwt_auth.JWTCookieAuthentication'
     )],
     'DEFAULT_PAGINATION_CLASS':
@@ -81,13 +81,13 @@ INSTALLED_APPS = [
     'cloudinary',
     'rest_framework',
     'django_filters',
-    'rest_framework.authtoken', 
+    'rest_framework.authtoken',
     'dj_rest_auth',
 
-    'django.contrib.sites', 
-    'allauth', 
-    'allauth.account', 
-    'allauth.socialaccount', 
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
     'dj_rest_auth.registration',
     'corsheaders',
 
@@ -161,16 +161,16 @@ else:
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',  # noqa
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',  # noqa
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',  # noqa
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',  # noqa
     },
 ]
 
