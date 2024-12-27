@@ -316,13 +316,13 @@ To deploy to Heroku, follow the steps below.
 <summary>Serializers</summary>
 
 - [Serializers – Django REST Framework](https://www.geeksforgeeks.org/serializers-django-rest-framework/)
-- [Ukeme Wilson Mastering Django REST Framework: An In-depth Guide](https://medium.com/@ukemeboswilson/mastering-django-rest-framework-an-in-depth-guide-to-serializers-5e6b94530c7a)
-- [10 things you need to know to use drf](https://profil-software.com/blog/development/10-things-you-need-know-effectively-use-django-rest-framework/)
 - [Model serializer in DRF](https://www.geeksforgeeks.org/modelserializer-in-serializers-django-rest-framework/)
 </details>
 
 - [The Perfect Match: How to Integrate ReactJS with Django Framework for Stunning Web Apps](https://medium.com/@devsumitg/how-to-connect-reactjs-django-framework-c5ba268cb8be)
 - [Full Stack app with ReactJS & Django - Nabendu Biswas Full Stack app with ReactJS & Django](https://nabendu82.medium.com/full-stack-app-with-reactjs-django-0cb33b9835b2)
+- [Ukeme Wilson Mastering Django REST Framework: An In-depth Guide](https://medium.com/@ukemeboswilson/mastering-django-rest-framework-an-in-depth-guide-to-serializers-5e6b94530c7a)
+- [10 things you need to know to use drf](https://profil-software.com/blog/development/10-things-you-need-know-effectively-use-django-rest-framework/)
 
 - Django Rest Framework tutorials
 
@@ -331,8 +331,35 @@ To deploy to Heroku, follow the steps below.
   - [Bryan Brkic](https://www.youtube.com/watch?v=Oz3SoVV27ak)
 
 - Django filters:
+
   - [Integration with DRF](https://django-filter.readthedocs.io/en/stable/guide/rest_framework.html)
   - [Tom Christie Filtering DRF](https://www.django-rest-framework.org/api-guide/filtering/#orderingfilter)
+
+- DRF views:
+
+  - [How to use get_object() in DRF generics views](https://medium.com/@katheller/how-to-use-get-object-in-drf-generics-views-examples-a7b879ff2d50)
+  - [How to create REST API with DRF](https://blog.logrocket.com/django-rest-framework-create-api/)
+  - [PUT request to django api](https://karthiksharma1411.medium.com/put-request-to-django-api-to-update-list-of-nested-objects-with-many-to-many-relationships-f487cba97632)
+  - [Understanding api views](https://medium.com/@hordunlarmy/understanding-apiview-generic-views-and-viewsets-in-django-rest-framework-0d89ac6b9614)
+  - [DRF views part2](https://testdriven.io/blog/drf-views-part-2/)
+
+- DRF super().save():
+
+  - [Stackoverflow - super method from django documentation](https://stackoverflow.com/questions/35650746/super-method-from-django-documentation)
+  - [Stackoverflow - why save method has another save method](https://stackoverflow.com/questions/60523103/why-save-method-has-another-save-method-with-super-in-django-model)
+  - [Geek for geeks - overriding the save method](https://www.geeksforgeeks.org/overriding-the-save-method-django-models/)
+  - DRF object creation
+    - [DRF object creation](https://medium.com/@lakshminp/drf-object-creation-methods-60476bb9783e)
+    - [DRF when to use viewsets](https://www.reddit.com/r/django/comments/sm07s2/drf_when_to_use_viewsets_vs_generic_views_vs/)
+
+- DRF (de)serialization and validation
+
+  - (https://medium.com/django-unleashed/django-rest-framework-serialization-deeper-look-part-1-cf40108f9deb)
+
+- This code (PUT) was really relevant to the code for **bid**: [](https://cheat.readthedocs.io/en/latest/django/drf_serializers.html)
+  - [](https://www.django-rest-framework.org/api-guide/serializers/#partial-updates)
+  - [](https://stackoverflow.com/questions/68514309/how-do-i-validate-input-in-django-rest-framework-before-creation)
+  - [](https://stackoverflow.com/questions/46173838/validate-specific-field-in-drf-serializer)
 
 ### Acknowledgments
 
