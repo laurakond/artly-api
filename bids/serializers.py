@@ -5,10 +5,13 @@ from artworks.models import Artwork
 
 
 class BidSerializer(serializers.ModelSerializer):
+    """
+    Bid model serializer. Fetches read-only buyer and seller fields, validates
+    bid input value to be above 0.
+    """
     buyer = serializers.ReadOnlyField(source='buyer.username')
     seller = serializers.SerializerMethodField()
     status = serializers.ReadOnlyField()
-    # artwork_title = serializers.SerializerMethodField()
     created_at = serializers.SerializerMethodField()
     updated_at = serializers.SerializerMethodField()
 
@@ -20,9 +23,6 @@ class BidSerializer(serializers.ModelSerializer):
 
     def get_updated_at(self, obj):
         return naturaltime(obj.updated_at)
-
-    # def get_artwork_title(self, obj):
-    #     return obj.artwork.artwork_title
 
     def validate_bid_price(self, bid_price):
         if bid_price <= 0:
@@ -40,6 +40,10 @@ class BidSerializer(serializers.ModelSerializer):
 
 
 class BidDetailSerializer(BidSerializer):
+    """
+    Serializer for Bid detail view. Displays artwork id read-only, and
+    fetches status choice field for the bid detail. 
+    """
     artwork = serializers.ReadOnlyField(source='artwork.id')
     status = serializers.ChoiceField(choices=STATUS)
 

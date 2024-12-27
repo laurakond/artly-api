@@ -8,7 +8,11 @@ from .serializers import BidSerializer, BidDetailSerializer
 
 
 class BidList(generics.ListCreateAPIView):
-    """Function to display all bids related to one artwork in a list."""
+    """
+    Function to display all bids related to one artwork in a list. Generates
+    filter and search fields for the bids. Evaluates who the bidder is and
+    prevents the seller to bid on their own artworks.
+    """
     serializer_class = BidSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     queryset = Bid.objects.all()
@@ -46,31 +50,12 @@ class BidList(generics.ListCreateAPIView):
 
         instance = serializer.save(buyer=self.request.user)
 
-        # Evaluate if the bid offer is lower that the asking price and send
-        # appropriate response/update status
-        # if bid_price < artwork.price:
-        #     instance.status = "Rejected"
-        #     instance.save()
-
-        # if bid_price <= 0:
-        #     raise ValidationError("you can only input values above 0.")
-
-    # def create(self, request, *args, **kwargs):
-    #     response = super().create(request, *args, **kwargs)
-    #     if response.data.get('status') == "Rejected":
-    #         return Response(
-    #             {"bid_price": "The bid is lower than the asking price."},
-    #             status=status.HTTP_202_ACCEPTED
-    #         )
-
-    #     return response
-
 
 class BidDetail(generics.RetrieveUpdateAPIView):
     """
-    Function to display, edit and delete a bid that belongs
-    to logged in user only. The bid field can be submitted only by the buyer
-    and not the seller of the artwork.
+    Displays the buyer's bid, and edits(seller only) a bid that belongs to the
+    seller. Evaluates who the logged in user is and prevents the buyer from
+    editing the bid.
     """
     serializer_class = BidDetailSerializer
     permission_classes = [
@@ -133,6 +118,7 @@ class BidDetail(generics.RetrieveUpdateAPIView):
                 "message":
                 "Bid accepted and the artwork is no longer available.",
             }, status=status.HTTP_200_OK)
+
         # Does not allow to change the bid status because the sold field in the
         # Artwork model is already set to True(sold).
         elif initial_status == "Sold" and updated_status != "Sold":

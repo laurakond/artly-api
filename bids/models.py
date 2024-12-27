@@ -13,9 +13,10 @@ STATUS = [
 
 class Bid(models.Model):
     """
-    Stores information related to a bid which is attached to an
-    individual artwork post.
-    :model:'auth.User', :model:'Artwork'
+    Stores information related to a bid which is attached to an individual
+    artwork. Overriden save method identfies the seller as the artwork owner.
+    :model:'auth.User'
+    :model:'Artwork'
     """
 
     buyer = models.ForeignKey(
