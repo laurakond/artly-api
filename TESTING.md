@@ -13,7 +13,6 @@ By Laura Kondrataite
   - [Unfixed bugs](#unfixed-bugs)
 
 - [User stories testing](#user-stories-testing)
-- [Device testing](#device-testing)
 - [User testing](#user-testing)
 - [Manual testing](#manual-testing)
 - [Restricted access testing](#restricted-access-testing)
@@ -22,6 +21,8 @@ By Laura Kondrataite
 ## Testing
 
 ### PEP8 Linter validation
+
+[CI Python linter report](documentation/docs/ci-python-linter.pdf)
 
 [Return to Table of Contents](#contents)
 
@@ -36,7 +37,10 @@ By Laura Kondrataite
   - Eventually, I decided to remove the phone field from the model as it was redundant since I have included the email field as well.
 
 **Attribute error at /bids/1/**
-![attribute error](documentation/images/errors/attribute-error-bids.png) - I received this error when I tried to initially access the detail view for the bid. - To resolve it, I created a new permission rule _IsSellerOrReadOnly_ so that the seller would be able to access the edit view in order to manage the state of the bid.
+
+![attribute error](documentation/images/errors/attribute-error-bids.png)
+
+- I received this error when I tried to initially access the detail view for the bid. - To resolve it, I created a new permission rule _IsSellerOrReadOnly_ so that the seller would be able to access the edit view in order to manage the state of the bid.
 
 **testing BidListview**
 
@@ -57,6 +61,7 @@ By Laura Kondrataite
 **filtering by artwork id**
 
 - When testing the bid input functionality on the front end, I received the following error a couple of times:
+
   ![unique key error](documentation/images/errors/unique-key-error.png)
 
 **fetching sold artwork count**
@@ -71,10 +76,6 @@ By Laura Kondrataite
 [Return to Table of Contents](#contents)
 
 ### User stories testing
-
-[Return to Table of Contents](#contents)
-
-### Device testing
 
 [Return to Table of Contents](#contents)
 
