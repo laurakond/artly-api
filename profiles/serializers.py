@@ -18,8 +18,8 @@ class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = Profile
         fields = [
-            'id', 'owner', 'name', 'location', 'profile_image', 'styles', 
+            'id', 'owner', 'name', 'location', 'profile_image', 'styles',
             'techniques', 'influences', 'collaborations', 'portfolio_url',
-            'artwork_count', 'sold_artwork_count' ,'created_at', 'updated_at',
+            'artwork_count', 'sold_artwork_count', 'created_at', 'updated_at',
             'is_owner'
         ]
