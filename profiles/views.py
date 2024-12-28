@@ -15,6 +15,8 @@ class ProfileList(generics.ListAPIView):
             distinct=True,
             filter=Q(owner__artwork__sold=True)
         ),
+        followers_count=Count('owner__followed', distinct=True),
+        following_count=Count('owner__following', distinct=True)
     ).order_by('-created_at')
 
     filter_backends = [
@@ -22,7 +24,11 @@ class ProfileList(generics.ListAPIView):
     ]
     ordering_fields = [
         'artwork_count',
-        'sold_artwork_count'
+        'sold_artwork_count',
+        'followers_count',
+        'following_count',
+        'owner__following__created_at',
+        'owner__followed__created_at',
     ]
 
 
@@ -40,4 +46,6 @@ class ProfileDetail(generics.RetrieveUpdateAPIView):
             distinct=True,
             filter=Q(owner__artwork__sold=True)
         ),
+        followers_count=Count('owner__followed', distinct=True),
+        following_count=Count('owner__following', distinct=True)
     ).order_by('-created_at')
