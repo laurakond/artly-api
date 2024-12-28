@@ -1,4 +1,5 @@
 from rest_framework import serializers
+from saves.models import Save
 from .models import Artwork
 
 
@@ -13,6 +14,8 @@ class ArtworkSerializer(serializers.ModelSerializer):
     owner_id = serializers.ReadOnlyField(source='owner.id')
     sold = serializers.BooleanField(default=False)
     bids_count = serializers.ReadOnlyField()
+    save_id = serializers.SerializerMethodField()
+    saved_count = serializers.ReadOnlyField()
 
     def validate_image(self, value):
         """
@@ -37,11 +40,21 @@ class ArtworkSerializer(serializers.ModelSerializer):
         request = self.context['request']
         return request.user == obj.owner
 
+    def get_save_id(self, obj):
+        user = self.context['request'].user
+        if user.is_authenticated:
+            save = Save.objects.filter(
+                owner = user, artwork = obj
+            ).first()
+            return save.id if save else None
+        return None
+
+
     class Meta:
         model = Artwork
         fields = [
             'id', 'owner', 'owner_id', 'is_owner', 'artwork_title',
             'artist_name', 'description', 'style', 'type', 'payment_method',
             'price', 'image', 'alt_text', 'contact', 'location', 'created_at',
-            'updated_at', 'bids_count', 'sold'
+            'updated_at', 'bids_count', 'save_id', 'saved_count', 'sold'
         ]

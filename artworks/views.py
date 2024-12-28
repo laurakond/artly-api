@@ -14,7 +14,9 @@ class ArtworkList(generics.ListCreateAPIView):
     serializer_class = ArtworkSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     queryset = Artwork.objects.annotate(
-        bids_count=Count('bids', distinct=True)).order_by('-updated_at')
+        bids_count=Count('bids', distinct=True),
+        saved_count=Count('saves', distinct=True),
+    ).order_by('-updated_at')
     filter_backends = [
         filters.OrderingFilter,
         filters.SearchFilter,
@@ -24,6 +26,8 @@ class ArtworkList(generics.ListCreateAPIView):
         'style',
         'type',
         'bids_count',
+        'saved_count',
+        'saves__created_at',
         'created_at'
     ]
     search_fields = [
@@ -41,7 +45,9 @@ class ArtworkList(generics.ListCreateAPIView):
         'price',
         'owner',
         'sold',
-        'owner__profile'
+        'owner__profile',
+        'owner__followed__owner__profile',
+        'saves__owner__profile',
     ]
 
     def perform_create(self, serializer):
@@ -56,4 +62,6 @@ class ArtworkDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = ArtworkSerializer
     permission_classes = [IsOwnerOrReadOnly]
     queryset = Artwork.objects.annotate(
-        bids_count=Count('bids', distinct=True)).order_by('-updated_at')
+        bids_count=Count('bids', distinct=True),
+        saved_count=Count('saves', distinct=True),
+    ).order_by('-updated_at')
