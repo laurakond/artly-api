@@ -44,11 +44,10 @@ class ArtworkSerializer(serializers.ModelSerializer):
         user = self.context['request'].user
         if user.is_authenticated:
             save = Save.objects.filter(
-                owner = user, artwork = obj
+                owner=user, artwork=obj
             ).first()
             return save.id if save else None
         return None
-
 
     class Meta:
         model = Artwork
