@@ -30,4 +30,6 @@ urlpatterns = [
     path('', include('profiles.urls')),
     path('', include('artworks.urls')),
     path('', include('bids.urls')),
+    path('', include('saves.urls')),
+    path('', include('followers.urls')),
 ]
