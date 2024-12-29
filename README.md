@@ -64,15 +64,15 @@ The primary target audience for the website is:
 
 - persons of any gender aged 16+ who enjoy art,
 - artists who wishes to share their work,
-- art connoiseurs who are looking for alternative ways in selling owned artwork.
+- art connoiseurs and artists who are looking for alternative ways in buying or selling artwork.
 
-No background, geographical location or income has been specified for the target audience.
+No background, geographical location or income has been specified for the target audience as this website aims to provide access to art for everyone regardless of their financial background.
 
 ### User Stories
 
-For Artly-api part of the project the user stories focuses on the developer's point of view when it comes to project development. All of these stories directly correlate to the front-end user stories, which are covered in the [Artly React](https://github.com/laurakond/artly?tab=readme-ov-file#user-stories) part of this project development.
+Artly-api part of the project the user stories focuses on the developer's point of view mainly assessing project development stages. However, they have been carried out with the MVP in mind, first focusing on the essential CRUD functionality to enable the website to work properly.
 
-- the user stories follows the linear proggression of the project, i.e. from the creation of the IDE to the documentation of the project.
+Front-end user stories are covered in the front-end part of this project development, [Artly](https://github.com/laurakond/artly?tab=readme-ov-file#user-stories) repository.
 
 |                                                        | As a Developer                                                                                                                                               |
 | ------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -106,7 +106,12 @@ I used [Lucidchart](https://lucid.app/) for creating the ERD for the models.
 
 Below are noted endpoints for each model
 
-[]()
+MVP endpoints:
+
+![artworks endpoint](documentation/images/features/artwork-endpoint.jpg)
+![bids endpoint](documentation/images/features/bids-endpoint.jpg)
+![profiles endpoint](documentation/images/features/profiles-endpoint.jpg)
+![save endpoint](documentation/images/features/saved-endpoint.jpg)
 
 ## Agile Methodology
 
