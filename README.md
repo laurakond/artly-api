@@ -18,8 +18,6 @@ Live site can be found [here](https://artly-a211b809ae81.herokuapp.com/).
 
 - [Flowcharts](#flowcharts)
 
-- [Endpoints](#endpoints)
-
 [Agile Methodology](#agile-methodology)
 
 - [GitHub Project Management](#github-project-management)
@@ -102,17 +100,6 @@ I used [Lucidchart](https://lucid.app/) for creating the ERD for the models.
 
   ![ERD image](documentation/images/features/artly-api-erd.jpg)
 
-### Endpoints
-
-Below are noted endpoints for each model
-
-MVP endpoints:
-
-![artworks endpoint](documentation/images/features/artwork-endpoint.jpg)
-![bids endpoint](documentation/images/features/bids-endpoint.jpg)
-![profiles endpoint](documentation/images/features/profiles-endpoint.jpg)
-![save endpoint](documentation/images/features/saved-endpoint.jpg)
-
 ## Agile Methodology
 
 ### GitHub Project Management
@@ -188,9 +175,235 @@ MoSCoW methodology was used to map out which features were required for the MVP,
 
 ![welcome page](documentation/images/features/artly-api-welcome-page.jpg)
 
-- Upon loading the Artly api, a welcome screen will display.
+- Upon loading the Artly api, a welcome screen displays.
 
----
+#### Artworks
+
+- This is the main feature of the website, which allows the users to create an artwork and display it in a list. The artwork has a full CRUD functionality.
+- Once the user is logged in, a form for creating an artwork instance becomes visible to the user.
+
+  - upon submission of the form, the artwork(s) are dislayed in a list.
+
+    ![artworks api list]()
+
+- To access the list of artworks in the api follow this link: https://artly-api-a39d790259f4.herokuapp.com/artworks/
+
+- The image displays the end points for the Artwork model.
+
+  ![artworks endpoint](documentation/images/features/artwork-endpoint.jpg)
+
+- Additional fields have been included to display information relevant to the artwork:
+
+  - **is_owner**: shows a boolean value determining if the logged in user is the owner of the artwork or not
+  - **owner_id**: shows the artwork's owner's id
+  - **sold**: shows a boolean value determining if the artwork instance is sold or available for sale
+  - **bids_count**: shows the number of bids the artwork has received
+  - **save_id**: shows the id of the save, i.e. bookmarked artwork
+  - **saved_count**: shows the number saved instances of this particular artwork
+
+- DRF filtering has been applied so that the user can search for relevant artworks based on their chosen criteria:
+
+  - Search fields:
+
+    - artist title
+    - artist name
+    - location
+    - payment method
+    - style
+    - type
+    - owner username
+
+  - Ordering fields:
+
+    - style
+    - type
+    - bids count
+    - saved count
+    - saves created at
+    - created ad
+
+  - Filterset fields:
+    - style
+    - type
+    - price
+    - owner
+    - sold status
+    - owner profile
+    - owner followed owner profile
+    - saves owner profile
+
+- Once the user has created an artwork, they can then access the detailed view (individual artwork instances).
+- The user is then presented with the artwork edit form with prepopulated artwork information. The user can choose to change any of the fields and submit the form.
+
+- A detailed view of the artwork is accessible by adding an id to artwork list url: https://artly-api-a39d790259f4.herokuapp.com/artworks/**<id_number>**
+  - the user can delete it's own artwork once inside the detailed view.
+
+![artworks detailed api view]()
+
+#### Bids
+
+- This is the second main feature of the website, which allows the users to create bid for an artwork instance and display the bid in a list of bids (similarly to artwork list).
+
+  ![bids api list]()
+
+  - The bid also registers as a count within the artwork model.
+  - The bid has a partial CRUD funtionality: create and edit.
+
+- Once the user is logged in, a form for creating a bid is displayed to the user. They can choose from existing artworks and submit the form with offered price and contact details.
+
+  - The bid acceptance validation criteria has been implemented to ensure that the bid submission adheres to appropriate functionality standards. If not, appropriate validation errors are thrown to inform the user:
+
+    - the seller cannot bid on their own artworks.
+
+      Error thrown: `"You cannot bid on your own artwork."`
+
+    - the buyer cannot access bid edit functionality.
+
+      Error thrown: `"You don't have access to modify this bid."`
+
+    - the bid value can only be above 0.
+
+      Error thrown: `"Invalid input. Please enter values above 0."`
+
+  - Upon submission the bid(s) are displayed in a list.
+
+- To access the list of bids in the api follow this link: https://artly-api-a39d790259f4.herokuapp.com/bids/
+
+- DRF filtering has been applied so that the user can search for relevant bids based on their chosen criteria:
+
+  - Search fields:
+
+    - status
+    - artwork title
+
+  - Ordering fields:
+
+    - artwork title
+    - artwork id
+    - created at
+    - status
+    - updated at
+
+  - Filterset fields:
+    - bid price
+    - artwork
+
+- A detailed view of the bid is accessible by adding an id to the bid list url: https://artly-api-a39d790259f4.herokuapp.com/bids/**<id_number>**
+
+  - The access to the individual bid is only allowed for the artwork owner, i.e. the seller.
+
+  ![bids detailed api view]()
+
+- Upon accessing the individual bid instance, the user is shown the bid edit form which provides a drop down list to update the status to:
+
+  - accepted
+  - rejected
+  - mark as sold
+
+- Upon marking the artwork as sold, the sold field within the artwork model updates to "true" indicating that the artwork is no longer available.
+
+  - Upon the acceptance of the bid and artwork sold status changes, the following message is displayed: `"Bid accepted and the artwork is no longer available."`
+  - If the buyer attempts to submit a bid for already sold artwork, the following messsage is displayed: `"Artwork is no longer available for purchase."`
+
+- The image displays the end points for the Bid model.
+
+  ![bids endpoint](documentation/images/features/bids-endpoint.jpg)
+
+#### Profiles
+
+- This is the secondary feature to the artwork and bid, which automatically creates a profile once the user registers to the website.
+
+  - Similarly to the artwork and bid, the list of profiles is displayed upon its autpmatic creation creation.
+
+  ![profiles api list]()
+
+- Additional fields have been included to display information relevant to the profile:
+
+  - **is_owner**: shows a boolean value determining if the logged in user is the owner of the artwork or not
+  - **artwork_count**: shows the number of artworks that the owner/seller has in total
+  - **sold_artwork_count**: shows the number of sold artworks
+  - **following_id**: shows the user's id as a follower
+  - **followers_count**: shows the number of other accounts that the user is followed by
+  - **following_count**: shows the number of other accouns that the user follows
+
+- Upon submission the bid(s) are displayed in a list.
+
+- To access the list of bids in the api follow this link: https://artly-api-a39d790259f4.herokuapp.com/profiles/
+
+- DRF filtering has been applied so that the user can search/firter the profiles based on their chosen criteria:
+
+  - Ordering fields:
+
+    - artwork count
+    - sold artwork count
+    - followers count
+    - following count
+    - owner following created at
+    - owner followed created at
+
+- A detailed view of the profiles is accessible by adding an id to the profile list url: https://artly-api-a39d790259f4.herokuapp.com/profiles/**<id_number>**
+
+  ![profiles detailed api view]()
+
+- Upon accessing the individual profile instance, the user is shown the profile edit form which that the user can choose to edit/populate. All of the fields are optional.
+
+- The image displays the end points for the Profile model.
+
+  ![profiles endpoint](documentation/images/features/profiles-endpoint.jpg)
+
+#### Saved artworks
+
+- This is the secondary feature to the artwork and bid, which allows the user to save an artwork they liked.
+
+- Once the user is logged in, a save form is displayed so that the user can choose an artwork.
+
+  - Similarly to the artwork and bid, the list of saved artworks is visible once the save artwork form is submitted.
+
+  ![saved artworks api list]()
+
+- To access the list of saved artworks in the api follow this link: https://artly-api-a39d790259f4.herokuapp.com/saved/
+
+- The save functionality is set up so that the user cannot save the same artworm more than once. If the user attempts that, a validation message appears: `'possible dupblicate'`.
+
+- A detailed view of the saved instance is accessible by adding an id to the saved list url: https://artly-api-a39d790259f4.herokuapp.com/saved/**<id_number>**
+
+  - once inside the detailed view, the user can delete/remove the saved artwork record similarly to the artwork detail view.
+
+  ![saved detailed api view]()
+
+- Upon accessing the individual profile instance, the user is shown teh following fields:
+
+  - saved artwork instance id
+  - owner
+  - created at
+  - artwork id
+
+- The image displays the end points for the Save model.
+
+  ![save endpoint](documentation/images/features/saved-endpoint.jpg)
+
+#### Following users
+
+- This is the secondary feature to the artwork and bid, which allows the user to follow other users and be followed by others.
+
+- Once the user is logged in, a form displaying a drop down list with another user's account as a choice is displayed.
+
+- Additional field has been included to display information relevant to the user:
+
+  - **followed \_name**: shows a user's name who is following currently logged in user.
+
+- The followers functionality is set up so that the user cannot follow the same user more than once. If the user attempts that, a validation message appears: `'possible dupblicate'`.
+
+- To access the list of followers in the api follow this link: https://artly-api-a39d790259f4.herokuapp.com/followers/
+
+- A detailed view of the followers instance is accessible by adding an id to the saved list url: https://artly-api-a39d790259f4.herokuapp.com/followers/**<id_number>**
+
+  - once inside the detailed view, the user can delete/remove the following record similarly to the artwork detail view.
+
+  ![followers detailed api view]()
+
+- The image displays the end points for the followers model.
+  ![followers](documentation/images/features/followers-endpoint.JPG)
 
 ### Features Left to Implement
 
