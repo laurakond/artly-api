@@ -22,7 +22,11 @@ By Laura Kondrataite
 
 ### PEP8 Linter validation
 
-[CI Python linter report](documentation/docs/ci-python-linter.pdf)
+- All files have been validated using Code Institute's [Pep8 Python linter validator service](https://pep8ci.herokuapp.com/).
+
+  - No errors were found.
+
+- See full [CI Python linter report](documentation/docs/ci-python-linter.pdf).
 
 [Return to Table of Contents](#contents)
 
@@ -73,9 +77,13 @@ By Laura Kondrataite
 
 ### Unfixed bugs
 
+No unfixed bugs were noted at the time of testing the application.
+
 [Return to Table of Contents](#contents)
 
 ### User stories testing
+
+- APi functionality is reflective of the front-end application functionality, therefore a full user testing is noted in the Artly front-end repository. You can find it [here](https://github.com/laurakond/artly/blob/main/TESTING.md#user-stories-testing).
 
 [Return to Table of Contents](#contents)
 
@@ -97,11 +105,10 @@ The application was tested during the development and post-development stages. I
 
 - Automated testing has been implemented for the following:
 
-  - Tutorial, TutorialDate and Booking models
-  - Tutorial detail template
-  - Booking form
+  - Artwork model
+  - Bid model
 
-  ![automated testing](documentation/validation/automated-testing.jpg)
+  ![automated testing]()
 
 [Return to Table of Contents](#contents)
 
