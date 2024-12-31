@@ -45,7 +45,6 @@ Live site can be found [here](https://artly-a211b809ae81.herokuapp.com/).
 
 [Credits](#credits)
 
-- [Content](#content)
 - [Used code](#used-code)
 - [General resources](#general-resources)
 - [Acknowledgments](#acknowledgments)
@@ -100,15 +99,20 @@ I used [Lucidchart](https://lucid.app/) for creating the ERD for the models.
 
   ![ERD image](documentation/images/features/artly-api-erd.jpg)
 
+**To note:** the Contact model shown in the diagram is a future feature, which is covered in more detail in the [features left to implement](#features-left-to-implement) section.
+
 ## Agile Methodology
 
 ### GitHub Project Management
 
-[GitHub Project board]()
+![GitHub Project board](documentation/images/features/project-board-pp5.jpg)
 
 The project was completed using Agile methodology. I have used one Project board for both the API and Front-end repositories in order to keep track of the progress, sometimes revising estimated dates and tasks that were needed to be done by a certain point.
 
 The link to the project board can be found [here](https://github.com/users/laurakond/projects/14).
+
+- I chose the "trafic-light" color scheme for the MoSCoW method in order to indicate which tasks were a priority (green must-haves) and which ones were not(red won't-haves) for my project board.
+  - This provided clarity and better understanding for myself as I was a sole project contributor.
 
 I used the same Milestones, Epics and labels within the API and Front-end repositories to help organise front-end and back-end user stories. This allowed me to keep track of the progress and ensure that the project MVP was completed in time.
 
@@ -157,13 +161,9 @@ MoSCoW methodology was used to map out which features were required for the MVP,
   - Perform automated and manual tests for back-end.
   - Record back-end bugs.
 - **Milestone 10:** Back-end Readme & Testing files
+
   - Validate each back-end page and app.
   - Document the progress in the README and TESTING.md files
-
-![GitHub Project Management](documentation/images/features/project-board-pp5.jpg)
-
-- I chose the "trafic-light" color scheme for the MoSCoW method in order to indicate which tasks were a priority (green must-haves) and which ones were not(red won't-haves) for my project board.
-  - This provided clarity and better understanding for myself as I was a sole project contributor.
 
 [Return to Table of Contents](#table-of-contents)
 
@@ -177,22 +177,29 @@ MoSCoW methodology was used to map out which features were required for the MVP,
 
 - Upon loading the Artly api, a welcome screen displays.
 
-#### Artworks
+#### Essential MVP features
 
-- This is the main feature of the website, which allows the users to create an artwork and display it in a list. The artwork has a full CRUD functionality.
-- Once the user is logged in, a form for creating an artwork instance becomes visible to the user.
+**Artworks**
 
+![artworks endpoint](documentation/images/features/artwork-endpoint.jpg)
+
+- This is the main feature of the website with full CRUD functionality.
+- It allows the users to create an artwork and display it in a list. Without it, the website would not have a purpose.
+
+**Artwork list view**
+
+- Once the user is logged in, they are presented with a form for creating an artwork instance.
+
+  - field input validation is implemented to ensure that the user presents all the required information.
   - upon submission of the form, the artwork(s) are dislayed in a list.
+
+    ![artworks form]()
 
     ![artworks api list]()
 
-- To access the list of artworks in the api follow this link: https://artly-api-a39d790259f4.herokuapp.com/artworks/
+- The list of artworks api link: https://artly-api-a39d790259f4.herokuapp.com/artworks/
 
-- The image displays the end points for the Artwork model.
-
-  ![artworks endpoint](documentation/images/features/artwork-endpoint.jpg)
-
-- Additional fields have been included to display information relevant to the artwork:
+- Additional fields have been included in the serializers to display additional information relevant to the artwork:
 
   - **is_owner**: shows a boolean value determining if the logged in user is the owner of the artwork or not
   - **owner_id**: shows the artwork's owner's id
@@ -232,42 +239,37 @@ MoSCoW methodology was used to map out which features were required for the MVP,
     - owner followed owner profile
     - saves owner profile
 
+  **Artwork detail view**
+
 - Once the user has created an artwork, they can then access the detailed view (individual artwork instances).
 - The user is then presented with the artwork edit form with prepopulated artwork information. The user can choose to change any of the fields and submit the form.
 
 - A detailed view of the artwork is accessible by adding an id to artwork list url: https://artly-api-a39d790259f4.herokuapp.com/artworks/**<id_number>**
-  - the user can delete it's own artwork once inside the detailed view.
+  - the user can delete their own artwork once inside the detailed view.
 
 ![artworks detailed api view]()
 
-#### Bids
+**Bids**
 
-- This is the second main feature of the website, which allows the users to create bid for an artwork instance and display the bid in a list of bids (similarly to artwork list).
+![bids endpoint](documentation/images/features/bids-endpoint.jpg)
 
-  ![bids api list]()
+- This is the second main feature of the website, which allows the users to create bid for an artwork instance and display the bid in a list of bids (similarly to the artwork list).
+- Between two different types of users: the seller and the buyer, the Bid model has a full CRUD functionality.
 
-  - The bid also registers as a count within the artwork model.
-  - The bid has a partial CRUD funtionality: create and edit.
+**Bids list view**
 
-- Once the user is logged in, a form for creating a bid is displayed to the user. They can choose from existing artworks and submit the form with offered price and contact details.
+- Once the user is logged in, they are presented with a form for creating a bid for their chosen artwork instance with a bid price and their email address.
 
-  - The bid acceptance validation criteria has been implemented to ensure that the bid submission adheres to appropriate functionality standards. If not, appropriate validation errors are thrown to inform the user:
-
-    - the seller cannot bid on their own artworks.
-
-      Error thrown: `"You cannot bid on your own artwork."`
-
-    - the buyer cannot access bid edit functionality.
-
-      Error thrown: `"You don't have access to modify this bid."`
-
-    - the bid value can only be above 0.
-
-      Error thrown: `"Invalid input. Please enter values above 0."`
-
-  - Upon submission the bid(s) are displayed in a list.
+  - field input validation is implemented to ensure that the user presents all the required information.
+    - the bid value can only be above 0. If the user enters 0 or a negative value the following error is displayed: `"Invalid input. Please enter values above 0."`
+  - upon submission of the form, the bid(s) are dislayed in a list.
+  - it also automatically updates the bids count field in the artwork model.
 
 - To access the list of bids in the api follow this link: https://artly-api-a39d790259f4.herokuapp.com/bids/
+
+  ![bids form]()
+
+  ![bids api list]()
 
 - DRF filtering has been applied so that the user can search for relevant bids based on their chosen criteria:
 
@@ -285,39 +287,56 @@ MoSCoW methodology was used to map out which features were required for the MVP,
     - updated at
 
   - Filterset fields:
+
     - bid price
     - artwork
 
-- A detailed view of the bid is accessible by adding an id to the bid list url: https://artly-api-a39d790259f4.herokuapp.com/bids/**<id_number>**
+- Since the bid model has two different users, the seller and the buyer, the model incorporates buyer and seller specific error validations.
 
-  - The access to the individual bid is only allowed for the artwork owner, i.e. the seller.
+  - If the seller attempts to create a bit for their own artwork, they receive the following error: `"You cannot bid on your own artwork."`
 
-  ![bids detailed api view]()
+**Bid Detail view**
 
-- Upon accessing the individual bid instance, the user is shown the bid edit form which provides a drop down list to update the status to:
+- The bid model required more specific validation error handling due to different _Update_ and _Delete_ functionalities for the seller and the buyer users. Below are the validation errors based on different scenarios:
+
+  **Seller Put method**
+
+  Once a bid by the buyer is submitted, the seller can then update the bid status. The bid edit form which provides a drop down list to update the status to:
 
   - accepted
   - rejected
   - mark as sold
 
-- Upon marking the artwork as sold, the sold field within the artwork model updates to "true" indicating that the artwork is no longer available.
+  ![seller bid detail form]()
 
-  - Upon the acceptance of the bid and artwork sold status changes, the following message is displayed: `"Bid accepted and the artwork is no longer available."`
-  - If the buyer attempts to submit a bid for already sold artwork, the following messsage is displayed: `"Artwork is no longer available for purchase."`
+  - if the buyer attempts to update the bid status, they are thrown the following error: `"Only the seller can modify this bid."`
 
-- The image displays the end points for the Bid model.
+  - Upon marking the artwork as sold, the sold field within the artwork model updates to "true" indicating that the artwork is no longer available. The following confirmation message appears: `"Bid accepted and the artwork is no longer available."`
 
-  ![bids endpoint](documentation/images/features/bids-endpoint.jpg)
+    - The following message is displayed when the bid is accepted and the artwork sold status changes: `"Bid accepted and the artwork is no longer available."`
+    - If the buyer attempts to submit a bid for an already sold artwork, the following messsage is displayed: `"Artwork is no longer available for purchase."`
 
-#### Profiles
+  **Buyer Destroy/Delete method**
+
+  The buyer can choose to delete their submitted bid if they change their mind.
+
+  - If a seller attempts to delete the bid, the following error is thrown: `"Only the buyer can delete this bid."`
+  - Upon successfull deletion, the user receives the following message: `"Bid deleted successfully."`
+
+- A detailed view of the bid is accessible by adding an id to the bid list url: https://artly-api-a39d790259f4.herokuapp.com/bids/**<id_number>**
+
+#### Additional Features
+
+**Profiles**
+![profiles endpoint](documentation/images/features/profiles-endpoint.jpg)
 
 - This is the secondary feature to the artwork and bid, which automatically creates a profile once the user registers to the website.
-
-  - Similarly to the artwork and bid, the list of profiles is displayed upon its autpmatic creation creation.
+- Similarly to the artwork and bid models, the list of profiles is displayed upon its automatic creation.
+- The Profile model has partial CRU functionality - it does not allow the user to delete their profile.
 
   ![profiles api list]()
 
-- Additional fields have been included to display information relevant to the profile:
+- Additional fields have been included in the serializers to display information relevant to the profile:
 
   - **is_owner**: shows a boolean value determining if the logged in user is the owner of the artwork or not
   - **artwork_count**: shows the number of artworks that the owner/seller has in total
@@ -326,9 +345,9 @@ MoSCoW methodology was used to map out which features were required for the MVP,
   - **followers_count**: shows the number of other accounts that the user is followed by
   - **following_count**: shows the number of other accouns that the user follows
 
-- Upon submission the bid(s) are displayed in a list.
+**Profiles list view**
 
-- To access the list of bids in the api follow this link: https://artly-api-a39d790259f4.herokuapp.com/profiles/
+- To access the list of profiles in the api follow this link: https://artly-api-a39d790259f4.herokuapp.com/profiles/
 
 - DRF filtering has been applied so that the user can search/firter the profiles based on their chosen criteria:
 
@@ -341,69 +360,76 @@ MoSCoW methodology was used to map out which features were required for the MVP,
     - owner following created at
     - owner followed created at
 
-- A detailed view of the profiles is accessible by adding an id to the profile list url: https://artly-api-a39d790259f4.herokuapp.com/profiles/**<id_number>**
+**Profiles detail view**
+
+- A detailed view of each profile is accessible by adding an id to the profile list url: https://artly-api-a39d790259f4.herokuapp.com/profiles/**<id_number>**
 
   ![profiles detailed api view]()
 
-- Upon accessing the individual profile instance, the user is shown the profile edit form which that the user can choose to edit/populate. All of the fields are optional.
+- Upon accessing the individual profile instance, the user is shown the profile edit form that the user can choose to edit/populate. All of the fields are optional.
 
-- The image displays the end points for the Profile model.
+  ![profile edit form view]()
 
-  ![profiles endpoint](documentation/images/features/profiles-endpoint.jpg)
+**Saved artworks**
 
-#### Saved artworks
+- Similarly to the Profiles model, this is the secondary feature to the artwork and bid, which allows the user to save an artwork they liked.
+- The Save model has a partial CRD functionality - it does not allow the user to update the save, only delete it.
 
-- This is the secondary feature to the artwork and bid, which allows the user to save an artwork they liked.
+**Saved artworks list**
+
+![save endpoint](documentation/images/features/saved-endpoint.jpg)
 
 - Once the user is logged in, a save form is displayed so that the user can choose an artwork.
 
-  - Similarly to the artwork and bid, the list of saved artworks is visible once the save artwork form is submitted.
+  - Similarly to the artwork and bid models, the list of saved artworks is visible once the save artwork form is submitted.
 
   ![saved artworks api list]()
 
 - To access the list of saved artworks in the api follow this link: https://artly-api-a39d790259f4.herokuapp.com/saved/
 
-- The save functionality is set up so that the user cannot save the same artworm more than once. If the user attempts that, a validation message appears: `'possible dupblicate'`.
+- The save functionality is set up so that the user cannot save the same artwork more than once. If the user attempts that, a validation message `'possible dupblicate'` is thrown.
+
+**Saved artwork detail view**
 
 - A detailed view of the saved instance is accessible by adding an id to the saved list url: https://artly-api-a39d790259f4.herokuapp.com/saved/**<id_number>**
 
-  - once inside the detailed view, the user can delete/remove the saved artwork record similarly to the artwork detail view.
+  - Once inside the detailed view, the user can delete/remove the saved artwork record similarly to the artwork detail view.
 
   ![saved detailed api view]()
 
-- Upon accessing the individual profile instance, the user is shown teh following fields:
+- Upon accessing the individual saved artwork instance, the user is shown the following fields:
 
   - saved artwork instance id
   - owner
   - created at
   - artwork id
 
-- The image displays the end points for the Save model.
+**Following users**
 
-  ![save endpoint](documentation/images/features/saved-endpoint.jpg)
+![followers](documentation/images/features/followers-endpoint.jpg)
 
-#### Following users
+- Similarly to the Profiles model, this is the secondary feature to the artwork and bid models, which allows the user to follow other users and be followed by others.
+- The Followers model has a partial CRD functionality - it does not allow the user to update the save, only delete it.
 
-- This is the secondary feature to the artwork and bid, which allows the user to follow other users and be followed by others.
+**Followers list view**
 
 - Once the user is logged in, a form displaying a drop down list with another user's account as a choice is displayed.
 
-- Additional field has been included to display information relevant to the user:
+- Additional field has been included in the serializers to display information relevant to the user:
 
-  - **followed \_name**: shows a user's name who is following currently logged in user.
+  - **followed_name**: shows a user's name who is following currently logged in user.
 
-- The followers functionality is set up so that the user cannot follow the same user more than once. If the user attempts that, a validation message appears: `'possible dupblicate'`.
+- The followers functionality is set up so that the user cannot follow the same user more than once. If the user attempts that, a validation message `'possible dupblicate'` appears.
 
 - To access the list of followers in the api follow this link: https://artly-api-a39d790259f4.herokuapp.com/followers/
 
+**Followers detailed view**
+
 - A detailed view of the followers instance is accessible by adding an id to the saved list url: https://artly-api-a39d790259f4.herokuapp.com/followers/**<id_number>**
 
-  - once inside the detailed view, the user can delete/remove the following record similarly to the artwork detail view.
+  - Once inside the detailed view, the user can delete/remove the following record similarly to the artwork detail view.
 
   ![followers detailed api view]()
-
-- The image displays the end points for the followers model.
-  ![followers](documentation/images/features/followers-endpoint.JPG)
 
 ### Features Left to Implement
 
@@ -433,6 +459,15 @@ MoSCoW methodology was used to map out which features were required for the MVP,
 
         return response
     ```
+
+**Contact model**
+
+- As noted in the ERD, the Contact model will be implemented at the next development stage. This will allow the user to submit any website performance issues to the administration.
+
+**In house messaging system**
+
+- Implement an in house messaging system in order to enable the sellers and buyers to communicate between themselves within the same platform.
+  - This is likely to change the current mailto functionality. In it's place, however, a notification system informing the buyers that their bid has been successful will be implemented. This will allow seemless communication and ensure that the users are being kept up to date when there are any changes.
 
 [Return to Table of Contents](#table-of-contents)
 
@@ -561,13 +596,10 @@ To deploy to Heroku, follow the steps below.
 
 ## Credits
 
-### Content
-
 ### Used code
 
-- Bid model status field logic
-  - I was struggling to understand how to approach the logic for my bid model status field. I was able to find a solution after speaking to a mentor, reading a couple of articles, DRF documentation.
-  - I also referred to AsiaWi's [Snap it up](https://github.com/AsiaWi/snap-it-up-backend/blob/main/offers/views.py) snippet of code to help me write the logic and functionality for my Bid views.
+- Bid model status field logic (put method)
+  - I referred to DRF documentation and a fellow student's project in order to implement the bid status functionality. The code used from the project is AsiaWi's [Snap it up](https://github.com/AsiaWi/snap-it-up-backend/blob/main/offers/views.py).
     - other resources are noted in the general resources section.
 
 ### General resources:
@@ -635,7 +667,7 @@ My thanks go to:
 
 ### References
 
-- I used Code Institute's DRF API [project](https://github.com/Code-Institute-Solutions/drf-api/tree/ed54af9450e64d71bc4ecf16af0c35d00829a106) as a base for my own.
+- I used Code Institute's DRF API [project](https://github.com/Code-Institute-Solutions/drf-api/tree/ed54af9450e64d71bc4ecf16af0c35d00829a106) as a base for my Artly api project.
 - As noted in the [used code](#used-code) section, I have referred to AsiaWi's [Snap it up](https://github.com/AsiaWi/snap-it-up-backend) project.
 
 [Return to Table of Contents](#table-of-contents)
