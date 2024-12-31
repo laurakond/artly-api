@@ -45,8 +45,9 @@ By Laura Kondrataite
 ![attribute error](documentation/images/errors/attribute-error-bids.png)
 
 - I received this error when I tried to initially access the detail view for the bid. - To resolve it, I created a new permission rule _IsSellerOrReadOnly_ so that the seller would be able to access the edit view in order to manage the state of the bid.
+  - **Note:** the _IsSellerOrReadOnly_ rule has been removed after this error was noted down. I managed to fix the error without having to rely on this rule.
 
-**testing BidListview**
+**Testing BidListview**
 
 - I was struggling to get the bid count calculate correctly in the test even though the response.data was printing correct count. After a lot of searching I found this [thread](https://stackoverflow.com/questions/52827996/how-do-i-test-the-foreign-key-object-on-django-model/52828084) on Stackoverflow that helped me to figure out how to target values in the the post response:
 
@@ -56,19 +57,19 @@ By Laura Kondrataite
     'artwork': self.artwork.id,
     ```
 
-**incorrect bid value input instance**
+**Incorrect bid value input instance**
 
 - when writing code for validating incorrect bid_price value, I noticed that the bid would be created regardless if it was ≤0. I realised this was because the logic statement to validate the user input was written after the new data has been saved and serialized: instance = serializer.save(buyer=self.request.user)
   - Once I moved the logic above this line, the bid instances were not being saved if the input was ≤0.
 - This seems to have resolved automated testing issues that I had when trying to write a test for validating incorrect bid input.
 
-**filtering by artwork id**
+**Filtering by artwork id**
 
 - When testing the bid input functionality on the front end, I received the following error a couple of times:
 
   ![unique key error](documentation/images/errors/unique-key-error.png)
 
-**fetching sold artwork count**
+**Fetching sold artwork count**
 
 - I was having problems targetting sold_artwork_count for the Profile views.
   - I managed to resolve this by looking at a similar code provided by Code Institute's DRF api walkthrough and also referring to Django documentation on:
@@ -83,7 +84,7 @@ No unfixed bugs were noted at the time of testing the application.
 
 ### User stories testing
 
-- APi functionality is reflective of the front-end application functionality, therefore a full user testing is noted in the Artly front-end repository. You can find it [here](https://github.com/laurakond/artly/blob/main/TESTING.md#user-stories-testing).
+- APi functionality is reflective of the front-end application functionality, therefore full user testing is covered in the Artly front-end repository. You can find it [here](https://github.com/laurakond/artly/blob/main/TESTING.md#user-stories-testing).
 
 [Return to Table of Contents](#contents)
 
@@ -94,10 +95,6 @@ The application was tested during the development and post-development stages. I
 [Return to Table of Contents](#contents)
 
 ### Manual testing
-
-[Return to Table of Contents](#contents)
-
-### Restricted access testing
 
 [Return to Table of Contents](#contents)
 
