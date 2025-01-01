@@ -69,12 +69,22 @@ By Laura Kondrataite
 
   ![unique key error](documentation/images/errors/unique-key-error.png)
 
+  - Upon further investigation I noticed that the bids created for one artwork where being displayed in all artwork pages regardless of their id.
+  - I realised that the error was occuring because the filter settings for the bids in the back-end were not set up to filter by artwork id.
+  - I managed to get this resolved by updating the filter settings, and after running a test on the front end it seems to have fixed the issue.
+
 **Fetching sold artwork count**
 
 - I was having problems targetting sold_artwork_count for the Profile views.
   - I managed to resolve this by looking at a similar code provided by Code Institute's DRF api walkthrough and also referring to Django documentation on:
     - [Conditional aggregation](https://docs.djangoproject.com/en/5.1/ref/models/conditional-expressions/#conditional-aggregation)
     - [Filtering on annotations](https://docs.djangoproject.com/en/5.1/topics/db/aggregation/#following-relationships-backwards)
+
+**Artist name field in Artwork model**
+
+- I noticed that if the user chose to leave the artist name field blank, the field was not populating preset default name as `"unknown artist"`.
+  - This seems to have been caused by the blank=True attribute within the field.
+  - The issue has been fixed once I removed the blank=True from the artist name field.
 
 ### Unfixed bugs
 
