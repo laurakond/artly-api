@@ -38,8 +38,7 @@ class Artwork(models.Model):
     artwork_title = models.CharField(max_length=150, blank=False)
     artist_name = models.CharField(
         max_length=250,
-        blank=True,
-        default='Unknown'
+        default='Unknown artist'
     )
     description = models.TextField(blank=False)
     style = models.CharField(
@@ -67,12 +66,6 @@ class Artwork(models.Model):
         upload_to='images/',
         default='../default_artwork_vrmnym',
         blank=True
-    )
-    alt_text = models.CharField(
-        max_length=100,
-        unique=False,
-        blank=True,
-        default='Artwork image'
     )
     contact = models.CharField(
         max_length=100,

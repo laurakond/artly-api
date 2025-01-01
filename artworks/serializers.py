@@ -54,6 +54,6 @@ class ArtworkSerializer(serializers.ModelSerializer):
         fields = [
             'id', 'owner', 'owner_id', 'is_owner', 'artwork_title',
             'artist_name', 'description', 'style', 'type', 'payment_method',
-            'price', 'image', 'alt_text', 'contact', 'location', 'created_at',
+            'price', 'image', 'contact', 'location', 'created_at',
             'updated_at', 'bids_count', 'save_id', 'saved_count', 'sold'
         ]
