@@ -16,6 +16,8 @@ class ArtworkSerializer(serializers.ModelSerializer):
     bids_count = serializers.ReadOnlyField()
     save_id = serializers.SerializerMethodField()
     saved_count = serializers.ReadOnlyField()
+    profile_id = serializers.ReadOnlyField(source='owner.profile.id')
+    profile_image = serializers.ReadOnlyField(source='owner.profile.images.url')
 
     def validate_image(self, value):
         """
@@ -55,5 +57,5 @@ class ArtworkSerializer(serializers.ModelSerializer):
             'id', 'owner', 'owner_id', 'is_owner', 'artwork_title',
             'artist_name', 'description', 'style', 'type', 'payment_method',
             'price', 'image', 'contact', 'location', 'created_at',
-            'updated_at', 'bids_count', 'save_id', 'saved_count', 'sold'
+            'updated_at', 'bids_count', 'save_id', 'saved_count', 'profile_id', 'profile_image', 'sold'
         ]
