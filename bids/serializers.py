@@ -12,9 +12,9 @@ class BidSerializer(serializers.ModelSerializer):
     buyer = serializers.ReadOnlyField(source='buyer.username')
     seller = serializers.SerializerMethodField()
     status = serializers.ReadOnlyField()
-    profile_id = serializers.ReadOnlyField(source='owner.profile.id')
+    profile_id = serializers.ReadOnlyField(source='buyer.profile.id')
     profile_image = serializers.ReadOnlyField(
-        source='owner.profile.profile_image.url'
+        source='buyer.profile.profile_image.url'
     )
     created_at = serializers.SerializerMethodField()
     updated_at = serializers.SerializerMethodField()
