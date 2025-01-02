@@ -5,7 +5,7 @@ from rest_framework import serializers
 # This code was appropriated from Code Institute's DRF_API walkthrough project.
 class CurrentUserSerializer(UserDetailsSerializer):
     profile_id = serializers.ReadOnlyField(source='profile.id')
-    profile_image = serializers.ReadOnlyField(source='profile.images.url')
+    profile_image = serializers.ReadOnlyField(source='profile.image.url')
 
     class Meta(UserDetailsSerializer.Meta):
         fields = UserDetailsSerializer.Meta.fields + (
