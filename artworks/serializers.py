@@ -17,7 +17,9 @@ class ArtworkSerializer(serializers.ModelSerializer):
     save_id = serializers.SerializerMethodField()
     saved_count = serializers.ReadOnlyField()
     profile_id = serializers.ReadOnlyField(source='owner.profile.id')
-    profile_image = serializers.ReadOnlyField(source='owner.profile.profile_image.url')
+    profile_image = serializers.ReadOnlyField(
+        source='owner.profile.profile_image.url'
+    )
 
     def validate_image(self, value):
         """
