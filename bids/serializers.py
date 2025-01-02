@@ -12,6 +12,10 @@ class BidSerializer(serializers.ModelSerializer):
     buyer = serializers.ReadOnlyField(source='buyer.username')
     seller = serializers.SerializerMethodField()
     status = serializers.ReadOnlyField()
+    profile_id = serializers.ReadOnlyField(source='owner.profile.id')
+    profile_image = serializers.ReadOnlyField(
+        source='owner.profile.profile_image.url'
+    )
     created_at = serializers.SerializerMethodField()
     updated_at = serializers.SerializerMethodField()
 
@@ -35,7 +39,8 @@ class BidSerializer(serializers.ModelSerializer):
         model = Bid
         fields = [
             'id', 'buyer', 'seller', 'artwork', 'bid_price',
-            'email', 'status', 'created_at', 'updated_at'
+            'email', 'status', 'profile_id', 'profile_image', 'created_at',
+            'updated_at'
         ]
 
 
