@@ -12,7 +12,7 @@ class Profile(models.Model):
     name = models.CharField(max_length=255, blank=True)
     location = models.CharField(max_length=255, blank=True)
     profile_image = models.ImageField(
-        upload_to='images/', default='../default_profile_nbsf4p'
+        upload_to='images/', default='../user_vwophi'
     )
     styles = models.CharField(max_length=255, blank=True)
     techniques = models.TextField(blank=True)
