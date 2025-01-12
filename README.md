@@ -148,8 +148,6 @@ MoSCoW methodology was used to map out which features were required for the MVP,
 - **Milestone 4:** Authentication
   - Set up authorization for user registration.
   - Set up JWT tokens for login.
-- **Milestone 5:** Navigation
-  - Display the navbar from every page.
 - **Milestone 6**: Registration
   - Create an account
   - Log in and log out
@@ -409,7 +407,7 @@ MoSCoW methodology was used to map out which features were required for the MVP,
 ![followers](documentation/images/features/followers-endpoint.jpg)
 
 - Similarly to the Profiles model, this is the secondary feature to the artwork and bid models, which allows the user to follow other users and be followed by others.
-- The Followers model has a partial CRD functionality - it does not allow the user to update the save, only delete it.
+- The Followers model has a partial CRD functionality - it does not allow the user to update, only delete it.
 
 **Followers list view**
 
@@ -649,9 +647,14 @@ To deploy to Heroku, follow the steps below.
   - [DRF serialization](https://medium.com/django-unleashed/django-rest-framework-serialization-deeper-look-part-1-cf40108f9deb)
 
 - This code (PUT) was really relevant to the code for **bid**: [](https://cheat.readthedocs.io/en/latest/django/drf_serializers.html)
+
   - [Partial serializer updates](https://www.django-rest-framework.org/api-guide/serializers/#partial-updates)
   - [Stackoverflow - How do I validate input in DRF before creation](https://stackoverflow.com/questions/68514309/how-do-i-validate-input-in-django-rest-framework-before-creation)
   - [Stackoverflow - calidate specific field in drf serializer](https://stackoverflow.com/questions/46173838/validate-specific-field-in-drf-serializer)
+
+- Destroy method:
+  - [StackOverflow - How would I override the perform destroy method](https://stackoverflow.com/questions/32513388/how-would-i-override-the-perform-destroy-method-in-django-rest-framework)
+  - Youtube tutorial [Code environment - override delete action](https://www.youtube.com/watch?v=Hi3TA2pGv7Y)
 
 ### Acknowledgments
 
