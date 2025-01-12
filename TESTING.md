@@ -112,10 +112,24 @@ The application was tested during the development and post-development stages. I
 
 - Automated testing has been implemented for the following:
 
-  - Artwork model
-  - Bid model
+  - Artwork model:
 
-  ![automated testing]()
+    - logged in user can create an artwork
+    - user can list the artworks in a list
+    - unauthorised user can't create an artwork
+    - retrieve an artwork by id
+    - can't retrieve an artwork by id
+    - logged in user can update their artwork instance
+    - logged in user can't update not their artwork instance
+
+  - Bid model:
+    - List of bids is shown
+    - logged in user can create a bid with correct value
+    - logged out user can't create a bid
+    - logged in user can't submit the value of 0
+    - logged in user can't submit a negative value
+
+  ![automated testing](documentation/images/features/python-auto-test.jpg)
 
 [Return to Table of Contents](#contents)
 
