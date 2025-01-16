@@ -171,20 +171,25 @@ MoSCoW methodology was used to map out which features were required for the MVP,
 
 ### Existing Features
 
+**To note:**
+
+- Feature screenshots for creating instances, i.e. creating an artwork, bid, and filtering, have been supplied from the local api server.
+- Feature screenshots displaying the list or detail view have been supplied from the deployed api server.
+
 **Home page**
 
 ![welcome page](documentation/images/features/artly-api-welcome-page.jpg)
 
 - Upon loading the Artly api, a welcome screen displays.
 
-**Artworks**
+#### Artworks
 
 ![artworks endpoint](documentation/images/features/artwork-endpoint.jpg)
 
 - This is the main feature of the website with full CRUD functionality.
 - It allows the users to create an artwork and display it in a list. Without it, the website would not have a purpose.
 
-#### Artwork model
+**Artwork model**
 
 ```python
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -237,12 +242,30 @@ MoSCoW methodology was used to map out which features were required for the MVP,
 
 - Once the user is logged in, they are presented with a form for creating an artwork instance.
 
-  - field input validation is implemented to ensure that the user presents all the required information.
-  - upon submission of the form, the artwork(s) are dislayed in a list.
+  - Field input validation is implemented to ensure that the user presents all the required information.
 
-    ![artworks form]()
+  - Additional image field validation has been applied. The following messages will appear if the image exceeds requirements:
 
-    ![artworks api list]()
+    ```python
+    if value.size > 1024 * 1024 * 2:
+      raise serializers.ValidationError(
+        'Image larger than 2MB.'
+      )
+    if value.image.width > 4096:
+      raise serializers.ValidationError(
+        'Image width larger than 4096px.'
+      )
+    if value.image.height > 4096:
+      raise serializers.ValidationError(
+        'Image height larger than 4096px.'
+      )
+    ```
+
+  - Upon submission of the form, the artwork(s) are dislayed in a list.
+
+    ![artworks form](documentation/images/features/create-artwork.jpg)
+
+    ![artworks api list](documentation/images/features/artwork-api-list.jpg)
 
 - The list of artworks api link: https://artly-api-a39d790259f4.herokuapp.com/artworks/
 
@@ -292,31 +315,65 @@ MoSCoW methodology was used to map out which features were required for the MVP,
 - The user is then presented with the artwork edit form with prepopulated artwork information. The user can choose to change any of the fields and submit the form.
 
 - A detailed view of the artwork is accessible by adding an id to artwork list url: https://artly-api-a39d790259f4.herokuapp.com/artworks/**<id_number>**
+
   - the user can delete their own artwork once inside the detailed view.
 
-![artworks detailed api view]()
+  ![artworks detailed api view](documentation/images/features/artwork-detail-view.jpg)
 
 #### Bids
 
 ![bids endpoint](documentation/images/features/bids-endpoint.jpg)
 
-- This is the second main feature of the website, which allows the users to create bid for an artwork instance and display the bid in a list of bids (similarly to the artwork list).
+- This is the second main feature of the website, which allows the users to create a bid for an artwork instance and display it in a list (similarly to the artwork list).
 - Between two different types of users: the seller and the buyer, the Bid model has a full CRUD functionality.
+
+**Bids model**
+
+```python
+buyer = models.ForeignKey(
+    User,
+    on_delete=models.CASCADE,
+    related_name='buyer'
+)
+seller = models.ForeignKey(
+  User,
+  on_delete=models.CASCADE,
+  related_name='seller'
+)
+artwork = models.ForeignKey(
+  Artwork,
+  on_delete=models.CASCADE,
+  related_name='bids'
+)
+bid_price = models.DecimalField(
+  max_digits=10,
+  decimal_places=2,
+  blank=False
+)
+email = models.EmailField(blank=False)
+status = models.CharField(
+  max_length=50,
+  choices=STATUS,
+  default='Pending'
+)
+created_at = models.DateTimeField(auto_now_add=True)
+updated_at = models.DateTimeField(auto_now=True)
+```
 
 **Bids list view**
 
 - Once the user is logged in, they are presented with a form for creating a bid for their chosen artwork instance with a bid price and their email address.
 
-  - field input validation is implemented to ensure that the user presents all the required information.
-    - the bid value can only be above 0. If the user enters 0 or a negative value the following error is displayed: `"Invalid input. Please enter values above 0."`
-  - upon submission of the form, the bid(s) are dislayed in a list.
-  - it also automatically updates the bids count field in the artwork model.
+  - Field input validation is implemented to ensure that the user presents all the required information.
+    - The bid value can only be above 0. If the user enters 0 or a negative value the following error is displayed: `"Invalid input. Please enter values above 0."`
+  - Upon submission of the form, the bid(s) are dislayed in a list.
+  - It also automatically updates the bids_count field in the artwork model.
 
 - To access the list of bids in the api follow this link: https://artly-api-a39d790259f4.herokuapp.com/bids/
 
-  ![bids form]()
+  ![bids form](documentation/images/features/bid-create-form.jpg)
 
-  ![bids api list]()
+  ![bids api list](documentation/images/features/bid-list-view.jpg)
 
 - DRF filtering has been applied so that the user can search for relevant bids based on their chosen criteria:
 
@@ -354,9 +411,9 @@ MoSCoW methodology was used to map out which features were required for the MVP,
   - rejected
   - mark as sold
 
-  ![seller bid detail form]()
+  ![seller bid detail form](documentation/images/features/bid-seller-form.jpg)
 
-  - if the buyer attempts to update the bid status, they are thrown the following error: `"Only the seller can modify this bid."`
+  - If the buyer attempts to update the bid status, they are thrown the following error: `"Only the seller can modify this bid."`
 
   - Upon marking the artwork as sold, the sold field within the artwork model updates to "true" indicating that the artwork is no longer available. The following confirmation message appears: `"Bid accepted and the artwork is no longer available."`
 
@@ -385,7 +442,27 @@ MoSCoW methodology was used to map out which features were required for the MVP,
   - the user is able to customise their profile by providing their styles, techniques, collaborations, influences and portfolio urls.
     -A more detailed overview of the profile model/feature is given in the Front end [Artly repository](https://github.com/laurakond/artly?tab=readme-ov-file#features).
 
-  ![profiles api list]()
+**Profiles model**
+
+```python
+owner = models.OneToOneField(User, on_delete=models.CASCADE)
+name = models.CharField(max_length=255, blank=True)
+location = models.CharField(max_length=255, blank=True)
+profile_image = models.ImageField(
+    upload_to='images/', default='../user_vwophi'
+)
+styles = models.CharField(max_length=255, blank=True)
+techniques = models.TextField(blank=True)
+influences = models.TextField(blank=True)
+collaborations = models.TextField(blank=True)
+portfolio_url = models.URLField(blank=True)
+created_at = models.DateTimeField(auto_now_add=True)
+updated_at = models.DateTimeField(auto_now=True)
+```
+
+**Profiles list view**
+
+![profiles api list](documentation/images/features/profile-list-view.jpg)
 
 - Additional fields have been included in the serializers to display information relevant to the profile:
 
@@ -395,8 +472,6 @@ MoSCoW methodology was used to map out which features were required for the MVP,
   - **following_id**: shows the user's id as a follower
   - **followers_count**: shows the number of other accounts that the user is followed by
   - **following_count**: shows the number of other accouns that the user follows
-
-**Profiles list view**
 
 - To access the list of profiles in the api follow this link: https://artly-api-a39d790259f4.herokuapp.com/profiles/
 
@@ -415,26 +490,37 @@ MoSCoW methodology was used to map out which features were required for the MVP,
 
 - A detailed view of each profile is accessible by adding an id to the profile list url: https://artly-api-a39d790259f4.herokuapp.com/profiles/**<id_number>**
 
-  ![profiles detailed api view]()
+  ![profiles detailed api view](documentation/images/features/profile-detail-view.jpg)
 
 - Upon accessing the individual profile instance, the user is shown the profile edit form that the user can choose to edit/populate. All of the fields are optional.
 
-  ![profile edit form view]()
+  ![profile edit form view](documentation/images/features/profile-edit-form.jpg)
 
 #### Saved artworks
+
+![save endpoint](documentation/images/features/saved-endpoint.jpg)
 
 - Similarly to the Profiles model, this is the secondary feature to the artwork and bid, which allows the user to save an artwork they liked.
 - The Save model has a partial CRD functionality - it does not allow the user to update the save, only delete it.
 
+**Saved model**
+
+```python
+owner = models.ForeignKey(User, on_delete=models.CASCADE)
+artwork = models.ForeignKey(
+    Artwork, related_name='saves', on_delete=models.CASCADE
+)
+created_at = models.DateTimeField(auto_now_add=True)
+```
+
 **Saved artworks list**
 
-![save endpoint](documentation/images/features/saved-endpoint.jpg)
-
 - Once the user is logged in, a save form is displayed so that the user can choose an artwork.
+  ![saved form](documentation/images/features/saved-form.jpg)
 
   - Similarly to the artwork and bid models, the list of saved artworks is visible once the save artwork form is submitted.
 
-  ![saved artworks api list]()
+    ![saved artworks api list](documentation/images/features/saved-list-view.jpg)
 
 - To access the list of saved artworks in the api follow this link: https://artly-api-a39d790259f4.herokuapp.com/saved/
 
@@ -446,7 +532,7 @@ MoSCoW methodology was used to map out which features were required for the MVP,
 
   - Once inside the detailed view, the user can delete/remove the saved artwork record similarly to the artwork detail view.
 
-  ![saved detailed api view]()
+  ![saved detailed api view](documentation/images/features/saved-detail-view.jpg)
 
 - Upon accessing the individual saved artwork instance, the user is shown the following fields:
 
@@ -462,9 +548,24 @@ MoSCoW methodology was used to map out which features were required for the MVP,
 - Similarly to the Profiles model, this is the secondary feature to the artwork and bid models, which allows the user to follow other users and be followed by others.
 - The Followers model has a partial CRD functionality - it does not allow the user to update, only delete it.
 
+**Followers model**
+
+```python
+owner = models.ForeignKey(
+    User, related_name='following', on_delete=models.CASCADE
+)
+followed = models.ForeignKey(
+    User, related_name='followed', on_delete=models.CASCADE
+)
+created_at = models.DateTimeField(auto_now_add=True)
+```
+
 **Followers list view**
 
+![followers list view](documentation/images/features/followers-list-view.jpg)
+
 - Once the user is logged in, a form displaying a drop down list with another user's account as a choice is displayed.
+  ![followers form](documentation/images/features/followers-form.jpg)
 
 - Additional field has been included in the serializers to display information relevant to the user:
 
@@ -480,7 +581,9 @@ MoSCoW methodology was used to map out which features were required for the MVP,
 
   - Once inside the detailed view, the user can delete/remove the following record similarly to the artwork detail view.
 
-  ![followers detailed api view]()
+- Followers detail view:
+
+  ![followers detailed api view](documentation/images/features/followers-detail-view.jpg)
 
 ### Features Left to Implement
 
@@ -493,22 +596,22 @@ MoSCoW methodology was used to map out which features were required for the MVP,
     ```python
     # Evaluate if the bid offer is lower that the asking price and send
     # appropriate response/update status
-      if bid_price < artwork.price:
-        instance.status = "Rejected"
-        instance.save()
+    if bid_price < artwork.price:
+      instance.status = "Rejected"
+      instance.save()
 
-      if bid_price <= 0:
-        raise ValidationError("you can only input values above 0.")
+    if bid_price <= 0:
+      raise ValidationError("you can only input values above 0.")
 
-      def create(self, request, *args, **kwargs):
-        response = super().create(request, *args, **kwargs)
-        if response.data.get('status') == "Rejected":
-          return Response(
-            {"bid_price": "The bid is lower than the asking price."},
-            status=status.HTTP_202_ACCEPTED
-          )
+    def create(self, request, *args, **kwargs):
+      response = super().create(request, *args, **kwargs)
+      if response.data.get('status') == "Rejected":
+        return Response(
+          {"bid_price": "The bid is lower than the asking price."},
+          status=status.HTTP_202_ACCEPTED
+        )
 
-        return response
+      return response
     ```
 
 **Contact model**
