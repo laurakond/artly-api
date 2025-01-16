@@ -94,7 +94,7 @@ No unfixed bugs were noted at the time of testing the application.
 
 ### User stories testing
 
-- APi functionality is reflective of the front-end application functionality, therefore full user testing is covered in the Artly front-end repository. You can find it [here](https://github.com/laurakond/artly/blob/main/TESTING.md#user-stories-testing).
+- API functionality is reflective of the front-end application functionality, therefore full user stories testing is covered in the Artly front-end repository. You can find it [here](https://github.com/laurakond/artly/blob/main/TESTING.md#user-stories-testing).
 
 [Return to Table of Contents](#contents)
 
