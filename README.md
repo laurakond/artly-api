@@ -60,14 +60,14 @@ Live site can be found [here](https://artly-a211b809ae81.herokuapp.com/).
 The primary target audience for the website is:
 
 - persons of any gender aged 16+ who enjoy art,
-- artists who wishes to share their work,
+- artists who wish to share their work,
 - art connoiseurs and artists who are looking for alternative ways in buying or selling artwork.
 
-No background, geographical location or income has been specified for the target audience as this website aims to provide access to art for everyone regardless of their financial background.
+No background, geographical location or income has been specified for the target audience as this website aims to provide access to art for everyone regardless of their background.
 
 ### User Stories
 
-Artly-api part of the project the user stories focuses on the developer's point of view mainly assessing project development stages. However, they have been carried out with the MVP in mind, first focusing on the essential CRUD functionality to enable the website to work properly.
+Artly-api project's user stories focus on the developer's point of view; mainly assessing project development stages. They have been carried out with the MVP in mind, first focusing on the essential CRUD functionality to enable the website to work properly.
 
 Front-end user stories are covered in the front-end part of this project development, [Artly](https://github.com/laurakond/artly?tab=readme-ov-file#user-stories) repository.
 
@@ -99,7 +99,10 @@ I used [Lucidchart](https://lucid.app/) for creating the ERD for the models.
 
   ![ERD image](documentation/images/features/artly-api-erd.jpg)
 
-**To note:** the Contact model shown in the diagram is a future feature, which is covered in more detail in the [features left to implement](#features-left-to-implement) section.
+**To note:**
+
+- The ERD image shown above reflects initial model implementation. The final version of some of the models have been altered.
+- the Contact model shown in the diagram is a future feature, which is covered in more detail in the [features left to implement](#features-left-to-implement) section.
 
 ## Agile Methodology
 
@@ -175,14 +178,61 @@ MoSCoW methodology was used to map out which features were required for the MVP,
 
 - Upon loading the Artly api, a welcome screen displays.
 
-#### Essential MVP features
-
 **Artworks**
 
 ![artworks endpoint](documentation/images/features/artwork-endpoint.jpg)
 
 - This is the main feature of the website with full CRUD functionality.
 - It allows the users to create an artwork and display it in a list. Without it, the website would not have a purpose.
+
+#### Artwork model
+
+```python
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    artwork_title = models.CharField(max_length=150, blank=False)
+    artist_name = models.CharField(
+        max_length=250,
+        default='Unknown artist'
+    )
+    description = models.TextField(blank=False)
+    style = models.CharField(
+        max_length=150,
+        choices=STYLE,
+        default='Other'
+    )
+    type = models.CharField(
+        max_length=100,
+        choices=TYPE,
+        default='Other'
+    )
+    payment_method = models.CharField(
+        max_length=100,
+        choices=PAYMENT,
+        default='Cash'
+    )
+    price = models.DecimalField(
+        blank=False,
+        default=0.00,
+        decimal_places=2,
+        max_digits=10
+    )
+    image = models.ImageField(
+        upload_to='images/',
+        default='../default_artwork_vrmnym',
+        blank=True
+    )
+    contact = models.CharField(
+        max_length=100,
+        blank=False
+    )
+    location = models.CharField(
+        max_length=100,
+        blank=False
+    )
+    sold = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+```
 
 **Artwork list view**
 
@@ -237,7 +287,7 @@ MoSCoW methodology was used to map out which features were required for the MVP,
     - owner followed owner profile
     - saves owner profile
 
-  **Artwork detail view**
+**Artwork detail view**
 
 - Once the user has created an artwork, they can then access the detailed view (individual artwork instances).
 - The user is then presented with the artwork edit form with prepopulated artwork information. The user can choose to change any of the fields and submit the form.
@@ -247,7 +297,7 @@ MoSCoW methodology was used to map out which features were required for the MVP,
 
 ![artworks detailed api view]()
 
-**Bids**
+#### Bids
 
 ![bids endpoint](documentation/images/features/bids-endpoint.jpg)
 
@@ -323,14 +373,18 @@ MoSCoW methodology was used to map out which features were required for the MVP,
 
 - A detailed view of the bid is accessible by adding an id to the bid list url: https://artly-api-a39d790259f4.herokuapp.com/bids/**<id_number>**
 
-#### Additional Features
+#### Profiles
 
-**Profiles**
 ![profiles endpoint](documentation/images/features/profiles-endpoint.jpg)
 
 - This is the secondary feature to the artwork and bid, which automatically creates a profile once the user registers to the website.
 - Similarly to the artwork and bid models, the list of profiles is displayed upon its automatic creation.
 - The Profile model has partial CRU functionality - it does not allow the user to delete their profile.
+- The profile model was implemented with two major users in mind: the seller and the buyer. It's purpose is to allow the users to customise their profiles based on their needs.
+- At this stage of the development, the profile model caters to the seller as an artist who is interested in selling their own art.
+
+  - the user is able to customise their profile by providing their styles, techniques, collaborations, influences and portfolio urls.
+    -A more detailed overview of the profile model/feature is given in the Front end [Artly repository](https://github.com/laurakond/artly?tab=readme-ov-file#features).
 
   ![profiles api list]()
 
@@ -368,7 +422,7 @@ MoSCoW methodology was used to map out which features were required for the MVP,
 
   ![profile edit form view]()
 
-**Saved artworks**
+#### Saved artworks
 
 - Similarly to the Profiles model, this is the secondary feature to the artwork and bid, which allows the user to save an artwork they liked.
 - The Save model has a partial CRD functionality - it does not allow the user to update the save, only delete it.
@@ -402,7 +456,7 @@ MoSCoW methodology was used to map out which features were required for the MVP,
   - created at
   - artwork id
 
-**Following users**
+#### Following users
 
 ![followers](documentation/images/features/followers-endpoint.jpg)
 
@@ -466,6 +520,19 @@ MoSCoW methodology was used to map out which features were required for the MVP,
 
 - Implement an in house messaging system in order to enable the sellers and buyers to communicate between themselves within the same platform.
   - This is likely to change the current mailto functionality. In it's place, however, a notification system informing the buyers that their bid has been successful will be implemented. This will allow seemless communication and ensure that the users are being kept up to date when there are any changes.
+
+**Further development of Profile model**
+
+- As mentioned in the features section, the next development stage will look at separating the seller-artist and seller-artwork owner functionalities, with a focus on the latter's profile development.
+  - This will allow to display different information on the front end based on who the seller is.
+
+**Rating system**
+
+- Implement the rating system, which allows the buyers to leave feedback. This will allow a more transparent and honest exchange based on the user's experience.
+
+**Most popular artworks**
+
+- Implement a hit view, which would allow to calculate which artworks have been viewed the most, and utilise this feature for displaying most popular/features artworks on the front-end.
 
 [Return to Table of Contents](#table-of-contents)
 
@@ -598,7 +665,7 @@ To deploy to Heroku, follow the steps below.
 
 - Bid model status field logic (put method)
   - I referred to DRF documentation and a fellow student's project in order to implement the bid status functionality. The code used from the project is AsiaWi's [Snap it up](https://github.com/AsiaWi/snap-it-up-backend/blob/main/offers/views.py).
-    - other resources are noted in the general resources section.
+    - Other resources are noted in the general resources section.
 
 ### General resources:
 
