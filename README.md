@@ -49,7 +49,6 @@ Live site can be found [here](https://artly-a211b809ae81.herokuapp.com/).
 - [General resources](#general-resources)
 - [Acknowledgments](#acknowledgments)
 - [Code inspiration](#code-inspiration)
-- [References](#references)
 
 [Return to Table of Contents](#table-of-contents)
 
@@ -735,9 +734,7 @@ My thanks go to:
 
 ### Code Inspiration
 
-### References
-
 - I used Code Institute's DRF API [project](https://github.com/Code-Institute-Solutions/drf-api/tree/ed54af9450e64d71bc4ecf16af0c35d00829a106) as a base for my Artly api project.
-- As noted in the [used code](#used-code) section, I have referred to AsiaWi's [Snap it up](https://github.com/AsiaWi/snap-it-up-backend) project.
+- As noted in the [used code](#used-code) section, I have referred to AsiaWi's [Snap it up](https://github.com/AsiaWi/snap-it-up-backend) project for bid implementation.
 
 [Return to Table of Contents](#table-of-contents)
