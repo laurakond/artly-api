@@ -21,6 +21,8 @@ Live site can be found [here](https://artly-a211b809ae81.herokuapp.com/).
 [Agile Methodology](#agile-methodology)
 
 - [GitHub Project Management](#github-project-management)
+- [Epics](#epics)
+- [Back-end Milestones](#back-end-milestones)
 
 [Features](#features)
 
@@ -84,7 +86,7 @@ Front-end user stories are covered in the front-end part of this project develop
 | [10](https://github.com/laurakond/artly-api/issues/10) | As a developer, I can perform manual tests for back-end so that I know all functionalities of the website are working.                                       |
 | [11](https://github.com/laurakond/artly-api/issues/11) | As a developer, I can validate each page and app for back-end so that I know that the code adheres to best practices.                                        |
 | [12](https://github.com/laurakond/artly-api/issues/12) | As a developer, I can create the Artwork model for the api so that I can create functionality for storing artwork related data.                              |
-| [13](https://github.com/laurakond/artly-api/issues/13) | As a developer, I can create the Offer model for the api so that I can create functionality for storing offer related data.                                  |
+| [13](https://github.com/laurakond/artly-api/issues/13) | As a developer, I can create the Bid model for the api so that I can create functionality for storing bid related data.                                      |
 | [14](https://github.com/laurakond/artly-api/issues/14) | As a developer, I can create the Profile model for the api so that I can create functionality for storing profile related data.                              |
 | [15](https://github.com/laurakond/artly-api/issues/15) | As a developer, I can create the Save model for the api so that I can create functionality for storing save model related data.                              |
 | [16](https://github.com/laurakond/artly-api/issues/16) | As a developer, I can create the Contact model for the api so that I can create functionality for storing Contact model related data.                        |
@@ -120,7 +122,9 @@ I used the same Milestones, Epics and labels within the API and Front-end reposi
 
 MoSCoW methodology was used to map out which features were required for the MVP, and only address the others if there was sufficient time left.
 
-**Epics**
+### Epics
+
+The below list displays all the epics used throughout the project development, including the Artly api backend and frontend.
 
 - **Epic 1:** Project setup - this stage was important to kick start my work on the project, ensuring that initial workspaces were created and appropriate dependencies installed.
 - **Epic 2:** Deployment - I set out to deploy the API as soon as possible in order to test any issues that might arise.
@@ -128,7 +132,7 @@ MoSCoW methodology was used to map out which features were required for the MVP,
 - **Epic4:** User registration - this part ensured that the user can create an account and login on the front-end.
 - **Epic 5:** User navigation - this allowed the user to navigate the website seamlessly upon login/logout.
 - **Epic 6:** Artwork functionality - this feature allows the user to create an artwork listing for sale. It has the main MVP CRUD functionality.
-- **Epic 7**: Offer functionality - this feature provided an ability to leave the bid and accept/reject the bid.
+- **Epic 7**: Bid functionality - this feature provided an ability to leave the bid and accept/reject the bid.
 - **Epic 8:** Profile functionality (optional) - this feature allows the user to manage their profile.
 - **Epic 9:** Save functionality (optional) - this feature allows the user to save their favoured artwork listings.
 - **Epic 10:** Contact functionality (optional) - this feature allows the user to report any website errors to the site administration.
@@ -136,8 +140,11 @@ MoSCoW methodology was used to map out which features were required for the MVP,
 - **Epic 12:** Documentation - documentation was a crutial part of the project work which allowed me to document the progress and resources used for the develpment of the work.
 - **Epic 13**: User nofications - this provided users with notification messages upon various interactivity.
 - **Epic 14**: Website design - this part allowed me to assess and improve any design choices/decisions for the front-end of the project as I progressed.
+- **Epic 15**: Follower functionality (optional) - this feature allows the user to follow and unfollow chosen users' profiles.
 
-**Back-end Milestones**
+### Back-end Milestones
+
+The noted milestones are for the back-end project development only. To see the milestones for the front-end, follow the link [here](https://github.com/laurakond/artly/tree/main?tab=readme-ov-file#front-end-milestones).
 
 - **Milestone 1:** Project board
   - Set up a project board.
@@ -155,15 +162,22 @@ MoSCoW methodology was used to map out which features were required for the MVP,
   - Log in and log out
 - **Milestone 7:** Artwork model functionality
   - Write models, serializers, urls, views for Artwork model
-- **Milestone 8:** Offer model functionality
-  - Write models, serializers, urls, views for Offer model
+- **Milestone 8:** Bid model functionality
+  - Write models, serializers, urls, views for Bid model
 - **Milestone 9**: Testing & bug fixes
   - Perform automated and manual tests for back-end.
   - Record back-end bugs.
 - **Milestone 10:** Back-end Readme & Testing files
-
   - Validate each back-end page and app.
-  - Document the progress in the README and TESTING.md files
+  - Document the progress in the README and TESTING files
+- **Milestone 11:** Save model functionality
+  - Write models, serializers, urls, views for Save model
+- **Milestone 12:** Follower model functionality
+  - Write models, serializers, urls, views for Follower model
+- **Milestone 14:** Profile model functionality
+  - Write models, serializers, urls, views for Profile model
+- **Milestone 15:** Contact model functionality (future feature)
+  - Write models, serializers, urls, views for Contact model
 
 [Return to Table of Contents](#table-of-contents)
 
