@@ -49,7 +49,7 @@ By Laura Kondrataite
 
 **Testing BidListview**
 
-- I was struggling to get the bid count calculate correctly in the test even though the response.data was printing correct count. After a lot of searching I found this [thread](https://stackoverflow.com/questions/52827996/how-do-i-test-the-foreign-key-object-on-django-model/52828084) on Stackoverflow that helped me to figure out how to target values in the the post response:
+- I was struggling to get the bid count calculate correctly in the test even though the response.data was printing correct count. After a lot of searching, I found this [thread](https://stackoverflow.com/questions/52827996/how-do-i-test-the-foreign-key-object-on-django-model/52828084) on Stackoverflow that helped me to figure out how to target values in the the post response:
 
   - The problem was solved when I applied an id to the artwork key:
 
@@ -59,7 +59,7 @@ By Laura Kondrataite
 
 **Incorrect bid value input instance**
 
-- when writing code for validating incorrect bid_price value, I noticed that the bid would be created regardless if it was ≤0. I realised this was because the logic statement to validate the user input was written after the new data has been saved and serialized: instance = serializer.save(buyer=self.request.user)
+- when writing code for validating the incorrect bid_price value, I noticed that the bid would be created regardless if it was ≤0. I realised this was because the logic statement to validate the user input was written after the new data has been saved and serialized: instance = serializer.save(buyer=self.request.user)
   - Once I moved the logic above this line, the bid instances were not being saved if the input was ≤0.
 - This seems to have resolved automated testing issues that I had when trying to write a test for validating incorrect bid input.
 
@@ -69,22 +69,22 @@ By Laura Kondrataite
 
   ![unique key error](documentation/images/errors/unique-key-error.png)
 
-  - Upon further investigation I noticed that the bids created for one artwork where being displayed in all artwork pages regardless of their id.
-  - I realised that the error was occuring because the filter settings for the bids in the back-end were not set up to filter by artwork id.
+  - Upon further investigation I noticed that the bids created for one artwork were being displayed in all artwork pages regardless of their id.
+  - I realised that the error was occurring because the filter settings for the bids in the back-end were not set up to filter by artwork id.
   - I managed to get this resolved by updating the filter settings, and after running a test on the front end it seems to have fixed the issue.
 
 **Fetching sold artwork count**
 
-- I was having problems targetting sold_artwork_count for the Profile views.
+- I was having problems targeting sold_artwork_count for the Profile views.
   - I managed to resolve this by looking at a similar code provided by Code Institute's DRF api walkthrough and also referring to Django documentation on:
     - [Conditional aggregation](https://docs.djangoproject.com/en/5.1/ref/models/conditional-expressions/#conditional-aggregation)
     - [Filtering on annotations](https://docs.djangoproject.com/en/5.1/topics/db/aggregation/#following-relationships-backwards)
 
 **Artist name field in Artwork model**
 
-- I noticed that if the user chose to leave the artist name field blank, the field was not populating preset default name as `"unknown artist"`.
+- I noticed that if the user chose to leave the artist_name field blank, the field was not populating pre-set default name as `"unknown artist"`.
   - This seems to have been caused by the blank=True attribute within the field.
-  - The issue has been fixed once I removed the blank=True from the artist name field.
+  - The issue was fixed once I removed the blank=True from the artist name field.
 
 ### Unfixed bugs
 
@@ -94,7 +94,7 @@ No unfixed bugs were noted at the time of testing the application.
 
 ### User stories testing
 
-- API functionality is tied closely with the front-end application, without which the front-end would not work as intended. Therefore, below used user stories are taken from the front end. To see the front end user stories testing follow this [link](https://github.com/laurakond/artly/blob/main/TESTING.md#user-stories-testing).
+- API functionality is tied closely with the front-end application, without which the front-end would not work as intended. Therefore, user stories below are taken from the front end. To see the front-end user stories' testing follow this [link](https://github.com/laurakond/artly/blob/main/TESTING.md#user-stories-testing).
 
 | As a site user                                                                                                                           | Requirements met | Image                                                                                                                                                                                                                          | Comments                                                                                                                                                                                                    |
 | ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -122,7 +122,7 @@ No unfixed bugs were noted at the time of testing the application.
 
 ### User testing
 
-The application was tested during the development and post-development stages. I have asked my friends and peers to notify me of any issues that might appear. No issues were reported/noted during the development and post-development.
+The application was tested during the development and post-development stages. I have asked my friends and peers to notify me of any issues that might appear. No issues were reported/noted during development and post-development.
 
 [Return to Table of Contents](#contents)
 
