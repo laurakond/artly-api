@@ -62,13 +62,13 @@ The primary target audience for the website is:
 
 - persons of any gender aged 16+ who enjoy art,
 - artists who wish to share their work,
-- art connoiseurs and artists who are looking for alternative ways in buying or selling artwork.
+- art connoiseurs and artists who are looking for alternative ways of buying or selling artwork.
 
 No background, geographical location or income has been specified for the target audience as this website aims to provide access to art for everyone regardless of their background.
 
 ### User Stories
 
-Artly-api project's user stories focus on the developer's point of view; mainly assessing project development stages. They have been carried out with the MVP in mind, first focusing on the essential CRUD functionality to enable the website to work properly.
+Artly-api project's user stories focus on the developer's point of view, mainly assessing project development stages. They have been carried out with the MVP in mind, first focusing on the essential CRUD functionality to enable the website to work properly.
 
 Front-end user stories are covered in the front-end part of this project development, [Artly](https://github.com/laurakond/artly?tab=readme-ov-file#user-stories) repository.
 
@@ -102,7 +102,7 @@ I used [Lucidchart](https://lucid.app/) for creating the ERD for the models.
 
 **To note:**
 
-- The ERD image shown above reflects initial model implementation. The final version of some of the models have been altered.
+- The ERD image shown above reflects the initial model implementation. The final version of some of the models has been altered.
 - the Contact model shown in the diagram is a future feature, which is covered in more detail in the [features left to implement](#features-left-to-implement) section.
 
 ## Agile Methodology
@@ -118,15 +118,15 @@ The link to the project board can be found [here](https://github.com/users/laura
 - I chose the "trafic-light" color scheme for the MoSCoW method in order to indicate which tasks were a priority (green must-haves) and which ones were not(red won't-haves) for my project board.
   - This provided clarity and better understanding for myself as I was a sole project contributor.
 
-I used the same Milestones, Epics and labels within the API and Front-end repositories to help organise front-end and back-end user stories. This allowed me to keep track of the progress and ensure that the project MVP was completed in time.
+I used the same Milestones, Epics and labels within the API and Front-end repositories to help organise front-end and back-end user stories. This allowed me to keep track of the progress and ensure that the project MVP was completed on time.
 
 MoSCoW methodology was used to map out which features were required for the MVP, and only address the others if there was sufficient time left.
 
 ### Epics
 
-The below list displays all the epics used throughout the project development, including the Artly api backend and frontend.
+The list below displays all the epics used throughout the project development, including the Artly api backend and frontend.
 
-- **Epic 1:** Project setup - this stage was important to kick start my work on the project, ensuring that initial workspaces were created and appropriate dependencies installed.
+- **Epic 1:** Project setup - this stage was important to kick-start my work on the project, ensuring that initial workspaces were created and appropriate dependencies installed.
 - **Epic 2:** Deployment - I set out to deploy the API as soon as possible in order to test any issues that might arise.
 - **Epic 3:** User authentication - this part of the project was essential for enabling user-specific authorised access.
 - **Epic4:** User registration - this part ensured that the user can create an account and login on the front-end.
@@ -275,7 +275,7 @@ The noted milestones are for the back-end project development only. To see the m
       )
     ```
 
-  - Upon submission of the form, the artwork(s) are dislayed in a list.
+  - Upon the form submission, the artwork is displayed in a list of artworks.
 
     ![artworks form](documentation/images/features/create-artwork.jpg)
 
@@ -328,7 +328,7 @@ The noted milestones are for the back-end project development only. To see the m
 - Once the user has created an artwork, they can then access the detailed view (individual artwork instances).
 - The user is then presented with the artwork edit form with prepopulated artwork information. The user can choose to change any of the fields and submit the form.
 
-- A detailed view of the artwork is accessible by adding an id to artwork list url: https://artly-api-a39d790259f4.herokuapp.com/artworks/**<id_number>**
+- A detailed view of the artwork is accessible by adding an ID to the artwork list url: https://artly-api-a39d790259f4.herokuapp.com/artworks/**<id_number>**
 
   - the user can delete their own artwork once inside the detailed view.
 
@@ -376,10 +376,10 @@ updated_at = models.DateTimeField(auto_now=True)
 
 **Bids list view**
 
-- Once the user is logged in, they are presented with a form for creating a bid for their chosen artwork instance with a bid price and their email address.
+- Once the user is logged in, they are presented with a form for creating a bid for their chosen artwork instance, with a bid price and their email address.
 
   - Field input validation is implemented to ensure that the user presents all the required information.
-    - The bid value can only be above 0. If the user enters 0 or a negative value the following error is displayed: `"Invalid input. Please enter values above 0."`
+    - The bid value can only be above 0. If the user enters 0 or a negative value, the following error is displayed: `"Invalid input. Please enter values above 0."`
   - Upon submission of the form, the bid(s) are dislayed in a list.
   - It also automatically updates the bids_count field in the artwork model.
 
@@ -409,9 +409,9 @@ updated_at = models.DateTimeField(auto_now=True)
     - bid price
     - artwork
 
-- Since the bid model has two different users, the seller and the buyer, the model incorporates buyer and seller specific error validations.
+- Since the bid model has two different users, the seller and the buyer, the model incorporates buyer and seller specific error validation.
 
-  - If the seller attempts to create a bit for their own artwork, they receive the following error: `"You cannot bid on your own artwork."`
+  - If the seller attempts to create a bid for their own artwork, they receive the following error: `"You cannot bid on your own artwork."`
 
 **Bid Detail view**
 
@@ -419,7 +419,7 @@ updated_at = models.DateTimeField(auto_now=True)
 
   **Seller Put method**
 
-  Once a bid by the buyer is submitted, the seller can then update the bid status. The bid edit form which provides a drop down list to update the status to:
+  Once a bid by the buyer is submitted, the seller can then update the bid status. The bid edit form which provides a drop-down list to update the status to:
 
   - accepted
   - rejected
@@ -439,7 +439,7 @@ updated_at = models.DateTimeField(auto_now=True)
   The buyer can choose to delete their submitted bid if they change their mind.
 
   - If a seller attempts to delete the bid, the following error is thrown: `"Only the buyer can delete this bid."`
-  - Upon successfull deletion, the user receives the following message: `"Bid deleted successfully."`
+  - Upon successful deletion, the user receives the following message: `"Bid deleted successfully."`
 
 - A detailed view of the bid is accessible by adding an id to the bid list url: https://artly-api-a39d790259f4.herokuapp.com/bids/**<id_number>**
 
@@ -489,7 +489,7 @@ updated_at = models.DateTimeField(auto_now=True)
 
 - To access the list of profiles in the api follow this link: https://artly-api-a39d790259f4.herokuapp.com/profiles/
 
-- DRF filtering has been applied so that the user can search/firter the profiles based on their chosen criteria:
+- DRF filtering has been applied so that the user can search/filter the profiles based on their chosen criteria:
 
   - Ordering fields:
 
@@ -506,7 +506,7 @@ updated_at = models.DateTimeField(auto_now=True)
 
   ![profiles detailed api view](documentation/images/features/profile-detail-view.jpg)
 
-- Upon accessing the individual profile instance, the user is shown the profile edit form that the user can choose to edit/populate. All of the fields are optional.
+- Upon accessing the individual profile instance, the user is shown the profile edit form that the user can choose to edit/populate. All the fields are optional.
 
   ![profile edit form view](documentation/images/features/profile-edit-form.jpg)
 
@@ -538,7 +538,7 @@ created_at = models.DateTimeField(auto_now_add=True)
 
 - To access the list of saved artworks in the api follow this link: https://artly-api-a39d790259f4.herokuapp.com/saved/
 
-- The save functionality is set up so that the user cannot save the same artwork more than once. If the user attempts that, a validation message `'possible dupblicate'` is thrown.
+- The save functionality is set up so that the user cannot save the same artwork more than once. If the user attempts that, a validation message `'possible duplicate'` is thrown.
 
 **Saved artwork detail view**
 
@@ -583,9 +583,9 @@ created_at = models.DateTimeField(auto_now_add=True)
 
 - Additional field has been included in the serializers to display information relevant to the user:
 
-  - **followed_name**: shows a user's name who is following currently logged in user.
+  - **followed_name**: shows a user's name who is following currently logged-in user.
 
-- The followers functionality is set up so that the user cannot follow the same user more than once. If the user attempts that, a validation message `'possible dupblicate'` appears.
+- The followers' functionality is set up so that the user cannot follow the same user more than once. If the user attempts that, a validation message `'possible duplicate'` appears.
 
 - To access the list of followers in the api follow this link: https://artly-api-a39d790259f4.herokuapp.com/followers/
 
@@ -603,9 +603,9 @@ created_at = models.DateTimeField(auto_now_add=True)
 
 **Auto reject bids that are lower than the asked price**
 
-- I have written a code for automatically rejecting the bids based on their bid price, however, I decided to exclude this logic at this stage of the project.
+- I have written a code for automatically rejecting the bids based on their bid price. However, I decided to exclude this logic at this stage of the project.
 
-  - I deemed this piece of logic not appropriate for the overall user experience at this stage fo the project. This will be adjusted and incorporated to the functionality of the code at the next development stage.
+  - I deemed this piece of logic not appropriate for the overall user experience at this stage fo the project. This will be adjusted and incorporated to the functionality of the code in the next development stage.
 
     ```python
     # Evaluate if the bid offer is lower that the asking price and send
@@ -632,15 +632,15 @@ created_at = models.DateTimeField(auto_now_add=True)
 
 - As noted in the ERD, the Contact model will be implemented at the next development stage. This will allow the user to submit any website performance issues to the administration.
 
-**In house messaging system**
+**In-house messaging system**
 
-- Implement an in house messaging system in order to enable the sellers and buyers to communicate between themselves within the same platform.
-  - This is likely to change the current mailto functionality. In it's place, however, a notification system informing the buyers that their bid has been successful will be implemented. This will allow seemless communication and ensure that the users are being kept up to date when there are any changes.
+- Implement an in-house messaging system in order to enable the sellers and buyers to communicate between themselves within the same platform.
+  - This is likely to change the current mailto functionality. In its place, however, a notification system informing the buyers that their bid has been successful will be implemented. This will allow seemless communication and ensure that the users are kept up to date when there are any changes.
 
 **Further development of Profile model**
 
 - As mentioned in the features section, the next development stage will look at separating the seller-artist and seller-artwork owner functionalities, with a focus on the latter's profile development.
-  - This will allow to display different information on the front end based on who the seller is.
+  - This will allow to display different information on the front-end based on whom the seller is.
 
 **Rating system**
 
@@ -648,7 +648,7 @@ created_at = models.DateTimeField(auto_now_add=True)
 
 **Most popular artworks**
 
-- Implement a hit view, which would allow to calculate which artworks have been viewed the most, and utilise this feature for displaying most popular/features artworks on the front-end.
+- Implement a hit view, which would allow to calculate which artworks have been viewed the most, and utilise this feature for displaying the most popular/featured artworks on the front-end.
 
 [Return to Table of Contents](#table-of-contents)
 
@@ -702,7 +702,7 @@ The website went through extensive testing during the development and deployment
 
 ## Deployment
 
-This website was deployed using GitHub pages and Heroku website. To deploy the project, follow the steps below:
+This website was deployed using GitHub pages and Heroku website. To deploy the project, follow the below steps:
 
 ### Github
 
@@ -749,7 +749,7 @@ To clone the repository in Github:
 
 ### Heroku
 
-To deploy to Heroku, follow the steps below.
+To deploy to Heroku, follow the below steps.
 
 **Please remember** to check that your DEBUG in the settings.py file is set to FALSE before deploying to Heroku.
 
@@ -770,7 +770,7 @@ To deploy to Heroku, follow the steps below.
 - Select Github (or other platform if you are using another one) to connect to Heroku.
 - Type out your project name in the 'Deployment method' section and select your project repository
 - Once connected, scroll to the bottom and click 'Deploy Branch' button
-- When it has finished deploying, click on the 'View' button below or 'Open App' at the top right corner
+- When it has finished deploying, click on the 'View' button below or 'Open App' in the top right corner
 - If the deployment was successful you will be taken to the deployed site.
 
 [Return to Table of Contents](#table-of-contents)
@@ -780,7 +780,7 @@ To deploy to Heroku, follow the steps below.
 ### Used code
 
 - Bid model status field logic (put method)
-  - I referred to DRF documentation and a fellow student's project in order to implement the bid status functionality. The code used from the project is AsiaWi's [Snap it up](https://github.com/AsiaWi/snap-it-up-backend/blob/main/offers/views.py).
+  - I referred to DRF documentation and a fellow student's project in order to implement the bid status functionality - AsiaWi's [Snap it up](https://github.com/AsiaWi/snap-it-up-backend/blob/main/offers/views.py).
     - Other resources are noted in the general resources section.
 
 ### General resources:
