@@ -93,6 +93,7 @@ Front-end user stories are covered in the front-end part of this project develop
 | [15](https://github.com/laurakond/artly-api/issues/15) | As a developer, I can create the Save model for the api so that I can create functionality for storing save model related data.                              |
 | [16](https://github.com/laurakond/artly-api/issues/16) | As a developer, I can create the Contact model for the api so that I can create functionality for storing Contact model related data.                        |
 | [17](https://github.com/laurakond/artly-api/issues/17) | As a developer, I can perform automated for back-end so that I know all functionalities of the website are working.                                          |
+| [18](https://github.com/laurakond/artly-api/issues/18) | As a developer, I can create the Follower model for the api so that I can create functionality for storing follower model related data.                      |
 
 ### Flowcharts
 
@@ -458,7 +459,7 @@ updated_at = models.DateTimeField(auto_now=True)
 - At this stage of the development, the profile model caters to the seller as an artist who is interested in selling their own art.
 
   - the user is able to customise their profile by providing their styles, techniques, collaborations, influences and portfolio urls.
-    -A more detailed overview of the profile model/feature is given in the Front end [Artly repository](https://github.com/laurakond/artly?tab=readme-ov-file#features).
+    - A more detailed overview of the profile model/feature is given in the Front end [Artly repository](https://github.com/laurakond/artly?tab=readme-ov-file#features).
 
 **Profiles model**
 
