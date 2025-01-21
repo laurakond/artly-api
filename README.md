@@ -336,7 +336,7 @@ The noted milestones are for the back-end project development only. To see the m
 
 #### Bids
 
-![bids endpoint](documentation/images/features/bids-endpoint.jpg)
+![bids endpoint](documentation/images/features/bid-endpoint.jpg)
 
 - This is the second main feature of the website, which allows the users to create a bid for an artwork instance and display it in a list (similarly to the artwork list).
 - Between two different types of users: the seller and the buyer, the Bid model has a full CRUD functionality.
