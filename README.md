@@ -6,6 +6,8 @@ You can access the Artly repository [here](https://github.com/laurakond/Artly).
 
 Live site can be found [here](https://artly-a211b809ae81.herokuapp.com/).
 
+Link to deployed Artly-api can be found [here](https://artly-api-a39d790259f4.herokuapp.com/).
+
 (By Laura Kondrataite)
 
 ## Table of Contents
@@ -104,6 +106,8 @@ I used [Lucidchart](https://lucid.app/) for creating the ERD for the models.
 
 - The ERD image shown above reflects the initial model implementation. The final version of some of the models has been altered.
 - the Contact model shown in the diagram is a future feature, which is covered in more detail in the [features left to implement](#features-left-to-implement) section.
+
+[Return to Table of Contents](#table-of-contents)
 
 ## Agile Methodology
 
@@ -707,14 +711,14 @@ This website was deployed using GitHub pages and Heroku website. To deploy the p
 ### Github
 
 1. Login to GitHub and navigate to the main repository page.
-2. Click on the chosen repository,for example [Stitch Art Guides](https://github.com/laurakond/Stitch-Art-Guides-pp4).
+2. Click on the chosen repository,for example [Artly Api](https://artly-api-a39d790259f4.herokuapp.com/).
 3. Once inside the repository, click on the "Settings" tab above the repository title displayed around the middle of the page.
 4. Select "Pages" tab on the left side navigation menu.
 5. Select "main" or "master" branch under "Build and Deployment", then "root" folder and click "save" button.
 6. The GitHub page site will be deployed.
    - It might take a few minutes to generate the "live" website link.
 
-The live link to the website can be found [here](https://stitch-art-guides-pp4-5a679feed1e1.herokuapp.com/).
+The live link to the api can be found [here](https://artly-api-a39d790259f4.herokuapp.com/).
 
 #### How to Fork
 
